@@ -110,6 +110,8 @@
                             </includes>
                         </configuration>
                     </plugin>
+                    <!-- Maven 2 Support Only -->
+                    <!-- Remove this section if using Maven 3 -->
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
@@ -126,6 +128,7 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <!-- End -->
                 </plugins>
             </build>
         </profile>
