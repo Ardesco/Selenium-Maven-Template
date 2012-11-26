@@ -110,12 +110,10 @@
                             </includes>
                         </configuration>
                     </plugin>
-                    <!-- Maven 2 Support Only -->
-                    <!-- Remove this section if using Maven 3 -->
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>0.9.1</version>
+                        <version>0.9.2</version>
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/selenium_standalone_zips</downloadedZipFileDirectory>
@@ -128,7 +126,6 @@
                             </execution>
                         </executions>
                     </plugin>
-                    <!-- End -->
                 </plugins>
             </build>
         </profile>
