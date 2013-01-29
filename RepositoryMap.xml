@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<root>
+    <windows>
+        <driver id="internetexplorer">
+            <version id="2.29.0">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>http://selenium.googlecode.com/files/IEDriverServer_x64_2.29.0.zip</filelocation>
+                    <hash>66e985ccc29869d43afc7129b019832cd8fa6971</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate thirtytwobit="true">
+                    <filelocation>http://selenium.googlecode.com/files/IEDriverServer_Win32_2.29.0.zip</filelocation>
+                    <hash>d8f5397ea048ffc6e9fc14cbff982ea00d8f5de7</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+        <driver id="googlechrome">
+            <version id="26">
+                <bitrate thirtytwobit="true" sixtyfourbit="true">
+                    <filelocation>http://chromedriver.googlecode.com/files/chromedriver_win_26.0.1383.0.zip</filelocation>
+                    <hash>a75d5d197e66ec9eb21f146163050ccec92fcb60</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+    </windows>
+    <linux>
+        <driver id="googlechrome">
+            <version id="26">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>http://chromedriver.googlecode.com/files/chromedriver_linux64_26.0.1383.0.zip</filelocation>
+                    <hash>715c7124427e52f4ae056dc71e6dd9c15802c462</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate thirtytwobit="true">
+                    <filelocation>http://chromedriver.googlecode.com/files/chromedriver_linux32_26.0.1383.0.zip</filelocation>
+                    <hash>061bb440039e2a21a816c3d10c3dce3e8543a08a</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+    </linux>
+    <osx>
+        <driver id="googlechrome">
+            <version id="26">
+                <bitrate thirtytwobit="true" sixtyfourbit="true">
+                    <filelocation>http://chromedriver.googlecode.com/files/chromedriver_mac_26.0.1383.0.zip</filelocation>
+                    <hash>5aec8bccdb601a5cc0a03ba5bfe32b4ac39399a1</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
+    </osx>
+</root>

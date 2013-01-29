@@ -123,6 +123,7 @@
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/selenium_standalone_zips</downloadedZipFileDirectory>
+                            <customRepositoryMap>RepositoryMap.xml</customRepositoryMap>
                         </configuration>
                         <executions>
                             <execution>
