@@ -6,119 +6,148 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
+import static com.lazerycode.selenium.BrowserType.FIREFOX;
 
 public class SeleniumBase {
-  public static BrowserType browserType = BrowserType.FIREFOX;
-  private final static long MULTI_THREAD_START_UP_DELAY = 5000;
 
-  private static List<WebDriver> webDrivers = Collections.synchronizedList(new ArrayList<WebDriver>());
-  private static ThreadLocal<WebDriver> driverForThread = new ThreadLocal<WebDriver>() {
+    private static ResourceBundle _prop = ResourceBundle.getBundle("dev");
+    private static BrowserType browserType;
+    private static List<WebDriver> webDrivers = Collections.synchronizedList(new ArrayList<WebDriver>());
+    private static ThreadLocal<WebDriver> driverForThread = new ThreadLocal<WebDriver>() {
 
-    @Override
-    protected WebDriver initialValue() {
-      if (webDrivers.size() > 0) {
-        try {
-          Thread.sleep(MULTI_THREAD_START_UP_DELAY);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
+        @Override
+        protected WebDriver initialValue() {
+            WebDriver driver = loadWebDriver();
+            webDrivers.add(driver);
+            return driver;
         }
-      }
-      WebDriver driver = loadWebDriver();
-      webDrivers.add(driver);
-      return driver;
-    }
-  };
+    };
 
-  @BeforeSuite
-  public static void setUpTest() {
-    //TODO read in browser from POM
-  }
-
-  @AfterSuite
-  public static void tearDown() {
-    for (WebDriver driver : webDrivers) {
-      driver.quit();
-    }
-  }
-
-  private static WebDriver loadWebDriver() {
-    System.out.println("Current Operating System: " + System.getProperties().getProperty("os.name"));
-    System.out.println("Current Architecture: " + System.getProperties().getProperty("os.arch"));
-    System.out.println("Current Browser Selection: " + browserType);
-
-    //Load standalone executable if required
-    switch (browserType) {
-      case CHROME:
-        if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
-          if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/windows/64bit/22/chromedriver.exe");
-          } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/osx/64bit/21/chromedriver");
-          } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/linux/64bit/21/chromedriver");
-          }
-        } else {
-          if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/windows/32bit/22/chromedriver.exe");
-          } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/osx/32bit/21/chromedriver");
-          } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-            System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/linux/32bit/21/chromedriver");
-          }
+    @BeforeSuite
+    public static void setUpTest() {
+        for (BrowserType browser : BrowserType.values()) {
+            if (browser.toString().toLowerCase().equals(_prop.getString("browser").toLowerCase())) {
+                browserType = browser;
+            }
         }
-        break;
-      case IE:
-        if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
-          System.setProperty("webdriver.ie.driver", "selenium_standalone_binaries/internetexplorer/windows/64bit/2.25.2/IEDriverServer.exe");
-        } else {
-          System.setProperty("webdriver.ie.driver", "selenium_standalone_binaries/internetexplorer/windows/32bit/2.25.2/IEDriverServer.exe");
+        if(browserType == null){
+            System.err.println("Unknown browser specified, defaulting to 'Firefox'...");
+            browserType = FIREFOX;
         }
-        break;
     }
 
-    //Instantiate driver object
-    switch (browserType) {
-      case FIREFOX:
-        return new FirefoxDriver();
-      case CHROME:
-        DesiredCapabilities chromeCaps = DesiredCapabilities.chrome();
-        chromeCaps.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
-
-        return new ChromeDriver(chromeCaps);
-      case IE:
-
-        DesiredCapabilities ieCaps = DesiredCapabilities.internetExplorer();
-        ieCaps.setCapability("enablePersistantHover", false);
-
-        return new InternetExplorerDriver(ieCaps);
-      case SAFARI:
-        DesiredCapabilities safariCaps = DesiredCapabilities.safari();
-        safariCaps.setCapability("safari.cleanSession", true);
-
-        return new SafariDriver(safariCaps);
-      case OPERA:
-        DesiredCapabilities operaCaps = DesiredCapabilities.opera();
-        operaCaps.setCapability("opera.arguments", "-nowin -nomail");
-
-        return new OperaDriver(operaCaps);
-      default:
-        DesiredCapabilities htmlUnitCaps = DesiredCapabilities.htmlUnit();
-        htmlUnitCaps.setCapability("javascriptEnabled", "true");
-
-        return new HtmlUnitDriver(htmlUnitCaps);
+    @AfterSuite
+    public static void tearDown() {
+        for (WebDriver driver : webDrivers) {
+            driver.quit();
+        }
     }
-  }
 
-  protected static WebDriver getDriver() {
-    return driverForThread.get();
-  }
+    private static DesiredCapabilities generateDesiredCapabilities(BrowserType capabilityType) {
+        DesiredCapabilities capabilities;
+
+        switch (capabilityType) {
+            case IE:
+                capabilities = DesiredCapabilities.internetExplorer();
+                capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+                capabilities.setCapability(CapabilityType.ENABLE_PERSISTENT_HOVERING, true);
+                capabilities.setCapability("requireWindowFocus", true);
+                break;
+            case SAFARI:
+                capabilities = DesiredCapabilities.safari();
+                capabilities.setCapability("safari.cleanSession", true);
+                break;
+            case OPERA:
+                capabilities = DesiredCapabilities.opera();
+                capabilities.setCapability("opera.arguments", "-nowin -nomail");
+                break;
+            case GHOSTDRIVER:
+                capabilities = DesiredCapabilities.phantomjs();
+                capabilities.setCapability("takesScreenshot", true);
+                //Need to set an environmental variable that points to the location of the PhantomJS Binary for GhostDriver support
+                capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, System.getProperty("PHANTOMJS_BINARY"));
+                break;
+            case CHROME:
+                capabilities = DesiredCapabilities.chrome();
+                capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
+                HashMap<String, String> chromePreferences = new HashMap<String, String>();
+                chromePreferences.put("profile.password_manager_enabled", "false");
+                capabilities.setCapability("chrome.prefs", chromePreferences);
+                break;
+            case FIREFOX:
+                capabilities = DesiredCapabilities.firefox();
+                break;
+            case HTMLUNIT:
+            default:
+                capabilities = DesiredCapabilities.htmlUnit();
+                capabilities.setCapability("javascriptEnabled", "true");
+        }
+
+        return capabilities;
+    }
+
+    private static WebDriver loadWebDriver() {
+        System.out.println("Current Operating System: " + System.getProperties().getProperty("os.name"));
+        System.out.println("Current Architecture: " + System.getProperties().getProperty("os.arch"));
+        System.out.println("Current Browser Selection: " + browserType);
+
+        //Load standalone executable if required
+        switch (browserType) {
+            case CHROME:
+                if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
+                    if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/windows/64bit/26/chromedriver.exe");
+                    } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/osx/64bit/26/chromedriver");
+                    } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/linux/64bit/26/chromedriver");
+                    }
+                } else {
+                    if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/windows/32bit/26/chromedriver.exe");
+                    } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/osx/32bit/26/chromedriver");
+                    } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
+                        System.setProperty("webdriver.chrome.driver", "selenium_standalone_binaries/googlechrome/linux/32bit/26/chromedriver");
+                    }
+                }
+                break;
+            case IE:
+                if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
+                    System.setProperty("webdriver.ie.driver", "selenium_standalone_binaries/internetexplorer/windows/64bit/2.29.0/IEDriverServer.exe");
+                } else {
+                    System.setProperty("webdriver.ie.driver", "selenium_standalone_binaries/internetexplorer/windows/32bit/2.29.0/IEDriverServer.exe");
+                }
+                break;
+        }
+
+        //Instantiate driver object
+        switch (browserType) {
+            case FIREFOX:
+                return new FirefoxDriver(generateDesiredCapabilities(browserType));
+            case CHROME:
+                return new ChromeDriver(generateDesiredCapabilities(browserType));
+            case IE:
+                return new InternetExplorerDriver(generateDesiredCapabilities(browserType));
+            case SAFARI:
+                return new SafariDriver(generateDesiredCapabilities(browserType));
+            case OPERA:
+                return new OperaDriver(generateDesiredCapabilities(browserType));
+            default:
+                return new HtmlUnitDriver(generateDesiredCapabilities(browserType));
+        }
+    }
+
+    protected static WebDriver getDriver() {
+        return driverForThread.get();
+    }
 }

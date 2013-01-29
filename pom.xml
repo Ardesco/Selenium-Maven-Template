@@ -40,6 +40,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <standalone.binary.root.folder>${project.basedir}/selenium_standalone_binaries</standalone.binary.root.folder>
+        <browser>firefox</browser>
+        <threads>1</threads>
     </properties>
 
     <dependencies>
@@ -109,7 +111,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.4.3</version>
+                        <version>2.12</version>
                         <configuration>
                             <includes>
                                 <include>**/*ST.java</include>
@@ -123,7 +125,7 @@
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/selenium_standalone_zips</downloadedZipFileDirectory>
-                            <customRepositoryMap>RepositoryMap.xml</customRepositoryMap>
+                            <customRepositoryMap>${project.basedir}/RepositoryMap.xml</customRepositoryMap>
                         </configuration>
                         <executions>
                             <execution>
