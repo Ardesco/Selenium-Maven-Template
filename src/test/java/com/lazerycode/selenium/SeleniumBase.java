@@ -39,7 +39,7 @@ public class SeleniumBase {
                 browserType = browser;
             }
         }
-        if(browserType == null){
+        if (browserType == null) {
             System.err.println("Unknown browser specified, defaulting to 'Firefox'...");
             browserType = FIREFOX;
         }
@@ -50,6 +50,10 @@ public class SeleniumBase {
         for (WebDriver driver : webDrivers) {
             driver.quit();
         }
+    }
+
+    protected static WebDriver getDriver() {
+        return driverForThread.get();
     }
 
     private static DesiredCapabilities generateDesiredCapabilities(BrowserType capabilityType) {
@@ -145,9 +149,5 @@ public class SeleniumBase {
             default:
                 return new HtmlUnitDriver(generateDesiredCapabilities(browserType));
         }
-    }
-
-    protected static WebDriver getDriver() {
-        return driverForThread.get();
     }
 }
