@@ -49,6 +49,7 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
             <version>2.29.0</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>com.opera</groupId>
@@ -60,6 +61,7 @@
             <groupId>com.opera</groupId>
             <artifactId>operadriver</artifactId>
             <version>0.18</version>
+            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>org.seleniumhq.selenium</groupId>
@@ -111,10 +113,12 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.12</version>
+                        <version>2.13</version>
                         <configuration>
                             <includes>
                                 <include>**/*ST.java</include>
+                                <parallel>methods</parallel>
+                                <threadCount>${threads}</threadCount>
                             </includes>
                         </configuration>
                     </plugin>
