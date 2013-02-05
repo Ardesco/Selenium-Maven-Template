@@ -117,9 +117,9 @@
                         <configuration>
                             <includes>
                                 <include>**/*ST.java</include>
-                                <parallel>methods</parallel>
-                                <threadCount>${threads}</threadCount>
                             </includes>
+                            <parallel>methods</parallel>
+                            <threadCount>${threads}</threadCount>
                         </configuration>
                     </plugin>
                     <plugin>
