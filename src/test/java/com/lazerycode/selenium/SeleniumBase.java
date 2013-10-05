@@ -11,6 +11,7 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.safari.SafariDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 
@@ -53,6 +54,11 @@ public class SeleniumBase {
     }
   }
 
+  @AfterMethod
+  public static void clearCookies() {
+    getDriver().manage().deleteAllCookies();
+  }
+
   protected static WebDriver getDriver() {
     return driverForThread.get();
   }
@@ -64,7 +70,7 @@ public class SeleniumBase {
       case IE:
         capabilities = DesiredCapabilities.internetExplorer();
         capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-        capabilities.setCapability(CapabilityType.ENABLE_PERSISTENT_HOVERING, true);
+        capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
         capabilities.setCapability("requireWindowFocus", true);
         break;
       case SAFARI:
@@ -110,19 +116,19 @@ public class SeleniumBase {
       case CHROME:
         if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
           if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/26/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/2.4/chromedriver.exe");
           } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/64bit/26/chromedriver");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/64bit/2.4/chromedriver");
           } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/26/chromedriver");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/2.4/chromedriver");
           }
         } else {
           if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/32bit/26/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/32bit/2.4/chromedriver.exe");
           } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/32bit/26/chromedriver");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/32bit/2.4/chromedriver");
           } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/32bit/26/chromedriver");
+            System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/32bit/2.4/chromedriver");
           }
         }
         break;

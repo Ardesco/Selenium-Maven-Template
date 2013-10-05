@@ -29,6 +29,7 @@ public class Selenium2ExampleST extends SeleniumBase {
     WebElement element = driver.findElement(By.name("q"));
 
     // Enter something to search for
+    element.clear();
     element.sendKeys("Cheese!");
 
     // Now submit the form. WebDriver will find the form for us from the element
@@ -65,6 +66,7 @@ public class Selenium2ExampleST extends SeleniumBase {
     WebElement element = driver.findElement(By.name("q"));
 
     // Enter something to search for
+    element.clear();
     element.sendKeys("Milk!");
 
     // Now submit the form. WebDriver will find the form for us from the element
