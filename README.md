@@ -26,11 +26,7 @@ Yes you can specify which browser to use by using one of the following switches:
 -Dbrowser=ie
 -Dbrowser=opera
 -Dbrowser=htmlunit
+-Dbrowser=ghostdriver
 
 You don't need to worry about downloading the IEDriverServer, or chromedriver binaries.  This project will do that for you automatically.
-
-### And finally...
-
-GhostDriver is also supported, however to use it you will need to install Phantom JS and set an environment variable called "PHANTOMJS_BINARY" that points at the the PhantomJS executable.  To use it use the following switch:
-
--Dbrowser=ghostdriver
+Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
