@@ -21,12 +21,13 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 Yes you can specify which browser to use by using one of the following switches:
 
--Dbrowser=firefox
--Dbrowser=chrome
--Dbrowser=ie
--Dbrowser=opera
--Dbrowser=htmlunit
--Dbrowser=ghostdriver
+- -Dbrowser=firefox
+- -Dbrowser=chrome
+- -Dbrowser=ie
+- -Dbrowser=opera
+- -Dbrowser=htmlunit
+- -Dbrowser=ghostdriver
 
-You don't need to worry about downloading the IEDriverServer, or chromedriver binaries.  This project will do that for you automatically.
+You don't need to worry about downloading the IEDriverServer, or chromedriver binaries, this project will do that for you automatically.
+
 Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
