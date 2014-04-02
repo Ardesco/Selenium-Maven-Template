@@ -86,19 +86,19 @@ public class SeleniumBase {
                 capabilities.setCapability("takesScreenshot", true);
                 if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/windows/phantomjs/64bit/1.9.2/phantomjs.exe");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/windows/phantomjs/64bit/1.9.7/phantomjs.exe");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/osx/phantomjs/64bit/1.9.2/phantomjs");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/osx/phantomjs/64bit/1.9.7/phantomjs");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/linux/phantomjs/64bit/1.9.2/phantomjs");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/linux/phantomjs/64bit/1.9.7/phantomjs");
                     }
                 } else {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/windows/phantomjs/32bit/1.9.2/phantomjs.exe");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/windows/phantomjs/32bit/1.9.7/phantomjs.exe");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/osx/phantomjs/32bit/1.9.2/phantomjs");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/osx/phantomjs/32bit/1.9.7/phantomjs");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/linux/phantomjs/32bit/1.9.2/phantomjs");
+                        capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, _prop.getString("binaryRootFolder") + "/linux/phantomjs/32bit/1.9.7/phantomjs");
                     }
                 }
                 break;
@@ -131,27 +131,27 @@ public class SeleniumBase {
             case CHROME:
                 if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/2.8/chromedriver.exe");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/64bit/2.9/chromedriver.exe");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/64bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/64bit/2.9/chromedriver");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/64bit/2.9/chromedriver");
                     }
                 } else {
                     if (System.getProperties().getProperty("os.name").toLowerCase().contains("windows")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/32bit/2.8/chromedriver.exe");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/windows/googlechrome/32bit/2.9/chromedriver.exe");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("mac")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/32bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/osx/googlechrome/32bit/2.9/chromedriver");
                     } else if (System.getProperties().getProperty("os.name").toLowerCase().contains("linux")) {
-                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/32bit/2.8/chromedriver");
+                        System.setProperty("webdriver.chrome.driver", _prop.getString("binaryRootFolder") + "/linux/googlechrome/32bit/2.9/chromedriver");
                     }
                 }
                 break;
             case IE:
                 if (System.getProperties().getProperty("os.arch").toLowerCase().equals("x86_64") || System.getProperties().getProperty("os.arch").toLowerCase().equals("amd64")) {
-                    System.setProperty("webdriver.ie.driver", _prop.getString("binaryRootFolder") + "/windows/internetexplorer/64bit/2.39.0/IEDriverServer.exe");
+                    System.setProperty("webdriver.ie.driver", _prop.getString("binaryRootFolder") + "/windows/internetexplorer/64bit/2.41.0/IEDriverServer.exe");
                 } else {
-                    System.setProperty("webdriver.ie.driver", _prop.getString("binaryRootFolder") + "/windows/internetexplorer/32bit/2.39.0/IEDriverServer.exe");
+                    System.setProperty("webdriver.ie.driver", _prop.getString("binaryRootFolder") + "/windows/internetexplorer/32bit/2.41.0/IEDriverServer.exe");
                 }
                 break;
         }
