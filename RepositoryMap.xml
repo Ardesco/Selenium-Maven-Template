@@ -5,12 +5,12 @@
             <version id="2.41.0">
                 <bitrate sixtyfourbit="true">
                     <filelocation>http://selenium-release.storage.googleapis.com/2.41/IEDriverServer_x64_2.41.0.zip</filelocation>
-                    <hash>c676276cc4b5bca71b3872dabdd3af7f</hash>
+                    <hash>4acb8e7be4a8015c31c00d02e6f05a51</hash>
                     <hashtype>md5</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
                     <filelocation>http://selenium-release.storage.googleapis.com/2.41/IEDriverServer_Win32_2.41.0.zip</filelocation>
-                    <hash>4acb8e7be4a8015c31c00d02e6f05a51</hash>
+                    <hash>c676276cc4b5bca71b3872dabdd3af7f</hash>
                     <hashtype>md5</hashtype>
                 </bitrate>
             </version>
