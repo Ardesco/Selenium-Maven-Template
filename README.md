@@ -35,4 +35,12 @@ You can specify multiple threads:
 
 - -Dthreads=2
 
-You can even specify a grid to connect to:
+You can even specify a grid to connect to where you can choose your browser, browser version and platform:
+
+- -Dremote=true 
+- -DseleniumGridURL=http://<username>:<accessKey>@ondemand.saucelabs.com:80/wd/hub 
+- -Dplatform=xp 
+- -Dbrowser=firefox 
+- -DbrowserVersion=33
+
+If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots

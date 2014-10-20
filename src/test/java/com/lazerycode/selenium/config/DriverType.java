@@ -124,11 +124,11 @@ public enum DriverType implements DriverSetup {
             String desiredPlatform = System.getProperty("desiredPlatform");
 
             if (null != desiredPlatform && !desiredPlatform.isEmpty()) {
-                desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform));
+                desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
             }
 
             if (null != desiredBrowserVersion && !desiredBrowserVersion.isEmpty()) {
-                desiredCapabilities.setBrowserName(desiredBrowserVersion);
+                desiredCapabilities.setVersion(desiredBrowserVersion);
             }
 
             return new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
