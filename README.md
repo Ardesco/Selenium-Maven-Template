@@ -14,7 +14,7 @@ All dependencies should now be downloaded and the example google cheese test wil
 ### What should I know?
 
 - To run any unit tests that test your Selenium framework you just need to ensure that all unit test file names end, or start with "test" and they will be run by step 4.
-- The maven surefire plugin has been used to create a profile with the id "selenium-tests" that configures surefire to pick up any java files that ends with the text "ST".  This means that as long as all of your selenium test file names end with WebDriver.java they will get picked up and run when you perform step 5.
+- The maven surefire plugin has been used to create a profile with the id "selenium-tests" that configures surefire to pick up any java files that ends with the text "WebDriver".  This means that as long as all of your selenium test file names end with WebDriver.java they will get picked up and run when you perform step 4.
 
 ### Anything else?
 
