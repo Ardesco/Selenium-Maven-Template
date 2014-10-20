@@ -39,16 +39,21 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <standalone.binary.root.folder>${project.basedir}/selenium_standalone_binaries</standalone.binary.root.folder>
+        <env.config>local</env.config>
         <browser>firefox</browser>
         <threads>1</threads>
+        <standalone.binary.root.folder>${project.build.testResources}/selenium_standalone_binaries</standalone.binary.root.folder>
+        <remote>false</remote>
+        <seleniumGridURL/>
+        <platform/>
+        <browserVersion/>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-server</artifactId>
-            <version>2.41.0</version>
+            <version>2.43.1</version>
             <scope>test</scope>
             <exclusions>
                 <exclusion>
@@ -89,32 +94,18 @@
         </dependency>
     </dependencies>
 
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <source>1.6</source>
-                        <target>1.6</target>
-                    </configuration>
-                    <version>2.3.2</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
-
     <profiles>
         <profile>
             <id>selenium-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/test/resources</directory>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
@@ -122,8 +113,8 @@
                         <version>1.0.3</version>
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
-                            <downloadedZipFileDirectory>${project.basedir}/selenium_standalone_zips</downloadedZipFileDirectory>
-                            <customRepositoryMap>${project.basedir}/RepositoryMap.xml</customRepositoryMap>
+                            <downloadedZipFileDirectory>${project.build.testResources}/selenium_standalone_zips</downloadedZipFileDirectory>
+                            <customRepositoryMap>${project.build.testResources}/RepositoryMap.xml</customRepositoryMap>
                         </configuration>
                         <executions>
                             <execution>
@@ -135,14 +126,33 @@
                     </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>1.7</source>
+                            <target>1.7</target>
+                        </configuration>
+                        <version>2.3.2</version>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>2.7.2</version>
                         <configuration>
-                            <includes>
-                                <include>**/*ST.java</include>
-                            </includes>
                             <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
+                            <systemProperties>
+                                <env.config>${env.config}</env.config>
+                                <browser>${browser}</browser>
+                                <binaryRootFolder>${standalone.binary.root.folder}</binaryRootFolder>
+                                <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+                                <remoteDriver>${remote}</remoteDriver>
+                                <gridURL>${seleniumGridURL}</gridURL>
+                                <desiredPlatform>${platform}</desiredPlatform>
+                                <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
+                            </systemProperties>
+                            <includes>
+                                <include>**/*WebDriver.java</include>
+                            </includes>
                         </configuration>
                     </plugin>
                 </plugins>
