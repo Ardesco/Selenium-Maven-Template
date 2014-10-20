@@ -34,7 +34,7 @@ Not got PhantomJS?  Don't worry that will be automatically downloaded for you as
 You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
 - -Dremote=true 
-- -DseleniumGridURL=http://<username>:<accessKey>@ondemand.saucelabs.com:80/wd/hub 
+- -DseleniumGridURL=http://{username}:{accessKey}@ondemand.saucelabs.com:80/wd/hub 
 - -Dplatform=xp 
 - -Dbrowser=firefox 
 - -DbrowserVersion=33
