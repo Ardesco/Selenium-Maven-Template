@@ -31,16 +31,16 @@ You don't need to worry about downloading the IEDriverServer, or chromedriver bi
 
 Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
 
-You can specify multiple threads:
-
-- -Dthreads=2
-
-You can even specify a grid to connect to where you can choose your browser, browser version and platform:
+You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
 - -Dremote=true 
 - -DseleniumGridURL=http://<username>:<accessKey>@ondemand.saucelabs.com:80/wd/hub 
 - -Dplatform=xp 
 - -Dbrowser=firefox 
 - -DbrowserVersion=33
+
+You can even specify multiple threads (you can do it on a grid as well!):
+
+- -Dthreads=2
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots

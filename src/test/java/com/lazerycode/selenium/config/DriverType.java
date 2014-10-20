@@ -107,6 +107,7 @@ public enum DriverType implements DriverSetup {
     };
 
     public static final DriverType defaultDriverType = FIREFOX;
+    public static final boolean useRemoteWebDriver = Boolean.valueOf(System.getProperty("remoteDriver"));
     private static final OperatingSystem operatingSystem = getOperatingSystem();
     private static final SystemArchitecture systemArchitecture = getSystemArchitecture();
 
@@ -115,7 +116,6 @@ public enum DriverType implements DriverSetup {
     }
 
     public WebDriver instantiateWebDriver() throws MalformedURLException {
-        boolean useRemoteWebDriver = Boolean.valueOf(System.getProperty("remoteDriver"));
         DesiredCapabilities desiredCapabilities = getDesiredCapabilities();
 
         if (useRemoteWebDriver) {

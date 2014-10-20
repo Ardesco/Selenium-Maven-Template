@@ -31,12 +31,14 @@ public class DriverBinaryMapper {
     }};
 
     static void configureBinary(DriverType driverType, OperatingSystem operatingSystem, SystemArchitecture systemArchitecture) {
-        final String binarySystemProperty = driverType.getWebDriverSystemPropertyKey();
+        if (!DriverType.useRemoteWebDriver) {
+            final String binarySystemProperty = driverType.getWebDriverSystemPropertyKey();
 
-        if (null != binarySystemProperty && binarySystemProperty.length() != 0) {
-            final String binaryConfiguration = binaryLocation.get(binaryFor(driverType, operatingSystem, systemArchitecture));
-            System.out.println("Setting System Property '" + binarySystemProperty + "'='" + binaryConfiguration + "'");
-            System.setProperty(binarySystemProperty, binaryConfiguration);
+            if (null != binarySystemProperty && binarySystemProperty.length() != 0) {
+                final String binaryConfiguration = binaryLocation.get(binaryFor(driverType, operatingSystem, systemArchitecture));
+                System.out.println("Setting System Property '" + binarySystemProperty + "'='" + binaryConfiguration + "'");
+                System.setProperty(binarySystemProperty, binaryConfiguration);
+            }
         }
     }
 
