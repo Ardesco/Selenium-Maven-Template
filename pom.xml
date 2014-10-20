@@ -42,7 +42,7 @@
         <env.config>local</env.config>
         <browser>firefox</browser>
         <threads>1</threads>
-        <standalone.binary.root.folder>${project.build.testResources}/selenium_standalone_binaries</standalone.binary.root.folder>
+        <standalone.binary.root.folder>${project.basedir}/src/test/resources/selenium_standalone_binaries</standalone.binary.root.folder>
         <remote>false</remote>
         <seleniumGridURL/>
         <platform/>
@@ -101,11 +101,6 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
-                <resources>
-                    <resource>
-                        <directory>src/test/resources</directory>
-                    </resource>
-                </resources>
                 <plugins>
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
@@ -113,8 +108,8 @@
                         <version>1.0.3</version>
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
-                            <downloadedZipFileDirectory>${project.build.testResources}/selenium_standalone_zips</downloadedZipFileDirectory>
-                            <customRepositoryMap>${project.build.testResources}/RepositoryMap.xml</customRepositoryMap>
+                            <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
+                            <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                         </configuration>
                         <executions>
                             <execution>

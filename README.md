@@ -7,15 +7,14 @@ A maven template for Selenium that has the latest dependencies so that you can j
 1. Open a terminal window/command prompt
 2. Clone this project.
 3. CD into project directory
-4. mvn clean install -U -Pselenium-tests
-5. mvn verify -Pselenium-tests
+4. mvn clean verify
 
 All dependencies should now be downloaded and the example google cheese test will have run successfully (Assuming you have Firefox installed in the default location)
 
 ### What should I know?
 
 - To run any unit tests that test your Selenium framework you just need to ensure that all unit test file names end, or start with "test" and they will be run by step 4.
-- The maven surefire plugin has been used to create a profile with the id "selenium-tests" that configures surefire to pick up any java files that ends with the text "ST".  This means that as long as all of your selenium test file names end with ST.java they will get picked up and run when you perform step 5.
+- The maven surefire plugin has been used to create a profile with the id "selenium-tests" that configures surefire to pick up any java files that ends with the text "ST".  This means that as long as all of your selenium test file names end with WebDriver.java they will get picked up and run when you perform step 5.
 
 ### Anything else?
 
@@ -26,8 +25,14 @@ Yes you can specify which browser to use by using one of the following switches:
 - -Dbrowser=ie
 - -Dbrowser=opera
 - -Dbrowser=htmlunit
-- -Dbrowser=ghostdriver
+- -Dbrowser=phantomjs
 
 You don't need to worry about downloading the IEDriverServer, or chromedriver binaries, this project will do that for you automatically.
 
 Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
+
+You can specify multiple threads:
+
+- -Dthreads=2
+
+You can even specify a grid to connect to:
