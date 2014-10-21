@@ -5,8 +5,7 @@ import java.util.Map;
 
 import static com.lazerycode.selenium.config.DriverBinaryContext.binaryFor;
 import static com.lazerycode.selenium.config.DriverBinaryContext.binaryPath;
-import static com.lazerycode.selenium.config.DriverType.CHROME;
-import static com.lazerycode.selenium.config.DriverType.IE;
+import static com.lazerycode.selenium.config.DriverType.*;
 import static com.lazerycode.selenium.config.OperatingSystem.*;
 import static com.lazerycode.selenium.config.SystemArchitecture.ARCHITECTURE_32_BIT;
 import static com.lazerycode.selenium.config.SystemArchitecture.ARCHITECTURE_64_BIT;
@@ -31,7 +30,7 @@ public class DriverBinaryMapper {
     }};
 
     static void configureBinary(DriverType driverType, OperatingSystem operatingSystem, SystemArchitecture systemArchitecture) {
-        if (!DriverType.useRemoteWebDriver) {
+        if (!useRemoteWebDriver) {
             final String binarySystemProperty = driverType.getWebDriverSystemPropertyKey();
 
             if (null != binarySystemProperty && binarySystemProperty.length() != 0) {
