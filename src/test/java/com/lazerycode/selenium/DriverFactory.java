@@ -2,6 +2,8 @@ package com.lazerycode.selenium;
 
 import com.lazerycode.selenium.config.DriverType;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
+import com.lazerycode.selenium.reporting.AllureProperties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -20,7 +22,7 @@ public class DriverFactory {
     private static List<WebDriver> webDriverPool = Collections.synchronizedList(new ArrayList<WebDriver>());
     private static ThreadLocal<WebDriver> driverThread;
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public static void instantiateDriverObject() {
 
         final DriverType desiredDriver = determineEffectiveDriverType(System.getProperty("browser"));
@@ -39,15 +41,16 @@ public class DriverFactory {
         return driverThread.get();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public static void clearCookies() {
         getDriver().manage().deleteAllCookies();
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public static void closeDriverObject() {
         for (WebDriver driver : webDriverPool) {
             driver.quit();
         }
+        AllureProperties.create();
     }
 }
