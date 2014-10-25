@@ -1,186 +1,191 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  ~ Copyright (c) 2010-2013 Lazery Attack - http://www.lazeryattack.com ~ http://www.lazerycode.com
-  ~
-  ~ Licensed under the Apache License, Version 2.0 (the "License");
-  ~ you may not use this file except in compliance with the License.
-  ~ You may obtain a copy of the License at
-  ~
-  ~ http://www.apache.org/licenses/LICENSE-2.0
-  ~
-  ~ Unless required by applicable law or agreed to in writing, software
-  ~ distributed under the License is distributed on an "AS IS" BASIS,
-  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  ~ See the License for the specific language governing permissions and
-  ~ limitations under the License.
-  -->
+<!-- ~ Copyright (c) 2010-2013 Lazery Attack - http://www.lazeryattack.com 
+	~ http://www.lazerycode.com ~ ~ Licensed under the Apache License, Version 
+	2.0 (the "License"); ~ you may not use this file except in compliance with 
+	the License. ~ You may obtain a copy of the License at ~ ~ http://www.apache.org/licenses/LICENSE-2.0 
+	~ ~ Unless required by applicable law or agreed to in writing, software ~ 
+	distributed under the License is distributed on an "AS IS" BASIS, ~ WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. ~ See the 
+	License for the specific language governing permissions and ~ limitations 
+	under the License. -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>com.lazerycode.selenium</groupId>
-    <artifactId>maven-template</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <modelVersion>4.0.0</modelVersion>
+	<groupId>com.lazerycode.selenium</groupId>
+	<artifactId>maven-template</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<modelVersion>4.0.0</modelVersion>
 
-    <name>Selenium Maven Template</name>
-    <description>A Maven Template For Selenium</description>
-    <url>http://www.lazerycode.com</url>
+	<name>Selenium Maven Template</name>
+	<description>A Maven Template For Selenium</description>
+	<url>http://www.lazerycode.com</url>
 
-    <licenses>
-        <license>
-            <name>Apache 2</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-            <comments>A business-friendly OSS license</comments>
-        </license>
-    </licenses>
+	<licenses>
+		<license>
+			<name>Apache 2</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+			<comments>A business-friendly OSS license</comments>
+		</license>
+	</licenses>
 
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <env.config>local</env.config>
-        <browser>firefox</browser>
-        <threads>1</threads>
-        <standalone.binary.root.folder>${project.basedir}/src/test/resources/selenium_standalone_binaries</standalone.binary.root.folder>
-        <remote>false</remote>
-        <seleniumGridURL/>
-        <platform/>
-        <browserVersion/>
-        <groups/>
-        <aspectj.version>1.7.4</aspectj.version>
-        <allure.version>1.4.3</allure.version>
-    </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<env.config>local</env.config>
+		<browser>firefox</browser>
+		<threads>1</threads>
+		<standalone.binary.root.folder>${project.basedir}/src/test/resources/selenium_standalone_binaries</standalone.binary.root.folder>
+		<remote>false</remote>
+		<seleniumGridURL />
+		<platform />
+		<browserVersion />
+		<groups />
+		<aspectj.version>1.7.4</aspectj.version>
+		<allure.version>1.4.3</allure.version>
+	</properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server</artifactId>
-            <version>2.43.1</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.opera</groupId>
-                    <artifactId>operadriver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.opera</groupId>
-            <artifactId>operadriver</artifactId>
-            <version>1.5</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.github.detro.ghostdriver</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.1.0</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.seleniumhq.selenium</groupId>
-                    <artifactId>selenium-remote-driver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.8</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-        	<groupId>ru.yandex.qatools.allure</groupId>
-        	<artifactId>allure-testng-adaptor</artifactId>
-        	<version>${allure.version}</version>
-    	</dependency>
-    </dependencies>
+	<dependencies>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-server</artifactId>
+			<version>2.43.1</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.opera</groupId>
+					<artifactId>operadriver</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.opera</groupId>
+			<artifactId>operadriver</artifactId>
+			<version>1.5</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-remote-driver</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.github.detro.ghostdriver</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.1.0</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-remote-driver</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.allure</groupId>
+			<artifactId>allure-testng-adaptor</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.htmlelements</groupId>
+			<artifactId>htmlelements-java</artifactId>
+			<version>1.12</version>
+		</dependency>
+       <dependency>
+           <groupId>com.google.inject</groupId>
+           <artifactId>guice</artifactId>
+           <version>3.0</version>
+           <type>jar</type>
+           <scope>compile</scope>
+       </dependency>
+	</dependencies>
 
-    <profiles>
-        <profile>
-            <id>selenium-tests</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>com.lazerycode.selenium</groupId>
-                        <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.3</version>
-                        <configuration>
-                            <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
-                            <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
-                            <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>selenium</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-compiler-plugin</artifactId>
-                        <configuration>
-                            <source>1.7</source>
-                            <target>1.7</target>
-                        </configuration>
-                        <version>2.3.2</version>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-surefire-plugin</artifactId>
-                        <version>2.7.2</version>
-                        <configuration>
-                            <parallel>methods</parallel>
-                            <threadCount>${threads}</threadCount>
-                            <systemProperties>
-                                <env.config>${env.config}</env.config>
-                                <browser>${browser}</browser>
-                                <binaryRootFolder>${standalone.binary.root.folder}</binaryRootFolder>
-                                <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
-                                <remoteDriver>${remote}</remoteDriver>
-                                <gridURL>${seleniumGridURL}</gridURL>
-                                <desiredPlatform>${platform}</desiredPlatform>
-                                <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
-                            </systemProperties>
-                            <includes>
-                                <include>**/*WebDriver.java</include>
-                            </includes>
-                            <groups>${groups}</groups>
-                            <testFailureIgnore>false</testFailureIgnore>
-                			<argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
-                        </configuration>
-                        <dependencies>
-               				<dependency>
-                    			<groupId>org.aspectj</groupId>
-                    			<artifactId>aspectjweaver</artifactId>
-                    			<version>${aspectj.version}</version>
-                			</dependency>
-            			</dependencies>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-    </profiles>
-	
+	<profiles>
+		<profile>
+			<id>selenium-tests</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.lazerycode.selenium</groupId>
+						<artifactId>driver-binary-downloader-maven-plugin</artifactId>
+						<version>1.0.3</version>
+						<configuration>
+							<rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
+							<downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
+							<customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
+						</configuration>
+						<executions>
+							<execution>
+								<goals>
+									<goal>selenium</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-compiler-plugin</artifactId>
+						<configuration>
+							<source>1.7</source>
+							<target>1.7</target>
+						</configuration>
+						<version>2.3.2</version>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.7.2</version>
+						<configuration>
+							<parallel>methods</parallel>
+							<threadCount>${threads}</threadCount>
+							<systemProperties>
+								<env.config>${env.config}</env.config>
+								<browser>${browser}</browser>
+								<binaryRootFolder>${standalone.binary.root.folder}</binaryRootFolder>
+								<screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+								<remoteDriver>${remote}</remoteDriver>
+								<gridURL>${seleniumGridURL}</gridURL>
+								<desiredPlatform>${platform}</desiredPlatform>
+								<desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
+							</systemProperties>
+							<includes>
+								<include>**/*WebDriver.java</include>
+							</includes>
+							<groups>${groups}</groups>
+							<testFailureIgnore>false</testFailureIgnore>
+							<argLine>-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar</argLine>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.aspectj</groupId>
+								<artifactId>aspectjweaver</artifactId>
+								<version>${aspectj.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
 	<reporting>
-        <excludeDefaults>true</excludeDefaults>
-        <plugins>
-            <plugin>
-                <groupId>ru.yandex.qatools.allure</groupId>
-                <artifactId>allure-maven-plugin</artifactId>
-                <version>2.0</version>
-            </plugin>
-        </plugins>
-    </reporting>
+		<excludeDefaults>true</excludeDefaults>
+		<plugins>
+			<plugin>
+				<groupId>ru.yandex.qatools.allure</groupId>
+				<artifactId>allure-maven-plugin</artifactId>
+				<version>2.0</version>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
