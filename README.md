@@ -48,3 +48,5 @@ You can execute one or more specific groups of tests:
 - -Dgroups=checkintest,functest
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
+
+Run 'mvn site' to generate an [Allure](http://allure.qatools.ru) report in ${project.basedir}/target/site/allure-maven-plugin
