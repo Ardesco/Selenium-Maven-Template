@@ -20,7 +20,7 @@ public class DriverFactory {
     private static List<WebDriver> webDriverPool = Collections.synchronizedList(new ArrayList<WebDriver>());
     private static ThreadLocal<WebDriver> driverThread;
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public static void instantiateDriverObject() {
 
         final DriverType desiredDriver = determineEffectiveDriverType(System.getProperty("browser"));
@@ -39,12 +39,12 @@ public class DriverFactory {
         return driverThread.get();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public static void clearCookies() {
         getDriver().manage().deleteAllCookies();
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public static void closeDriverObject() {
         for (WebDriver driver : webDriverPool) {
             driver.quit();
