@@ -47,6 +47,7 @@
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
+        <groups/>
         <aspectj.version>1.7.4</aspectj.version>
         <allure.version>1.4.3</allure.version>
     </properties>
