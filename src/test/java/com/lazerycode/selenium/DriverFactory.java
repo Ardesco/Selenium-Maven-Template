@@ -2,6 +2,8 @@ package com.lazerycode.selenium;
 
 import com.lazerycode.selenium.config.DriverType;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
+import com.lazerycode.selenium.reporting.AllureProperties;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -49,5 +51,6 @@ public class DriverFactory {
         for (WebDriver driver : webDriverPool) {
             driver.quit();
         }
+        AllureProperties.create();
     }
 }
