@@ -105,7 +105,7 @@
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.3</version>
+                        <version>1.0.4</version>
                         <configuration>
                             <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
