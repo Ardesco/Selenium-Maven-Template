@@ -47,6 +47,7 @@
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
+        <groups />
     </properties>
 
     <dependencies>
@@ -148,6 +149,7 @@
                             <includes>
                                 <include>**/*WebDriver.java</include>
                             </includes>
+                            <groups>${groups}</groups>
                         </configuration>
                     </plugin>
                 </plugins>

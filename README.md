@@ -1,7 +1,7 @@
 Selenium-Maven-Template
 =======================
 
-A maven template for Selenium that has the latest dependencies so that you can just check out and start writing tests in five easy steps.
+A maven template for Selenium that has the latest dependencies so that you can just check out and start writing tests in four easy steps.
 
 
 1. Open a terminal window/command prompt
@@ -42,5 +42,9 @@ You can specify a grid to connect to where you can choose your browser, browser 
 You can even specify multiple threads (you can do it on a grid as well!):
 
 - -Dthreads=2
+
+You can execute one or more specific groups of tests:
+
+- -Dgroups=checkintest,functest
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
