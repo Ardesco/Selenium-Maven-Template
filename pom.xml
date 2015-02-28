@@ -39,7 +39,6 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <env.config>local</env.config>
         <browser>firefox</browser>
         <threads>1</threads>
         <standalone.binary.root.folder>${project.basedir}/src/test/resources/selenium_standalone_binaries</standalone.binary.root.folder>
@@ -118,7 +117,6 @@
                             <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
                             <systemProperties>
-                                <env.config>${env.config}</env.config>
                                 <browser>${browser}</browser>
                                 <binaryRootFolder>${standalone.binary.root.folder}</binaryRootFolder>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
