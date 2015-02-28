@@ -1,6 +1,5 @@
 package com.lazerycode.selenium.config;
 
-import com.opera.core.systems.OperaDriver;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -80,17 +79,6 @@ public enum DriverType implements DriverSetup {
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new SafariDriver(capabilities);
-        }
-    },
-    OPERA {
-        public DesiredCapabilities getDesiredCapabilities() {
-            DesiredCapabilities capabilities = DesiredCapabilities.opera();
-            capabilities.setCapability("opera.arguments", "-nowin -nomail");
-            return capabilities;
-        }
-
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-            return new OperaDriver(capabilities);
         }
     },
     PHANTOMJS {
