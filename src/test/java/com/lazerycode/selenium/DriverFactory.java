@@ -20,6 +20,25 @@ public class DriverFactory {
     private static List<WebDriver> webDriverPool = Collections.synchronizedList(new ArrayList<WebDriver>());
     private static ThreadLocal<WebDriver> driverThread;
 
+    public DriverFactory() {
+        setBinaryVariables();
+    }
+
+    private void setBinaryVariables() {
+        for (DriverType driverType : DriverType.values()) {
+            String variable = driverType.getWebDriverSystemPropertyKey();
+            if (null != variable) {
+                String systemProperty = System.getProperty(variable);
+                if (null == systemProperty || systemProperty.isEmpty()) {
+                    String environmentalVariable = System.getenv(variable);
+                    if (null != environmentalVariable && !environmentalVariable.isEmpty()) {
+                        System.setProperty(variable, environmentalVariable);
+                    }
+                }
+            }
+        }
+    }
+
     @BeforeSuite
     public static void instantiateDriverObject() {
 

@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
-import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,11 +16,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.HashMap;
-
-import static com.lazerycode.selenium.config.DriverBinaryMapper.configureBinary;
-import static com.lazerycode.selenium.config.DriverBinaryMapper.getBinaryPath;
-import static com.lazerycode.selenium.config.OperatingSystem.getOperatingSystem;
-import static com.lazerycode.selenium.config.SystemArchitecture.getSystemArchitecture;
 
 public enum DriverType implements DriverSetup {
 
@@ -81,23 +76,41 @@ public enum DriverType implements DriverSetup {
             return new SafariDriver(capabilities);
         }
     },
+    OPERA {
+        public DesiredCapabilities getDesiredCapabilities() {
+            return DesiredCapabilities.operaBlink();
+        }
+
+        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            return new OperaDriver(capabilities);
+        }
+
+        @Override
+        public String getWebDriverSystemPropertyKey() {
+            return "webdriver.opera.driver";
+        }
+    },
     PHANTOMJS {
         public DesiredCapabilities getDesiredCapabilities() {
             DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
             capabilities.setCapability("takesScreenshot", true);
-            capabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, getBinaryPath(PHANTOMJS, operatingSystem, systemArchitecture));
             return capabilities;
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new PhantomJSDriver(capabilities);
         }
+
+        @Override
+        public String getWebDriverSystemPropertyKey() {
+            return "phantomjs.binary.path";
+        }
     };
 
     public static final DriverType defaultDriverType = FIREFOX;
     public static final boolean useRemoteWebDriver = Boolean.valueOf(System.getProperty("remoteDriver"));
-    private static final OperatingSystem operatingSystem = getOperatingSystem();
-    private static final SystemArchitecture systemArchitecture = getSystemArchitecture();
+    private static final String operatingSystem = System.getProperties().getProperty("os.name").toUpperCase();
+    private static final String systemArchitecture = System.getProperties().getProperty("os.arch");
 
     public String getWebDriverSystemPropertyKey() {
         return null;
@@ -139,11 +152,11 @@ public enum DriverType implements DriverSetup {
     }
 
     public WebDriver configureDriverBinaryAndInstantiateWebDriver() {
-        System.out.println("Current Operating System: " + operatingSystem.getOperatingSystemType());
-        System.out.println("Current Architecture: " + systemArchitecture.getSystemArchitectureType());
+        System.out.println(" ");
+        System.out.println("Current Operating System: " + operatingSystem);
+        System.out.println("Current Architecture: " + systemArchitecture);
         System.out.println("Current Browser Selection: " + this);
-
-        configureBinary(this, operatingSystem, systemArchitecture);
+        System.out.println(" ");
 
         try {
             return instantiateWebDriver();

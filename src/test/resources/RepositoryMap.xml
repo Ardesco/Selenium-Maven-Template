@@ -34,13 +34,6 @@
             </version>
         </driver>
         <driver id="phantomjs">
-            <version id="2.0.0">
-                <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-windows.zip</filelocation>
-                    <hash>ca0c753e5d8820a271dd7c2d6a9fad6ff86fb09f</hash>
-                    <hashtype>sha1</hashtype>
-                </bitrate>
-            </version>
             <version id="1.9.8">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
                     <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-windows.zip</filelocation>
@@ -119,13 +112,6 @@
             </version>
         </driver>
         <driver id="phantomjs">
-            <version id="2.0.0">
-                <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-macosx.zip</filelocation>
-                    <hash>97f87188bb2fc81e0c57ec3a376b722e3bcc30c9</hash>
-                    <hashtype>sha1</hashtype>
-                </bitrate>
-            </version>
             <version id="1.9.8">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
                     <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-macosx.zip</filelocation>
