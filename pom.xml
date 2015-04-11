@@ -44,7 +44,6 @@
         <overwrite.binaries>false</overwrite.binaries>
         <browser>firefox</browser>
         <threads>1</threads>
-        <standalone.binary.root.folder>${project.basedir}/src/test/resources/selenium_standalone_binaries</standalone.binary.root.folder>
         <remote>false</remote>
         <seleniumGridURL/>
         <platform/>
@@ -126,7 +125,6 @@
                             <threadCount>${threads}</threadCount>
                             <systemProperties>
                                 <browser>${browser}</browser>
-                                <binaryRootFolder>${standalone.binary.root.folder}</binaryRootFolder>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
                                 <remoteDriver>${remote}</remoteDriver>
                                 <gridURL>${seleniumGridURL}</gridURL>
