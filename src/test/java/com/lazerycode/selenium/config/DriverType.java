@@ -1,6 +1,7 @@
 package com.lazerycode.selenium.config;
 
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,14 +15,24 @@ import org.openqa.selenium.safari.SafariDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
+
+import static java.lang.Boolean.getBoolean;
+import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
+import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
 public enum DriverType implements DriverSetup {
 
     FIREFOX {
         public DesiredCapabilities getDesiredCapabilities() {
-            return DesiredCapabilities.firefox();
+            DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+            if (proxyEnabled) {
+                capabilities.setCapability(PROXY, getSeleniumProxyDetails());
+            }
+            return capabilities;
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
@@ -35,6 +46,9 @@ public enum DriverType implements DriverSetup {
             HashMap<String, String> chromePreferences = new HashMap<String, String>();
             chromePreferences.put("profile.password_manager_enabled", "false");
             capabilities.setCapability("chrome.prefs", chromePreferences);
+            if (proxyEnabled) {
+                capabilities.setCapability(PROXY, getSeleniumProxyDetails());
+            }
             return capabilities;
         }
 
@@ -53,6 +67,9 @@ public enum DriverType implements DriverSetup {
             capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
             capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
             capabilities.setCapability("requireWindowFocus", true);
+            if (proxyEnabled) {
+                capabilities.setCapability(PROXY, getSeleniumProxyDetails());
+            }
             return capabilities;
         }
 
@@ -69,6 +86,9 @@ public enum DriverType implements DriverSetup {
         public DesiredCapabilities getDesiredCapabilities() {
             DesiredCapabilities capabilities = DesiredCapabilities.safari();
             capabilities.setCapability("safari.cleanSession", true);
+            if (proxyEnabled) {
+                capabilities.setCapability(PROXY, getSeleniumProxyDetails());
+            }
             return capabilities;
         }
 
@@ -78,7 +98,11 @@ public enum DriverType implements DriverSetup {
     },
     OPERA {
         public DesiredCapabilities getDesiredCapabilities() {
-            return DesiredCapabilities.operaBlink();
+            DesiredCapabilities capabilities = DesiredCapabilities.operaBlink();
+            if (proxyEnabled) {
+                capabilities.setCapability(PROXY, getSeleniumProxyDetails());
+            }
+            return capabilities;
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
@@ -94,6 +118,16 @@ public enum DriverType implements DriverSetup {
         public DesiredCapabilities getDesiredCapabilities() {
             DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
             capabilities.setCapability("takesScreenshot", true);
+            final List<String> cliArguments = new ArrayList<String>();
+            cliArguments.add("--web-security=false");
+            cliArguments.add("--ssl-protocol=any");
+            cliArguments.add("--ignore-ssl-errors=true");
+            if (proxyEnabled) {
+                cliArguments.add("--proxy-type=http");
+                cliArguments.add("--proxy=" + proxyDetails);
+            } else {
+                cliArguments.add("--proxy-type=none");
+            }
             return capabilities;
         }
 
@@ -111,6 +145,16 @@ public enum DriverType implements DriverSetup {
     public static final boolean useRemoteWebDriver = Boolean.valueOf(System.getProperty("remoteDriver"));
     private static final String operatingSystem = System.getProperties().getProperty("os.name").toUpperCase();
     private static final String systemArchitecture = System.getProperties().getProperty("os.arch");
+    public static boolean proxyEnabled = getBoolean("proxyEnabled");
+    private static final String proxyDetails = String.format("%s:%s", System.getProperty("proxy"), System.getProperty("proxyPort"));
+
+    public Proxy getSeleniumProxyDetails() {
+        Proxy proxy = new Proxy();
+        proxy.setProxyType(MANUAL);
+        proxy.setHttpProxy(proxyDetails);
+        proxy.setSslProxy(proxyDetails);
+        return proxy;
+    }
 
     public String getWebDriverSystemPropertyKey() {
         return null;

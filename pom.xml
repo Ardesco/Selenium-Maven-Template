@@ -48,6 +48,9 @@
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
+        <proxyEnabled>false</proxyEnabled>
+        <proxyHost/>
+        <proxyPort/>
     </properties>
 
     <dependencies>
@@ -130,6 +133,9 @@
                                 <gridURL>${seleniumGridURL}</gridURL>
                                 <desiredPlatform>${platform}</desiredPlatform>
                                 <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
+                                <proxyEnabled>${proxyEnabled}</proxyEnabled>
+                                <proxyHost>${proxyHost}</proxyHost>
+                                <proxyPort>${proxyPort}</proxyPort>
 
                                 <!--Set properties passed in by the driver binary downloader-->
                                 <phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>

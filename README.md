@@ -43,6 +43,12 @@ You can even specify multiple threads (you can do it on a grid as well!):
 
 - -Dthreads=2
 
+You can also specify a proxy to use
+
+- -DproxyEnabled=true
+- -DproxyHost=localhost
+- -DproxyPort=8080
+
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
 
 If you need to force a binary overwrite you can do:
