@@ -1,6 +1,8 @@
 package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverFactory;
+import net.lightbody.bmp.core.har.Har;
+import net.lightbody.bmp.core.har.HarEntry;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,10 +10,26 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import java.net.URL;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
+
 public class GoogleExampleWebDriver extends DriverFactory {
 
+    public int getHTTPStatusCode(String expectedURL, Har httpArchive) {
+        for (HarEntry entry : httpArchive.getLog().getEntries()) {
+            if (entry.getRequest().getUrl().equals(expectedURL)) {
+                return entry.getResponse().getStatus();
+            }
+        }
+
+        return 0;
+    }
+
     @Test
-    public void googleCheeseExample() {
+    public void googleCheeseExample() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
@@ -48,11 +66,21 @@ public class GoogleExampleWebDriver extends DriverFactory {
     }
 
     @Test
-    public void googleMilkExample() {
+    public void googleMilkExample() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
-        WebDriver driver = getDriver();
+        WebDriver driver = getBrowserMobProxyEnabledDriver();
+
+        getBrowserMobProxy().newHar();
+
+        URL site = new URL("https://www.google.co.uk/");
+        driver.get(site.toString());
+
+        Har httpArchive = getBrowserMobProxy().getHar();
+
+        assertThat(getHTTPStatusCode(site.toString(), httpArchive),
+                is(equalTo(200)));
 
         // And now use this to visit Google
         driver.get("http://www.google.com");

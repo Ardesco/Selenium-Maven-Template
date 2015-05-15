@@ -2,6 +2,7 @@ package com.lazerycode.selenium;
 
 import com.lazerycode.selenium.config.DriverType;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
+import net.lightbody.bmp.BrowserMobProxy;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -12,13 +13,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static com.lazerycode.selenium.config.DriverType.determineEffectiveDriverType;
-
 @Listeners(ScreenshotListener.class)
 public class DriverFactory {
 
-    private static List<WebDriver> webDriverPool = Collections.synchronizedList(new ArrayList<WebDriver>());
-    private static ThreadLocal<WebDriver> driverThread;
+    private static List<WebDriverThread> webDriverThreadPool = Collections.synchronizedList(new ArrayList<WebDriverThread>());
+    private static ThreadLocal<WebDriverThread> driverThread;
 
     public DriverFactory() {
         setBinaryVariables();
@@ -41,32 +40,37 @@ public class DriverFactory {
 
     @BeforeSuite
     public static void instantiateDriverObject() {
-
-        final DriverType desiredDriver = determineEffectiveDriverType(System.getProperty("browser"));
-
-        driverThread = new ThreadLocal<WebDriver>() {
+        driverThread = new ThreadLocal<WebDriverThread>() {
             @Override
-            protected WebDriver initialValue() {
-                final WebDriver webDriver = desiredDriver.configureDriverBinaryAndInstantiateWebDriver();
-                webDriverPool.add(webDriver);
-                return webDriver;
+            protected WebDriverThread initialValue() {
+                WebDriverThread webDriverThread = new WebDriverThread();
+                webDriverThreadPool.add(webDriverThread);
+                return webDriverThread;
             }
         };
     }
 
-    public static WebDriver getDriver() {
-        return driverThread.get();
+    public static WebDriver getDriver() throws Exception {
+        return driverThread.get().getDriver();
+    }
+
+    public static WebDriver getBrowserMobProxyEnabledDriver() throws Exception {
+        return driverThread.get().getBrowserMobProxyEnabledDriver();
+    }
+
+    public static BrowserMobProxy getBrowserMobProxy() {
+        return driverThread.get().getBrowserMobProxy();
     }
 
     @AfterMethod
-    public static void clearCookies() {
+    public static void clearCookies() throws Exception {
         getDriver().manage().deleteAllCookies();
     }
 
     @AfterSuite
     public static void closeDriverObject() {
-        for (WebDriver driver : webDriverPool) {
-            driver.quit();
+        for (WebDriverThread webDriverThread : webDriverThreadPool) {
+            webDriverThread.quitDriver();
         }
     }
 }
