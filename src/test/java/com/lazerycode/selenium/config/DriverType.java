@@ -43,11 +43,6 @@ public enum DriverType implements DriverSetup {
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new ChromeDriver(capabilities);
         }
-
-        @Override
-        public String getWebDriverSystemPropertyKey() {
-            return "webdriver.chrome.driver";
-        }
     },
     IE {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
@@ -60,11 +55,6 @@ public enum DriverType implements DriverSetup {
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new InternetExplorerDriver(capabilities);
-        }
-
-        @Override
-        public String getWebDriverSystemPropertyKey() {
-            return "webdriver.ie.driver";
         }
     },
     SAFARI {
@@ -87,11 +77,6 @@ public enum DriverType implements DriverSetup {
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new OperaDriver(capabilities);
         }
-
-        @Override
-        public String getWebDriverSystemPropertyKey() {
-            return "webdriver.opera.driver";
-        }
     },
     PHANTOMJS {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
@@ -109,17 +94,7 @@ public enum DriverType implements DriverSetup {
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             return new PhantomJSDriver(capabilities);
         }
-
-        @Override
-        public String getWebDriverSystemPropertyKey() {
-            return "phantomjs.binary.path";
-        }
     };
-
-
-    public String getWebDriverSystemPropertyKey() {
-        return null;
-    }
 
     protected DesiredCapabilities addProxySettings(DesiredCapabilities capabilities, Proxy proxySettings) {
         if (null != proxySettings) {

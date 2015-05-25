@@ -1,6 +1,5 @@
 package com.lazerycode.selenium;
 
-import com.lazerycode.selenium.config.DriverType;
 import com.lazerycode.selenium.config.WebDriverThread;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
 import org.openqa.selenium.WebDriver;
@@ -18,25 +17,6 @@ public class DriverFactory {
 
     private static List<WebDriverThread> webDriverThreadPool = Collections.synchronizedList(new ArrayList<WebDriverThread>());
     private static ThreadLocal<WebDriverThread> driverThread;
-
-    public DriverFactory() {
-        setBinaryVariables();
-    }
-
-    private void setBinaryVariables() {
-        for (DriverType driverType : DriverType.values()) {
-            String variable = driverType.getWebDriverSystemPropertyKey();
-            if (null != variable) {
-                String systemProperty = System.getProperty(variable);
-                if (null == systemProperty || systemProperty.isEmpty()) {
-                    String environmentalVariable = System.getenv(variable);
-                    if (null != environmentalVariable && !environmentalVariable.isEmpty()) {
-                        System.setProperty(variable, environmentalVariable);
-                    }
-                }
-            }
-        }
-    }
 
     @BeforeSuite
     public static void instantiateDriverObject() {
