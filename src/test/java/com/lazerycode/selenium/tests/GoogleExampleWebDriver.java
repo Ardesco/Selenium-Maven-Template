@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class GoogleExampleWebDriver extends DriverFactory {
 
     @Test
-    public void googleCheeseExample() {
+    public void googleCheeseExample() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
@@ -48,7 +48,7 @@ public class GoogleExampleWebDriver extends DriverFactory {
     }
 
     @Test
-    public void googleMilkExample() {
+    public void googleMilkExample() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
