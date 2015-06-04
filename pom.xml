@@ -120,6 +120,54 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>net.wouterdanes.docker</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>3.0</version>
+                        <executions>
+                            <execution>
+                                <id>start</id>
+                                <configuration>
+                                    <containers>
+                                        <container>
+                                            <id>selenium-hub</id>
+                                            <image>selenium/hub:2.45.0</image>
+                                            <waitForStartup>Started SocketConnector@0.0.0.0:4444</waitForStartup>
+                                        </container>
+                                        <container>
+                                            <id>selenium-chrome</id>
+                                            <image>selenium/node-chrome:2.45.0</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-firefox</id>
+                                            <image>selenium/node-firefox:2.45.0</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                    </containers>
+                                </configuration>
+                                <goals>
+                                    <goal>start-containers</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop</id>
+                                <goals>
+                                    <goal>stop-containers</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>2.7.2</version>
@@ -130,7 +178,7 @@
                                 <browser>${browser}</browser>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
                                 <remoteDriver>${remote}</remoteDriver>
-                                <gridURL>${seleniumGridURL}</gridURL>
+                                <gridURL>http://${docker.containers.selenium-hub.ports.4444/tcp.host}:${docker.containers.selenium-hub.ports.4444/tcp.port}/wd/hub</gridURL>
                                 <desiredPlatform>${platform}</desiredPlatform>
                                 <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
