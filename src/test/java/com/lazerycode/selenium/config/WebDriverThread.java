@@ -19,7 +19,7 @@ public class WebDriverThread {
     private DriverType selectedDriverType;
 
     private final DriverType defaultDriverType = FIREFOX;
-    private final String browser = System.getProperty("browser").toUpperCase();
+    private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
     private final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
