@@ -126,7 +126,7 @@
                         <configuration>
                             <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
-                            <systemProperties>
+                            <systemPropertyVariables>
                                 <browser>${browser}</browser>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
                                 <remoteDriver>${remote}</remoteDriver>
@@ -142,7 +142,7 @@
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
-                            </systemProperties>
+                            </systemPropertyVariables>
                             <includes>
                                 <include>**/*WebDriver.java</include>
                             </includes>
