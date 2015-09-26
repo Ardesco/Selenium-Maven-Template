@@ -47,19 +47,24 @@ public class ScreenshotListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult failingTest) {
-        WebDriver driver = getDriver();
-        String screenshotDirectory = System.getProperty("screenshotDirectory");
-        String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
-        File screenshot = new File(screenshotAbsolutePath);
-        if (createFile(screenshot)) {
-            try {
-                writeScreenshotToFile(driver, screenshot);
-            } catch (ClassCastException weNeedToAugmentOurDriverObject) {
-                writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
+        try {
+            WebDriver driver = getDriver();
+            String screenshotDirectory = System.getProperty("screenshotDirectory");
+            String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
+            File screenshot = new File(screenshotAbsolutePath);
+            if (createFile(screenshot)) {
+                try {
+                    writeScreenshotToFile(driver, screenshot);
+                } catch (ClassCastException weNeedToAugmentOurDriverObject) {
+                    writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
+                }
+                System.out.println("Written screenshot to " + screenshotAbsolutePath);
+            } else {
+                System.err.println("Unable to create " + screenshotAbsolutePath);
             }
-            System.out.println("Written screenshot to " + screenshotAbsolutePath);
-        } else {
-            System.err.println("Unable to create " + screenshotAbsolutePath);
+        } catch (Exception ex) {
+            System.err.println("Unable to capture screenshot...");
+            ex.printStackTrace();
         }
     }
 }

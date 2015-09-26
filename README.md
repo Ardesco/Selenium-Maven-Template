@@ -1,6 +1,8 @@
 Selenium-Maven-Template
 =======================
 
+[![Join the chat at https://gitter.im/Ardesco/Selenium-Maven-Template](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Ardesco/Selenium-Maven-Template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A maven template for Selenium that has the latest dependencies so that you can just check out and start writing tests in five easy steps.
 
 
@@ -43,4 +45,21 @@ You can even specify multiple threads (you can do it on a grid as well!):
 
 - -Dthreads=2
 
+You can also specify a proxy to use
+
+- -DproxyEnabled=true
+- -DproxyHost=localhost
+- -DproxyPort=8080
+
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
+
+If you need to force a binary overwrite you can do:
+
+- -Doverwrite.binaries=true
+
+### It's not working!!!
+
+You have probably got outdated driver binaries, by default they are not overwritten if they already exist to speed things up.  You have two options:
+
+- mvn clean verify -Doverwrite.binaries=true
+- Delete the selenium_standalone_binaries folder in your resources directory
