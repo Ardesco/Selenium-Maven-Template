@@ -134,8 +134,8 @@
                                             <waitForStartup>Started SocketConnector@0.0.0.0:4444</waitForStartup>
                                         </container>
                                         <container>
-                                            <id>selenium-chrome</id>
-                                            <image>selenium/node-chrome:2.45.0</image>
+                                            <id>selenium-chrome-1</id>
+                                            <image>selenium/node-chrome:2.47.1</image>
                                             <links>
                                                 <link>
                                                     <containerId>selenium-hub</containerId>
@@ -144,8 +144,28 @@
                                             </links>
                                         </container>
                                         <container>
-                                            <id>selenium-firefox</id>
-                                            <image>selenium/node-firefox:2.45.0</image>
+                                            <id>selenium-chrome-2</id>
+                                            <image>selenium/node-chrome:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-firefox-1</id>
+                                            <image>selenium/node-firefox:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-firefox-2</id>
+                                            <image>selenium/node-firefox:2.47.1</image>
                                             <links>
                                                 <link>
                                                     <containerId>selenium-hub</containerId>

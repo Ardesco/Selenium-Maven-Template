@@ -61,3 +61,17 @@ You have probably got outdated driver binaries, by default they are not overwrit
 
 - mvn clean verify -Doverwrite.binaries=true
 - Delete the selenium_standalone_binaries folder in your resources directory
+
+### Docker Branch specific
+
+By default this build will start a Selenium Grid with 2 firefox nodes and 2 chrome nodes.
+
+You can run the tests in parallel on Firefox using:
+
+    mvn clean install -Dremote=true -Dthreads=2
+    
+or if you prefer chrome:
+    
+    mvn clean install -Dremote=true -Dthreads=2 -Dbrowser=chrome
+    
+Enjoy
