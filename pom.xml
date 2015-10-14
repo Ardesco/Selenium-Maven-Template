@@ -40,7 +40,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>2.46.0</selenium.version>
+        <selenium.version>2.48.2</selenium.version>
         <overwrite.binaries>false</overwrite.binaries>
         <browser>firefox</browser>
         <threads>1</threads>
