@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.6</version>
+            <version>6.9.8</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -143,9 +143,6 @@
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
                             </systemPropertyVariables>
-                            <includes>
-                                <include>**/*WebDriver.java</include>
-                            </includes>
                         </configuration>
                         <executions>
                             <execution>
