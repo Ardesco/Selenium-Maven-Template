@@ -13,7 +13,7 @@ import static com.lazerycode.selenium.config.DriverType.FIREFOX;
 import static com.lazerycode.selenium.config.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
-public class WebDriverThread {
+public class DriverFactory {
 
     private WebDriver webdriver;
     private DriverType selectedDriverType;

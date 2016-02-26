@@ -23,6 +23,9 @@ public enum DriverType implements DriverSetup {
     FIREFOX {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+            //TODO Uncomment the capability settings below to use Marionette
+//            capabilities.setCapability("marionette", true);
+//            capabilities.setCapability("binary", System.getProperty("webdriver.gecko.driver"));
             return addProxySettings(capabilities, proxySettings);
         }
 

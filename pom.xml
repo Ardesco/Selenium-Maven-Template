@@ -40,7 +40,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>2.48.2</selenium.version>
+        <selenium.version>2.52.0</selenium.version>
         <overwrite.binaries>false</overwrite.binaries>
         <browser>firefox</browser>
         <threads>1</threads>
@@ -79,7 +79,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.9.8</version>
+            <version>6.9.10</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -99,14 +99,14 @@
                             <source>1.7</source>
                             <target>1.7</target>
                         </configuration>
-                        <version>2.3.2</version>
+                        <version>3.5.1</version>
                     </plugin>
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.7</version>
+                        <version>1.0.9</version>
                         <configuration>
-                            <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
+                            <rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
                             <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
@@ -122,7 +122,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.18.1</version>
+                        <version>2.19.1</version>
                         <configuration>
                             <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
@@ -142,12 +142,14 @@
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
+                                <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
                             <execution>
                                 <goals>
                                     <goal>integration-test</goal>
+                                    <!--This goal makes the build fail if you have test failures-->
                                     <goal>verify</goal>
                                 </goals>
                             </execution>

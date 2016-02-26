@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.lazerycode.selenium.DriverFactory.getDriver;
+import static com.lazerycode.selenium.DriverBase.getDriver;
 
 public class ScreenshotListener extends TestListenerAdapter {
 

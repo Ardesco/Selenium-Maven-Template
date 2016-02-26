@@ -26,13 +26,6 @@
 *.sql
 *.sqlite
 
-# OS generated files #
-######################
-.DS_Store*
-ehthumbs.db
-Icon?
-Thumbs.db
-
 # IntelliJ #
 ############
 *.iml
@@ -54,5 +47,5 @@ Thumbs.db
 
 # Binary Downloads #
 ####################
-**/selenium_standalone_binaries/
+**/selenium_standalone/
 **/selenium_standalone_zips/
