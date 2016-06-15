@@ -3,7 +3,7 @@ package com.lazerycode.selenium.config;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -23,14 +23,11 @@ public enum DriverType implements DriverSetup {
     FIREFOX {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-            //TODO Uncomment the capability settings below to use Marionette
-//            capabilities.setCapability("marionette", true);
-//            capabilities.setCapability("binary", System.getProperty("webdriver.gecko.driver"));
             return addProxySettings(capabilities, proxySettings);
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-            return new FirefoxDriver(capabilities);
+            return new MarionetteDriver(capabilities);
         }
     },
     CHROME {
