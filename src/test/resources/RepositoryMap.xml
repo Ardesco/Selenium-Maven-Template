@@ -16,10 +16,10 @@
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="2.22">
+            <version id="2.23">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>http://chromedriver.storage.googleapis.com/2.22/chromedriver_win32.zip</filelocation>
-                    <hash>128f4ea29870d5f7c1235403e2deed13dc0903a7</hash>
+                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_win32.zip</filelocation>
+                    <hash>847bf2497eab7aac5cf0622e49939f976087aae4</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -39,10 +39,10 @@
             </version>
         </driver>
         <driver id="phantomjs">
-            <version id="2.0.0">
+            <version id="2.1.1">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-windows.zip</filelocation>
-                    <hash>ca0c753e5d8820a271dd7c2d6a9fad6ff86fb09f</hash>
+                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-windows.zip</filelocation>
+                    <hash>eb61e6dc49832a3d60f708a92fa7299c57cad7db</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -55,10 +55,10 @@
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.8.0">
-                <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.8.0/geckodriver-v0.8.0-win32.zip</filelocation>
-                    <hash>e5a676d2d0e5779dab78e65fdd11858e86832690</hash>
+            <version id="0.10.0">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.10.0/geckodriver-v0.10.0-win64.zip</filelocation>
+                    <hash>babc51b39da6f9a090c3c0e3ab9e800086f6140c</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -66,15 +66,15 @@
     </windows>
     <linux>
         <driver id="googlechrome">
-            <version id="2.22">
+            <version id="2.23">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>http://chromedriver.storage.googleapis.com/2.22/chromedriver_linux64.zip</filelocation>
-                    <hash>ee19e5fc596fcf0b66aac30383401a3015caec46</hash>
+                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux64.zip</filelocation>
+                    <hash>917f9e939e816c4f4487b2ebfddb21ecc77a4a9c</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>http://chromedriver.storage.googleapis.com/2.22/chromedriver_linux32.zip</filelocation>
-                    <hash>e5fd33ebc9f1fdaab2b7b67dd0a25ac1af930fd5</hash>
+                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_linux32.zip</filelocation>
+                    <hash>b4bc392b16a62988cf0aa8e609e7edcc7a13ecc8</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -94,6 +94,18 @@
             </version>
         </driver>
         <driver id="phantomjs">
+            <version id="2.1.1">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2</filelocation>
+                    <hash>f8afc8a24eec34c2badccc93812879a3d6f2caf3</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate thirtytwobit="true">
+                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-i686.tar.bz2</filelocation>
+                    <hash>9870663f5c2826501508972b8a201d9210d27b59</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
             <version id="1.9.8">
                 <bitrate sixtyfourbit="true">
                     <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-linux-x86_64.tar.bz2</filelocation>
@@ -108,10 +120,10 @@
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.8.0">
+            <version id="0.10.0">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.8.0/geckodriver-0.8.0-linux64.gz</filelocation>
-                    <hash>bca6b4acb815f5a13d275aac15b107e31c073e89</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.10.0/geckodriver-v0.10.0-linux64.tar.gz</filelocation>
+                    <hash>7dd33d2779aedaca41f94dee2f1db6a25d9230a2</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -119,10 +131,10 @@
     </linux>
     <osx>
         <driver id="googlechrome">
-            <version id="2.22">
+            <version id="2.23">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>http://chromedriver.storage.googleapis.com/2.22/chromedriver_mac32.zip</filelocation>
-                    <hash>896b8e04aa86f3ced1a20d1a649c8ba849514f2d</hash>
+                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_mac32.zip</filelocation>
+                    <hash>8343cb5ed784c1c23c90ecfa86da0dc058d68c89</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -137,10 +149,10 @@
             </version>
         </driver>
         <driver id="phantomjs">
-            <version id="2.0.0">
+            <version id="2.1.1">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.0.0-macosx.zip</filelocation>
-                    <hash>97f87188bb2fc81e0c57ec3a376b722e3bcc30c9</hash>
+                    <filelocation>https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-macosx.zip</filelocation>
+                    <hash>c6e1a16bb9e89ce1e392a4768e99177797c93350</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -153,10 +165,10 @@
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.8.0">
+            <version id="0.10.0">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.8.0/geckodriver-0.8.0-OSX.gz</filelocation>
-                    <hash>0db4231305f4d46bdc4355c3dc3c7936850f6ee6</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.10.0/geckodriver-v0.10.0-macos.tar.gz</filelocation>
+                    <hash>ca22ac7a159bc81f2e2f35fd29ccd6693a81b763</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
