@@ -29,11 +29,12 @@ Yes you can specify which browser to use by using one of the following switches:
 - -Dbrowser=firefox
 - -Dbrowser=chrome
 - -Dbrowser=ie
+- -Dbrowser=edge
 - -Dbrowser=opera
 - -Dbrowser=htmlunit
 - -Dbrowser=phantomjs
 
-You don't need to worry about downloading the IEDriverServer, chromedriver , operachromium, or wires binaries, this project will do that for you automatically.
+You don't need to worry about downloading the IEDriverServer, MicrosoftWebDriver, chromedriver , operachromium, or wires binaries, this project will do that for you automatically.
 
 Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
 
