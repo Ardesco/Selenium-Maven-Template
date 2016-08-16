@@ -144,7 +144,7 @@
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
                                 <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
-                                <webdriver.gecko.driver>${webdriver.edge.driver}</webdriver.gecko.driver>
+                                <webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
                             </systemPropertyVariables>
                         </configuration>
                         <executions>
