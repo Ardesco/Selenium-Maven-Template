@@ -132,9 +132,9 @@
     <osx>
         <driver id="googlechrome">
             <version id="2.23">
-                <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_mac32.zip</filelocation>
-                    <hash>8343cb5ed784c1c23c90ecfa86da0dc058d68c89</hash>
+                <bitrate sixtyfourbit="true">
+                    <filelocation>http://chromedriver.storage.googleapis.com/2.23/chromedriver_mac64.zip</filelocation>
+                    <hash>6f90f35ebf62c99602a0a7298a72dbd130ffa651</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
