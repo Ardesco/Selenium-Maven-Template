@@ -54,6 +54,15 @@
                 </bitrate>
             </version>
         </driver>
+        <driver id="edge">
+            <version id="3.14393">
+                <bitrate sixtyfourbit="true" thirtytwobit="true">
+                    <filelocation>https://download.microsoft.com/download/3/2/D/32D3E464-F2EF-490F-841B-05D53C848D15/MicrosoftWebDriver.exe</filelocation>
+                    <hash>6f9e81e5f60fa3e8dccba15a3715ba20d44d0775</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
         <driver id="marionette">
             <version id="0.11.1">
                 <bitrate sixtyfourbit="true">
