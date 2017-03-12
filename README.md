@@ -22,6 +22,11 @@ All dependencies should now be downloaded and the example google cheese test wil
         
 - The maven-failsafe-plugin will pick up any files that end in IT by default.  You can customise this is you would prefer to use a custom identifier for your Selenium tests.
 
+### Known problems...
+
+- It looks like OperaDriver doesn't work any more and Opera doesn't really care... (https://github.com/operasoftware/operachromiumdriver/issues/27)
+- It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
+
 ### Anything else?
 
 Yes you can specify which browser to use by using one of the following switches:
