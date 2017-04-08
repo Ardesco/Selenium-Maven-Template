@@ -134,6 +134,9 @@
                             <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
                             <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
+                            <fileDownloadRetryAttempts>4</fileDownloadRetryAttempts>
+                            <fileDownloadConnectionTimeout>40000</fileDownloadConnectionTimeout>
+                            <fileDownloadReadTimeout>30000</fileDownloadReadTimeout>
                             <operatingSystems>
                                 <windows>true</windows>
                                 <linux>true</linux>
