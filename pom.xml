@@ -52,6 +52,9 @@
         <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
+        <read.timeout>30000</read.timeout>
+        <connection.timeout>40000</connection.timeout>
+        <retry.attempts>4</retry.attempts>
         <browser>firefox</browser>
         <threads>1</threads>
         <remote>false</remote>
@@ -134,9 +137,9 @@
                             <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
                             <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
-                            <fileDownloadRetryAttempts>4</fileDownloadRetryAttempts>
-                            <fileDownloadConnectionTimeout>40000</fileDownloadConnectionTimeout>
-                            <fileDownloadReadTimeout>30000</fileDownloadReadTimeout>
+                            <fileDownloadRetryAttempts>${retry.attempts}</fileDownloadRetryAttempts>
+                            <fileDownloadConnectionTimeout>${connection.timeout}</fileDownloadConnectionTimeout>
+                            <fileDownloadReadTimeout>${read.timeout}</fileDownloadReadTimeout>
                             <operatingSystems>
                                 <windows>true</windows>
                                 <linux>true</linux>
