@@ -9,7 +9,10 @@ CucumberJVM template project for running tests in parallel and two ways are prov
 1. Open a terminal window/command prompt
 2. Clone this project.
 3. `cd Cucumber-JVM-Parallel-Template` (Or whatever folder you cloned it into)
-4. `mvn clean verify -P [local,parallel,parallelPlugin]`
+4. 
+```
+mvn clean verify -P [singleThreaded,nogrid,grid,parallel,parallelPlugin]
+```
 
 
 
