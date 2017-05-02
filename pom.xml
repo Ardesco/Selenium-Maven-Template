@@ -145,7 +145,6 @@
                                     <glue>
                                         <package>lv.iljapavlovs.cucumber.stepdefs</package>
                                     </glue>
-
                                     <!-- These are optional, with the default values -->
                                     <!-- Where to output the generated tests -->
                                     <outputDirectory>${project.build.directory}/generated-test-sources/cucumber
@@ -154,10 +153,8 @@
                                     <featuresDirectory>src/test/resources</featuresDirectory>
                                     <!-- Directory where the cucumber report files shall be written  -->
                                     <cucumberOutputDir>${cucumberOutputDirectory}</cucumberOutputDir>
-
                                     <!-- List of cucumber plugins. When none are provided the json formatter is used. For more
                                          advanced usage see section about configuring cucumber plugins -->
-
                                     <plugins>
                                         <plugin>
                                             <!--The available options are junit, testng, html, pretty, json, usage and rerun -->
@@ -171,7 +168,6 @@
                                             <name>pretty</name>
                                         </plugin>
                                     </plugins>
-
                                     <!-- CucumberOptions.strict property -->
                                     <strict>true</strict>
                                     <!-- CucumberOptions.monochrome property -->
@@ -180,7 +176,7 @@
                                     <!--<tags>"@all"</tags>-->
                                     <tags>
                                         <tag>@all</tag>
-                                        <!--Currently multiple not working-->
+                                        <!--Currently multiple tags not working-->
                                         <!--<tag>@cheese</tag>-->
                                         <!--<tag>@milk</tag>-->
                                     </tags>
