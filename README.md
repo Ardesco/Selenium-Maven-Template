@@ -6,7 +6,7 @@ CucumberJVM template project for running tests in parallel. Two options how to r
  * Using [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) (use profile `parallelPlugin`)
 
 
-###Command for execution
+### Command for execution
 ```
 mvn clean verify -P [singleThreaded,nogrid,grid,parallel,parallelPlugin]
 ```
