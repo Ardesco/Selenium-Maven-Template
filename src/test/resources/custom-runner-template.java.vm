@@ -1,0 +1,29 @@
+#if ($packageName)package $packageName;
+
+#end##
+import org.junit.runner.RunWith;
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import lv.iljapavlovs.cucumber.config.DriverBase;
+
+@RunWith(Cucumber.class)
+@CucumberOptions(strict = $strict,
+        features = {"$featureFile"},
+        plugin = {$reports},
+        monochrome = ${monochrome},
+    #if(!$featureFile.contains(".feature:") ) tags = {#if($tags)$tags#end}, #end
+        glue = { $glue })
+public class $className {
+    @BeforeClass
+    public static void boot() throws Exception {
+        DriverBase.instantiateDriverObject();
+    }
+
+    @AfterClass
+    public static void shutdown() throws Exception {
+        DriverBase.closeDriverObjects();
+    }
+}
+

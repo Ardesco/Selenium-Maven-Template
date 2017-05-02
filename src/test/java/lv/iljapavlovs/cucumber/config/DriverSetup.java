@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.config;
+package lv.iljapavlovs.cucumber.config;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;

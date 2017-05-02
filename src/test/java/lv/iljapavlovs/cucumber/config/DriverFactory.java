@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.config;
+package lv.iljapavlovs.cucumber.config;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
@@ -9,8 +9,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.lazerycode.selenium.config.DriverType.FIREFOX;
-import static com.lazerycode.selenium.config.DriverType.valueOf;
+import static lv.iljapavlovs.cucumber.config.DriverType.FIREFOX;
+import static lv.iljapavlovs.cucumber.config.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 public class DriverFactory {
@@ -83,7 +83,7 @@ public class DriverFactory {
                 desiredCapabilities.setVersion(desiredBrowserVersion);
             }
 
-            webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
+            webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities, desiredCapabilities);
         } else {
             webdriver = selectedDriverType.getWebDriverObject(desiredCapabilities);
         }
