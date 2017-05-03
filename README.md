@@ -2,10 +2,12 @@ cucumber-jvm-parallel-template
 =======================
 
 CucumberJVM template project for running tests in parallel. Two options how to run:
- * One "Runner" class per thread (use profile `parallel`)
- * Using [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) (use profile `parallelPlugin`)
-
-
+ 1. One "Runner" class per thread (use profile `parallel`). By "Runner" class is meant *RunCukesCheeseTest* class in this example.
+    * **NOTE** - in order to use this approach, you will need to create separate "runner" class per one thread. Tests belonging to one "runner" class will be executed sequentially.
+    * More on this read [here](https://opencredo.com/running-cucumber-jvm-tests-in-parallel/).
+ 2. Using [cucumber-jvm-parallel-plugin](https://github.com/temyers/cucumber-jvm-parallel-plugin) (use profile `parallelPlugin`)
+    * *cucumber-jvm-parallel-plugin* will automatically generates "runner" classes.
+    * More on this read [here](http://automationrhapsody.com/running-cucumber-tests-in-parallel/).
 ### Command for execution
 ```
 mvn clean verify -P [singleThreaded,nogrid,grid,parallel,parallelPlugin]
