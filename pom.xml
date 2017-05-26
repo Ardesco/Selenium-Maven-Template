@@ -42,12 +42,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.3.1</selenium.version>
+        <selenium.version>3.4.0</selenium.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <phantomjsdriver.version>1.4.1</phantomjsdriver.version>
         <testng.version>6.11</testng.version>
         <!--Plugin Versions-->
-        <driver-binary-downloader-maven-plugin.version>1.0.12</driver-binary-downloader-maven-plugin.version>
+        <driver-binary-downloader-maven-plugin.version>1.0.14</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
