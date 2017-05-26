@@ -138,7 +138,6 @@
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
                             <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
                             <fileDownloadRetryAttempts>${retry.attempts}</fileDownloadRetryAttempts>
-                            <fileDownloadConnectionTimeout>${connection.timeout}</fileDownloadConnectionTimeout>
                             <fileDownloadReadTimeout>${read.timeout}</fileDownloadReadTimeout>
                             <operatingSystems>
                                 <windows>true</windows>
