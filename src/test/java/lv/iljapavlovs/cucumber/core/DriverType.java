@@ -17,14 +17,13 @@ public enum DriverType implements DriverSetup {
 
     FIREFOX {
         public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
-
             DesiredCapabilities capabilities = DesiredCapabilities.firefox();
             return addProxySettings(capabilities, proxySettings);
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             System.setProperty("webdriver.firefox.bin", "C:\\tools\\Firefox\\firefox.exe");
-            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver-v0.17.0-win32/geckodriver.exe");
             return new FirefoxDriver(capabilities);
         }
     },
