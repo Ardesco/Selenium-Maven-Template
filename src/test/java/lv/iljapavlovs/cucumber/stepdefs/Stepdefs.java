@@ -1,6 +1,6 @@
 package lv.iljapavlovs.cucumber.stepdefs;
 
-import lv.iljapavlovs.cucumber.config.DriverBase;
+import lv.iljapavlovs.cucumber.core.DriverBase;
 import lv.iljapavlovs.cucumber.pageobjects.GooglePage;
 import lv.iljapavlovs.cucumber.pageobjects.GoogleSearchResultPage;
 import cucumber.api.java.en.And;

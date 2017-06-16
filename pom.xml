@@ -40,15 +40,15 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>2.53.1</selenium.version>
+        <selenium.version>3.4.0</selenium.version>
         <hamcrest-all.version>1.3</hamcrest-all.version>
         <junit.version>4.12</junit.version>
         <!--Plugin Versions-->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <cucumber.version>1.2.5</cucumber.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-cucumber-reporting.version>3.6.0</maven-cucumber-reporting.version>
-        <cucumber-jvm-parallel-plugin.version>3.0.0</cucumber-jvm-parallel-plugin.version>
+        <maven-cucumber-reporting.version>3.8.0</maven-cucumber-reporting.version>
+        <cucumber-jvm-parallel-plugin.version>4.1.0</cucumber-jvm-parallel-plugin.version>
         <browser>firefox</browser>
         <threads>3</threads>
         <remote>true</remote>
@@ -172,7 +172,7 @@
                                     <strict>true</strict>
                                     <!-- CucumberOptions.monochrome property -->
                                     <monochrome>false</monochrome>
-                                     <!--The tags to run, maps to CucumberOptions.tags property-->
+                                    <!--The tags to run, maps to CucumberOptions.tags property-->
                                     <!--<tags>"@all"</tags>-->
                                     <tags>
                                         <tag>@all</tag>
@@ -180,8 +180,6 @@
                                         <!--<tag>@cheese</tag>-->
                                         <!--<tag>@milk</tag>-->
                                     </tags>
-                                    <!-- If set to true, only feature files containing the required tags shall be generated. -->
-                                    <filterFeaturesByTags>true</filterFeaturesByTags>
                                     <!-- Generate TestNG runners instead of JUnit ones. -->
                                     <useTestNG>false</useTestNG>
                                     <!-- The naming scheme to use for the generated test classes.  One of 'simple' or 'feature-title' -->
@@ -191,7 +189,8 @@
                                     <!-- One of [SCENARIO, FEATURE]. SCENARIO generates one runner per scenario.  FEATURE generates a runner per feature. -->
                                     <parallelScheme>SCENARIO</parallelScheme>
                                     <!-- Specify a custom template for the generated sources (this is a path relative to the project base directory) -->
-                                    <customVmTemplate>src/test/resources/custom-runner-template.java.vm</customVmTemplate>
+                                    <customVmTemplate>src/test/resources/custom-runner-template.java.vm
+                                    </customVmTemplate>
                                     <!-- Specify a custom package name for generated sources. Default is no package.-->
                                     <!--<packageName></packageName>-->
                                 </configuration>

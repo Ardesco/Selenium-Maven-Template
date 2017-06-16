@@ -1,4 +1,4 @@
-package lv.iljapavlovs.cucumber.config;
+package lv.iljapavlovs.cucumber.core;
 
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
@@ -9,8 +9,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static lv.iljapavlovs.cucumber.config.DriverType.FIREFOX;
-import static lv.iljapavlovs.cucumber.config.DriverType.valueOf;
+import static lv.iljapavlovs.cucumber.core.DriverType.FIREFOX;
+import static lv.iljapavlovs.cucumber.core.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 public class DriverFactory {

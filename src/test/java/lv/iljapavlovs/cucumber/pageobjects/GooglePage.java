@@ -1,6 +1,7 @@
 package lv.iljapavlovs.cucumber.pageobjects;
 
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,9 +18,6 @@ public class GooglePage {
     @FindBy(how = How.NAME, using = "q")
     private WebElement inputField;
 
-    @FindBy(how = How.NAME, using = "btnG")
-    private WebElement searchIconButton;
-
     public GooglePage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
@@ -29,8 +27,7 @@ public class GooglePage {
 
     public GoogleSearchResultPage searchFor(String textToSearchFor) {
         inputField.clear();
-        inputField.sendKeys(textToSearchFor);
-        searchIconButton.click();
+        inputField.sendKeys(textToSearchFor, Keys.ENTER);
         return new GoogleSearchResultPage(driver);
     }
 

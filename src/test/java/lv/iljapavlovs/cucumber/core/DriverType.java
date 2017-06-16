@@ -1,4 +1,4 @@
-package lv.iljapavlovs.cucumber.config;
+package lv.iljapavlovs.cucumber.core;
 
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +24,7 @@ public enum DriverType implements DriverSetup {
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
             System.setProperty("webdriver.firefox.bin", "C:\\tools\\Firefox\\firefox.exe");
+            System.setProperty("webdriver.gecko.driver", "src/test/resources/drivers/geckodriver.exe");
             return new FirefoxDriver(capabilities);
         }
     },
@@ -39,7 +40,7 @@ public enum DriverType implements DriverSetup {
         }
 
         public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-            System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver-v2.30-win32/chromedriver.exe");
             return new ChromeDriver(capabilities);
         }
     },

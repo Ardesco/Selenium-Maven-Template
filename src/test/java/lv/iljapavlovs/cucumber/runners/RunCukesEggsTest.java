@@ -1,6 +1,6 @@
 package lv.iljapavlovs.cucumber.runners;
 
-import lv.iljapavlovs.cucumber.config.DriverBase;
+import lv.iljapavlovs.cucumber.core.DriverBase;
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.AfterClass;
@@ -16,15 +16,4 @@ import org.junit.runner.RunWith;
 )
 public class RunCukesEggsTest {
 
-    @BeforeClass
-    public static void boot() throws Exception {
-        System.out.println("Starting RunCukesEggsTest!");
-        DriverBase.instantiateDriverObject();
-    }
-
-    @AfterClass
-    public static void shutdown() throws Exception {
-        System.out.println("Ending RunCukesEggsTest!");
-        DriverBase.closeDriverObjects();
-    }
 }

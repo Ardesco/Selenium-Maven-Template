@@ -1,4 +1,4 @@
-package lv.iljapavlovs.cucumber.config;
+package lv.iljapavlovs.cucumber.core;
 
 import org.openqa.selenium.WebDriver;
 
@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class DriverBase {
-
+    //this pool is redundant since it will be screated and destryed before and after each test
     private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverFactory>());
     private static ThreadLocal<DriverFactory> driverFactory;
 
