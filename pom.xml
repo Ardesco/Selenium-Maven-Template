@@ -144,6 +144,7 @@
                                     <!-- comma separated list of package names to scan for glue code -->
                                     <glue>
                                         <package>lv.iljapavlovs.cucumber.stepdefs</package>
+                                        <package>lv.iljapavlovs.cucumber.hooks</package>
                                     </glue>
                                     <!-- These are optional, with the default values -->
                                     <!-- Where to output the generated tests -->

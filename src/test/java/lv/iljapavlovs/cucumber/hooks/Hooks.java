@@ -1,4 +1,4 @@
-package lv.iljapavlovs.cucumber.stepdefs;
+package lv.iljapavlovs.cucumber.hooks;
 
 
 import lv.iljapavlovs.cucumber.core.DriverBase;
@@ -24,7 +24,7 @@ public class Hooks {
     }
 
     @After
-    public void embedScreenshot(Scenario scenario) throws Exception {
+    public void tearDown(Scenario scenario) throws Exception {
         if (scenario.isFailed()) {
             try {
                 byte[] screenshot = ((TakesScreenshot) DriverBase.getDriver()).getScreenshotAs(OutputType.BYTES);
