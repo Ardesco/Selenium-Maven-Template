@@ -24,7 +24,6 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 ### Known problems...
 
-- It looks like OperaDriver doesn't work any more and Opera doesn't really care... (https://github.com/operasoftware/operachromiumdriver/issues/27)
 - It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
 
 ### Anything else?
