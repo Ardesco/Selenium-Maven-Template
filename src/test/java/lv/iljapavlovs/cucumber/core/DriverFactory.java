@@ -15,9 +15,6 @@ import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 public class DriverFactory {
 
-    private WebDriver webdriver;
-    private DriverType selectedDriverType;
-
     private final DriverType defaultDriverType = FIREFOX;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
@@ -27,6 +24,8 @@ public class DriverFactory {
     private final String proxyHostname = System.getProperty("proxyHost");
     private final Integer proxyPort = Integer.getInteger("proxyPort");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
+    private WebDriver webdriver;
+    private DriverType selectedDriverType;
 
     public WebDriver getDriver() throws Exception {
         if (null == webdriver) {
@@ -83,7 +82,7 @@ public class DriverFactory {
                 desiredCapabilities.setVersion(desiredBrowserVersion);
             }
 
-            webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities, desiredCapabilities);
+            webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
         } else {
             webdriver = selectedDriverType.getWebDriverObject(desiredCapabilities);
         }
