@@ -5,6 +5,8 @@ import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,7 +16,8 @@ import static lv.iljapavlovs.cucumber.core.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 public class DriverFactory {
-
+    private static final Logger logger = LoggerFactory.getLogger(DriverFactory.class);
+    private final static String SELENIUM_GRID_URL = System.getProperty("gridURL");
     private final DriverType defaultDriverType = FIREFOX;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
@@ -27,7 +30,7 @@ public class DriverFactory {
     private WebDriver webdriver;
     private DriverType selectedDriverType;
 
-    public WebDriver getDriver() throws Exception {
+    public WebDriver getDriver() {
         if (null == webdriver) {
             Proxy proxy = null;
             if (proxyEnabled) {
@@ -55,22 +58,27 @@ public class DriverFactory {
         try {
             driverType = valueOf(browser);
         } catch (IllegalArgumentException ignored) {
-            System.err.println("Unknown driver specified, defaulting to '" + driverType + "'...");
+            logger.error("Unknown driver specified, defaulting to '" + driverType + "'...");
         } catch (NullPointerException ignored) {
-            System.err.println("No driver specified, defaulting to '" + driverType + "'...");
+            logger.error("No driver specified, defaulting to '" + driverType + "'...");
         }
         selectedDriverType = driverType;
     }
 
-    private void instantiateWebDriver(DesiredCapabilities desiredCapabilities) throws MalformedURLException {
-        System.out.println(" ");
-        System.out.println("Current Operating System: " + operatingSystem);
-        System.out.println("Current Architecture: " + systemArchitecture);
-        System.out.println("Current Browser Selection: " + selectedDriverType);
-        System.out.println(" ");
+    private void instantiateWebDriver(DesiredCapabilities desiredCapabilities) {
+        logger.info(" ");
+        logger.info("Current Operating System: " + operatingSystem);
+        logger.info("Current Architecture: " + systemArchitecture);
+        logger.info("Current Browser Selection: " + selectedDriverType);
+        logger.info(" ");
 
         if (useRemoteWebDriver) {
-            URL seleniumGridURL = new URL(System.getProperty("gridURL"));
+            URL seleniumGridURL = null;
+            try {
+                seleniumGridURL = new URL(SELENIUM_GRID_URL);
+            } catch (MalformedURLException e) {
+                logger.error("The seleniumGridURL URL is not well formed: " + e.getMessage());
+            }
             String desiredBrowserVersion = System.getProperty("desiredBrowserVersion");
             String desiredPlatform = System.getProperty("desiredPlatform");
 

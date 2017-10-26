@@ -2,7 +2,6 @@ package lv.iljapavlovs.cucumber.core;
 
 import org.openqa.selenium.WebDriver;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -23,7 +22,7 @@ public class DriverBase {
         };
     }
 
-    public static WebDriver getDriver() throws Exception {
+    public static WebDriver getDriver() {
         return driverFactory.get().getDriver();
     }
 

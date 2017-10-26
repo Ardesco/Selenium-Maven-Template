@@ -1,24 +1,25 @@
 package lv.iljapavlovs.cucumber.hooks;
 
 
-import lv.iljapavlovs.cucumber.core.DriverBase;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
+import lv.iljapavlovs.cucumber.core.DriverBase;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Hooks {
+    private static final Logger logger = LoggerFactory.getLogger(Hooks.class);
 
     @Before
     public void setup(Scenario scenario) throws Exception {
         DriverBase.instantiateDriverObject();
         String sessionId = ((RemoteWebDriver) DriverBase.getDriver()).getSessionId().toString();
-        System.out.println("Starting Scenario: \""+ scenario.getName() +"\" with Session ID: " + sessionId);
+        logger.info("Starting Scenario: \"" + scenario.getName() + "\" with Session ID: " + sessionId);
         DriverBase.getDriver().manage().deleteAllCookies();
         DriverBase.getDriver().manage().window().maximize();
     }
@@ -30,13 +31,13 @@ public class Hooks {
                 byte[] screenshot = ((TakesScreenshot) DriverBase.getDriver()).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
             } catch (WebDriverException wde) {
-                System.err.println(wde.getMessage());
+                logger.error(wde.getMessage());
             } catch (ClassCastException cce) {
-                cce.printStackTrace();
+                logger.error(cce.getMessage());
             }
         }
         String sessionId = ((RemoteWebDriver)DriverBase.getDriver()).getSessionId().toString();
-        System.out.println("Ending Scenario: \""+scenario.getName() +"\" with Session ID: " + sessionId);
+        logger.info("Ending Scenario: \"" + scenario.getName() + "\" with Session ID: " + sessionId);
         DriverBase.closeDriverObjects();
     }
 }

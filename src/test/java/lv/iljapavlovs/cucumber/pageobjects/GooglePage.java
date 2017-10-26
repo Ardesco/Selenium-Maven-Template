@@ -1,6 +1,7 @@
 package lv.iljapavlovs.cucumber.pageobjects;
 
 
+import lv.iljapavlovs.cucumber.core.WebElementHelper;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,8 +20,7 @@ public class GooglePage extends Page {
     }
 
     public GoogleSearchResultPage searchFor(String textToSearchFor) {
-        inputField.clear();
-        inputField.sendKeys(textToSearchFor, Keys.ENTER);
+        WebElementHelper.sendKeys(inputField, textToSearchFor, Keys.ENTER);
         return new GoogleSearchResultPage(driver);
     }
 
