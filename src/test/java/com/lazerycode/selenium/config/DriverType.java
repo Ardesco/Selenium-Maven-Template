@@ -1,10 +1,14 @@
 package com.lazerycode.selenium.config;
 
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -22,18 +26,18 @@ import static org.openqa.selenium.remote.CapabilityType.PROXY;
 public enum DriverType implements DriverSetup {
 
     FIREFOX {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
-            DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-            capabilities.setCapability("marionette", true);
-            return addProxySettings(capabilities, proxySettings);
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
+            FirefoxOptions firefoxOptions = new FirefoxOptions();
+            firefoxOptions.addPreference("marionette", true);
+            return addProxySettings(firefoxOptions, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new FirefoxDriver(capabilities);
         }
     },
     CHROME {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.chrome();
             capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
             HashMap<String, String> chromePreferences = new HashMap<String, String>();
@@ -42,12 +46,12 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new ChromeDriver(capabilities);
         }
     },
     IE {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.internetExplorer();
             capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
             capabilities.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
@@ -55,43 +59,43 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new InternetExplorerDriver(capabilities);
         }
     },
     EDGE {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.edge();
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new EdgeDriver(capabilities);
         }
     },
     SAFARI {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.safari();
             capabilities.setCapability("safari.cleanSession", true);
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new SafariDriver(capabilities);
         }
     },
     OPERA {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.operaBlink();
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new OperaDriver(capabilities);
         }
     },
     PHANTOMJS {
-        public DesiredCapabilities getDesiredCapabilities(Proxy proxySettings) {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
             DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
             final List<String> cliArguments = new ArrayList<String>();
             cliArguments.add("--web-security=false");
@@ -103,12 +107,29 @@ public enum DriverType implements DriverSetup {
             return capabilities;
         }
 
-        public WebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new PhantomJSDriver(capabilities);
+        }
+    },
+    CHROME_HEADLESS {
+        public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
+            HashMap<String, String> chromePreferences = new HashMap<>();
+            chromePreferences.put("profile.password_manager_enabled", "false");
+            ChromeOptions chromeOptions = new ChromeOptions();
+            chromeOptions.addArguments("--headless");
+            DesiredCapabilities capabilities = DesiredCapabilities.chrome();
+            capabilities.setCapability("chrome.switches", Arrays.asList("--no-default-browser-check"));
+            capabilities.setCapability("chrome.prefs", chromePreferences);
+            capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+            return addProxySettings(capabilities, proxySettings);
+        }
+
+        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+            return new ChromeDriver(capabilities);
         }
     };
 
-    protected DesiredCapabilities addProxySettings(DesiredCapabilities capabilities, Proxy proxySettings) {
+    protected MutableCapabilities addProxySettings(MutableCapabilities capabilities, Proxy proxySettings) {
         if (null != proxySettings) {
             capabilities.setCapability(PROXY, proxySettings);
         }

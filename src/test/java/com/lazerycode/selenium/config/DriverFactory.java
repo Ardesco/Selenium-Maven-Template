@@ -1,5 +1,6 @@
 package com.lazerycode.selenium.config;
 
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +10,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.lazerycode.selenium.config.DriverType.FIREFOX;
+import static com.lazerycode.selenium.config.DriverType.CHROME_HEADLESS;
 import static com.lazerycode.selenium.config.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
@@ -18,7 +19,7 @@ public class DriverFactory {
     private WebDriver webdriver;
     private DriverType selectedDriverType;
 
-    private final DriverType defaultDriverType = FIREFOX;
+    private final DriverType defaultDriverType = CHROME_HEADLESS;
     private final String browser = System.getProperty("browser", defaultDriverType.toString()).toUpperCase();
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
@@ -38,8 +39,8 @@ public class DriverFactory {
                 proxy.setSslProxy(proxyDetails);
             }
             determineEffectiveDriverType();
-            DesiredCapabilities desiredCapabilities = selectedDriverType.getDesiredCapabilities(proxy);
-            instantiateWebDriver(desiredCapabilities);
+            MutableCapabilities mutableCapabilities = selectedDriverType.getDesiredCapabilities(proxy);
+            instantiateWebDriver(mutableCapabilities);
         }
 
         return webdriver;
@@ -63,7 +64,7 @@ public class DriverFactory {
         selectedDriverType = driverType;
     }
 
-    private void instantiateWebDriver(DesiredCapabilities desiredCapabilities) throws MalformedURLException {
+    private void instantiateWebDriver(MutableCapabilities mutableCapabilities) throws MalformedURLException {
         System.out.println(" ");
         System.out.println("Current Operating System: " + operatingSystem);
         System.out.println("Current Architecture: " + systemArchitecture);
@@ -74,6 +75,8 @@ public class DriverFactory {
             URL seleniumGridURL = new URL(System.getProperty("gridURL"));
             String desiredBrowserVersion = System.getProperty("desiredBrowserVersion");
             String desiredPlatform = System.getProperty("desiredPlatform");
+            DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+            desiredCapabilities.merge(mutableCapabilities);
 
             if (null != desiredPlatform && !desiredPlatform.isEmpty()) {
                 desiredCapabilities.setPlatform(Platform.valueOf(desiredPlatform.toUpperCase()));
@@ -85,7 +88,7 @@ public class DriverFactory {
 
             webdriver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
         } else {
-            webdriver = selectedDriverType.getWebDriverObject(desiredCapabilities);
+            webdriver = selectedDriverType.getWebDriverObject(mutableCapabilities);
         }
     }
 }

@@ -38,6 +38,7 @@ Yes you can specify which browser to use by using one of the following switches:
 - -Dbrowser=opera
 - -Dbrowser=htmlunit
 - -Dbrowser=phantomjs
+- -Dbrowser=chrome_headless
 
 You don't need to worry about downloading the IEDriverServer, MicrosoftWebDriver, chromedriver , operachromium, or wires binaries, this project will do that for you automatically.
 
