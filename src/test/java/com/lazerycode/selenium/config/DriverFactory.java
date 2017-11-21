@@ -1,5 +1,6 @@
 package com.lazerycode.selenium.config;
 
+import com.lazerycode.selenium.util.Query;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
@@ -16,7 +17,7 @@ import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 
 public class DriverFactory {
 
-    private WebDriver webdriver;
+    private RemoteWebDriver webdriver;
     private DriverType selectedDriverType;
 
     private final DriverType defaultDriverType = CHROME_HEADLESS;
@@ -41,6 +42,7 @@ public class DriverFactory {
             determineEffectiveDriverType();
             MutableCapabilities mutableCapabilities = selectedDriverType.getDesiredCapabilities(proxy);
             instantiateWebDriver(mutableCapabilities);
+            Query.initQueryObjects(webdriver);
         }
 
         return webdriver;

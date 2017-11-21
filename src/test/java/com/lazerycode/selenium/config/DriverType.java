@@ -2,11 +2,9 @@ package com.lazerycode.selenium.config;
 
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
@@ -14,6 +12,7 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(firefoxOptions, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new FirefoxDriver(capabilities);
         }
     },
@@ -46,7 +45,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new ChromeDriver(capabilities);
         }
     },
@@ -59,7 +58,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new InternetExplorerDriver(capabilities);
         }
     },
@@ -69,7 +68,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new EdgeDriver(capabilities);
         }
     },
@@ -80,7 +79,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new SafariDriver(capabilities);
         }
     },
@@ -90,7 +89,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new OperaDriver(capabilities);
         }
     },
@@ -107,7 +106,7 @@ public enum DriverType implements DriverSetup {
             return capabilities;
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new PhantomJSDriver(capabilities);
         }
     },
@@ -124,7 +123,7 @@ public enum DriverType implements DriverSetup {
             return addProxySettings(capabilities, proxySettings);
         }
 
-        public WebDriver getWebDriverObject(MutableCapabilities capabilities) {
+        public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             return new ChromeDriver(capabilities);
         }
     };

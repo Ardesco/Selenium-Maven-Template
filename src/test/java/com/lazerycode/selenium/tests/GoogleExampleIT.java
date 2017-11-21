@@ -1,6 +1,8 @@
 package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverBase;
+
+import com.lazerycode.selenium.page_objects.GoogleHomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,24 +24,19 @@ public class GoogleExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        // Find the text input element by its name
-        WebElement element = driver.findElement(By.name("q"));
-
-        // Enter something to search for
-        element.clear();
-        element.sendKeys("Cheese!");
-
-        // Now submit the form. WebDriver will find the form for us from the element
-        element.submit();
+        GoogleHomePage googleHomePage = new GoogleHomePage();
 
         // Check the title of the page
         System.out.println("Page title is: " + driver.getTitle());
+
+        googleHomePage.enterSearchTerm("Cheese")
+                .submitSearch();
 
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("cheese!");
+                return d.getTitle().toLowerCase().startsWith("cheese");
             }
         });
 
@@ -59,24 +56,19 @@ public class GoogleExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        // Find the text input element by its name
-        WebElement element = driver.findElement(By.name("q"));
-
-        // Enter something to search for
-        element.clear();
-        element.sendKeys("Milk!");
-
-        // Now submit the form. WebDriver will find the form for us from the element
-        element.submit();
+        GoogleHomePage googleHomePage = new GoogleHomePage();
 
         // Check the title of the page
         System.out.println("Page title is: " + driver.getTitle());
+
+        googleHomePage.enterSearchTerm("Milk")
+                .submitSearch();
 
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
         (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("milk!");
+                return d.getTitle().toLowerCase().startsWith("milk");
             }
         });
 
