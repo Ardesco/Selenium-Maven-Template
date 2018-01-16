@@ -48,7 +48,7 @@
         <testng.version>6.11</testng.version>
         <query.version>1.0.0</query.version>
         <!--Plugin Versions-->
-        <driver-binary-downloader-maven-plugin.version>1.0.16</driver-binary-downloader-maven-plugin.version>
+        <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
