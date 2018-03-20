@@ -35,8 +35,12 @@ public class DriverBase {
     }
 
     @AfterMethod(alwaysRun = true)
-    public static void clearCookies() throws Exception {
-        getDriver().manage().deleteAllCookies();
+    public static void clearCookies() {
+        try {
+            driverFactory.get().getStoredDriver().manage().deleteAllCookies();
+        } catch (Exception ignored) {
+            System.out.println("Unable to clear cookies, driver object is not viable...");
+        }
     }
 
     @AfterSuite(alwaysRun = true)

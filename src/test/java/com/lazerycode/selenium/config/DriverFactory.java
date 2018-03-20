@@ -48,9 +48,14 @@ public class DriverFactory {
         return webdriver;
     }
 
+    public WebDriver getStoredDriver(){
+        return webdriver;
+    }
+
     public void quitDriver() {
         if (null != webdriver) {
             webdriver.quit();
+            webdriver = null;
         }
     }
 
