@@ -34,9 +34,9 @@ Following settings can be changed in `lv.iljapavlovs.cucumber.config.Application
 
 | Configuration key     | Description                                                       |
 |-----------------------|----------------------|
-| *env*   | environment |
+| *env*   | environment name |
 | *appUrl*       | AUT URL                 |
-| *browser*     | Browser to use. Available options - chrome, firefox, safari, edge, ie, chrome_headless, firefox_headless                  |
+| *browser*     | Browser to use. Available options - `chrome, firefox, safari, edge, ie, chrome_headless, firefox_headless`                  |
 | *proxyEnabled*    | is proxy enabled for Selenium (boolean) |
 | *proxyHost* | proxy host                     |
 | *proxyPort* | proxy port                    |
