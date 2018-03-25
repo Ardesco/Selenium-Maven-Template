@@ -1,7 +1,10 @@
 cucumber-jvm-parallel-template
 =======================
 
-CucumberJVM template project for running tests in parallel. Two options how to run:
+CucumberJVM template project for running tests in parallel. 
+
+This project was based on [Selenium-Maven-Template](https://github.com/Ardesco/Selenium-Maven-Template) and support for CucumberJVM was added
+## How to run:
  1. One "Runner" class per thread (use profile `parallel`). By "Runner" class is meant *RunCukesCheeseTest* class in this example.
     * **NOTE** - in order to use this approach, you will need to create separate "runner" class per one thread. Tests belonging to one "runner" class will be executed sequentially.
     * More on this read [here](https://opencredo.com/running-cucumber-jvm-tests-in-parallel/).
@@ -10,12 +13,13 @@ CucumberJVM template project for running tests in parallel. Two options how to r
     * More on this read [here](http://automationrhapsody.com/running-cucumber-tests-in-parallel/).
 ### Command for execution
 ```
-mvn clean verify -P [singleThreaded,nogrid,grid,parallel,parallelPlugin]
+mvn clean verify -P [nogrid OR grid],[parallel OR parallelPlugin] -Dthreads=[number of parallel threads]
 ```
 
-* *singleThreaded* - execute tests sequentially, omits parallel execution
+* *parallel* - when using separate "runner" class per one thread
+* *parallelPlugin* - uses cucumber-jvm-parallel-plugin. Automatically creates separate "runner" class per one thread
 * *nogrid* - execute tests locally
-* *grid* - execute tests on Selenium Grid. Grid Hub can be set in pom in `seleniumGridURL` property
+* *grid* - execute tests on Selenium Grid. Grid Hub can be set in pom by using `seleniumGridUrl` property or in ApplicationProperties file 
 * Thread count can be set via `-Dthreads` argument
 
 For example, invoking 
