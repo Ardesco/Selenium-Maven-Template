@@ -5,7 +5,8 @@ CucumberJVM template project for running tests in parallel.
 
 This project was based on [Selenium-Maven-Template](https://github.com/Ardesco/Selenium-Maven-Template) and support for CucumberJVM was added
 
-## How to run:
+## How to run
+### Execution options
  1. One "Runner" class per thread (use profile `parallel`). By "Runner" class is meant *RunCukesCheeseTest* class in this example.
     * **NOTE** - in order to use this approach, you will need to create separate "runner" class per one thread. Tests belonging to one "runner" class will be executed sequentially.
     * More on this read [here](https://opencredo.com/running-cucumber-jvm-tests-in-parallel/).
