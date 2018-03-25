@@ -1,5 +1,6 @@
 package lv.iljapavlovs.cucumber.core;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lv.iljapavlovs.cucumber.config.ApplicationProperties;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
@@ -20,7 +21,6 @@ import java.util.HashMap;
 
 import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.CHROME_DRIVER_PATH;
 import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.FIREFOX_BINARY_PATH;
-import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.GECKO_DRIVER_PATH;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
 public enum DriverType implements DriverSetup {
@@ -35,14 +35,14 @@ public enum DriverType implements DriverSetup {
 
         public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
             System.setProperty("webdriver.firefox.bin", ApplicationProperties.getString(FIREFOX_BINARY_PATH));
-            System.setProperty("webdriver.gecko.driver", ApplicationProperties.getString(GECKO_DRIVER_PATH));
+            WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver(capabilities);
         }
     },
 
     FIREFOX_HEADLESS {
         public MutableCapabilities getDesiredCapabilities(Proxy proxySettings) {
-            // firefoc binary should be set before initializing FirefoxBinary
+            // firefox binary should be set before initializing FirefoxBinary
             System.setProperty("webdriver.firefox.bin", ApplicationProperties.getString(FIREFOX_BINARY_PATH));
 
             FirefoxBinary firefoxBinary = new FirefoxBinary();
@@ -56,7 +56,7 @@ public enum DriverType implements DriverSetup {
         }
 
         public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
-            System.setProperty("webdriver.gecko.driver", ApplicationProperties.getString(GECKO_DRIVER_PATH));
+            WebDriverManager.firefoxdriver().setup();
             return new FirefoxDriver(capabilities);
         }
     },
@@ -71,7 +71,7 @@ public enum DriverType implements DriverSetup {
         }
 
         public RemoteWebDriver getWebDriverObject(MutableCapabilities capabilities) {
-            System.setProperty("webdriver.chrome.driver", ApplicationProperties.getString(CHROME_DRIVER_PATH));
+            WebDriverManager.chromedriver().setup();
             return new ChromeDriver(capabilities);
         }
     },
