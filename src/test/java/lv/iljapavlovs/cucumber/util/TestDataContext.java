@@ -1,4 +1,4 @@
-package lv.iljapavlovs.cucumber.core;
+package lv.iljapavlovs.cucumber.util;
 
 import lombok.Getter;
 import lombok.Setter;
