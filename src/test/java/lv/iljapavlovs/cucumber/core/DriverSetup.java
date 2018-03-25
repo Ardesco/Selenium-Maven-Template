@@ -1,12 +1,12 @@
 package lv.iljapavlovs.cucumber.core;
 
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 public interface DriverSetup {
 
-    WebDriver getWebDriverObject(DesiredCapabilities desiredCapabilities);
+    WebDriver getWebDriverObject(MutableCapabilities desiredCapabilities);
 
-    DesiredCapabilities getDesiredCapabilities(Proxy proxySettings);
+    MutableCapabilities getDesiredCapabilities(Proxy proxySettings);
 }

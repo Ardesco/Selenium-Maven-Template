@@ -1,20 +1,21 @@
 package lv.iljapavlovs.cucumber.pageobjects;
 
+import lv.iljapavlovs.cucumber.core.DriverBase;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static lv.iljapavlovs.cucumber.constants.Constants.WAIT_EXPLICIT_SEC;
+import static lv.iljapavlovs.cucumber.config.Constants.WAIT_SHORT_SECONDS;
 
 public class Page {
 
     protected WebDriver driver;
     protected WebDriverWait wait;
 
-    public Page(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(this.driver, this);
-        wait = new WebDriverWait(driver, WAIT_EXPLICIT_SEC);
+    public Page() {
+        driver = DriverBase.getDriver();
+        PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, WAIT_SHORT_SECONDS);
     }
 
 }

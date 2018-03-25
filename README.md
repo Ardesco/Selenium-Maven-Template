@@ -20,7 +20,7 @@ mvn clean verify -P [singleThreaded,nogrid,grid,parallel,parallelPlugin]
 
 For example, invoking 
 ```
-clean verify -P parallelPlugin,nogrid -Dthreads=3 -Dbrowser=chrome
+mvn clean verify -P parallelPlugin,nogrid -Dthreads=3 -Dbrowser=chrome
 ``` 
 will execute tests in parallel 3 threads on local machine and using *cucumber-jvm-parallel-plugin* plugin. In addition, `-Dbrowser` setting will set browser to Chrome.
 
