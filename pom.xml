@@ -42,21 +42,21 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.7.1</selenium.version>
-        <assertj-core.version>3.8.0</assertj-core.version>
-        <phantomjsdriver.version>1.4.3</phantomjsdriver.version>
-        <testng.version>6.11</testng.version>
+        <selenium.version>3.11.0</selenium.version>
+        <assertj-core.version>3.9.1</assertj-core.version>
+        <phantomjsdriver.version>1.4.4</phantomjsdriver.version>
+        <testng.version>6.14.2</testng.version>
         <query.version>1.0.0</query.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.20.1</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
         <connection.timeout>40000</connection.timeout>
         <retry.attempts>4</retry.attempts>
-        <browser>firefox</browser>
+        <browser>firefox_headless</browser>
         <threads>1</threads>
         <remote>false</remote>
         <seleniumGridURL/>
