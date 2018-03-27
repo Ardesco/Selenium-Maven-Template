@@ -44,7 +44,6 @@
         <!--Dependency Versions-->
         <selenium.version>3.11.0</selenium.version>
         <assertj-core.version>3.9.1</assertj-core.version>
-        <phantomjsdriver.version>1.4.4</phantomjsdriver.version>
         <testng.version>6.14.2</testng.version>
         <query.version>1.0.0</query.version>
         <!--Plugin Versions-->
@@ -73,29 +72,11 @@
             <artifactId>selenium-remote-driver</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.detro.ghostdriver</groupId>
-                    <artifactId>phantomjsdriver</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.detro.ghostdriver</groupId>
-                    <artifactId>phantomjsdriver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>${phantomjsdriver.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -180,7 +161,6 @@
                                 <proxyPort>${proxyPort}</proxyPort>
 
                                 <!--Set properties passed in by the driver binary downloader-->
-                                <phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>

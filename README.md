@@ -11,7 +11,7 @@ A maven template for Selenium 3 that has the latest dependencies so that you can
 3. `cd Selenium-Maven-Template` (Or whatever folder you cloned it into)
 4. `mvn clean verify`
 
-All dependencies should now be downloaded and the example google cheese test will have run successfully (Assuming you have Firefox installed in the default location)
+All dependencies should now be downloaded and the example google cheese test will have run successfully in headless mode (Assuming you have Firefox installed in the default location)
 
 ### What should I know?
 
@@ -24,25 +24,22 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 ### Known problems...
 
-- It looks like OperaDriver doesn't work any more and Opera doesn't really care... (https://github.com/operasoftware/operachromiumdriver/issues/27)
 - It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
 
 ### Anything else?
 
 Yes you can specify which browser to use by using one of the following switches:
 
+- -Dbrowser=firefox_headless
 - -Dbrowser=firefox
+- -Dbrowser=chrome_headless
 - -Dbrowser=chrome
 - -Dbrowser=ie
 - -Dbrowser=edge
 - -Dbrowser=opera
 - -Dbrowser=htmlunit
-- -Dbrowser=phantomjs
-- -Dbrowser=chrome_headless
 
-You don't need to worry about downloading the IEDriverServer, MicrosoftWebDriver, chromedriver , operachromium, or wires binaries, this project will do that for you automatically.
-
-Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
+You don't need to worry about downloading the IEDriverServer, EdgeDriver, ChromeDriver , OperaChromiumDriver, or GeckoDriver binaries, this project will do that for you automatically.
 
 You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
