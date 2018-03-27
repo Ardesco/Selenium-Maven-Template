@@ -25,10 +25,10 @@
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="2.33">
+            <version id="2.37">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.33/chromedriver_win32.zip</filelocation>
-                    <hash>b52ca785707eade99c56309ce9d66c1177b5d4a9</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_win32.zip</filelocation>
+                    <hash>fe708aac4eeb919a4ce26cf4aa52a2dacc666a2f</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -73,15 +73,10 @@
     </windows>
     <linux>
         <driver id="googlechrome">
-            <version id="2.33">
+            <version id="2.37">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux64.zip</filelocation>
-                    <hash>717d67ab192b1c57819528161557ce2b66b9436c</hash>
-                    <hashtype>sha1</hashtype>
-                </bitrate>
-                <bitrate thirtytwobit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.33/chromedriver_linux32.zip</filelocation>
-                    <hash>cca39f74c1ddd2f2d7afd36f41a9f0db7be88dcf</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip</filelocation>
+                    <hash>b8515d09bb2d533ca3b85174c85cac1e062d04c6</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -140,10 +135,10 @@
             </version>
         </driver>
         <driver id="operachromium">
-            <version id="2.30">
+            <version id="2.37">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.2.30/operadriver_mac64.zip</filelocation>
-                    <hash>2b5273762c7f7c3d8ad61c03f7cbf4d0825b918b</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_mac64.zip</filelocation>
+                    <hash>714e7abb1a7aeea9a8997b64a356a44fb48f5ef4</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
