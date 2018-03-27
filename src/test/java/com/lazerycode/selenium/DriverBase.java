@@ -2,7 +2,7 @@ package com.lazerycode.selenium;
 
 import com.lazerycode.selenium.config.DriverFactory;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
@@ -30,7 +30,7 @@ public class DriverBase {
         };
     }
 
-    public static WebDriver getDriver() throws Exception {
+    public static RemoteWebDriver getDriver() throws Exception {
         return driverFactory.get().getDriver();
     }
 

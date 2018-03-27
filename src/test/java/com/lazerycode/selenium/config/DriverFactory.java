@@ -1,9 +1,7 @@
 package com.lazerycode.selenium.config;
 
-import com.lazerycode.selenium.util.Query;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -41,16 +39,15 @@ public class DriverFactory {
         selectedDriverType = driverType;
     }
 
-    public WebDriver getDriver() throws Exception {
+    public RemoteWebDriver getDriver() throws Exception {
         if (null == driver) {
             instantiateWebDriver(selectedDriverType);
-            Query.initQueryObjects(driver);
         }
 
         return driver;
     }
 
-    public WebDriver getStoredDriver() {
+    public RemoteWebDriver getStoredDriver() {
         return driver;
     }
 
