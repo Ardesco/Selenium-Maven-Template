@@ -59,10 +59,12 @@ public class DriverFactory {
     }
 
     private void instantiateWebDriver(DriverType driverType) throws MalformedURLException {
+        //TODO add in a real logger instead of System.out
         System.out.println(" ");
-        System.out.println("Current Operating System: " + operatingSystem);
-        System.out.println("Current Architecture: " + systemArchitecture);
-        System.out.println("Current Browser Selection: " + selectedDriverType);
+        System.out.println("Local Operating System: " + operatingSystem);
+        System.out.println("Local Architecture: " + systemArchitecture);
+        System.out.println("Selected Browser: " + selectedDriverType);
+        System.out.println("Connecting to Selenium Grid: " + useRemoteWebDriver);
         System.out.println(" ");
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
