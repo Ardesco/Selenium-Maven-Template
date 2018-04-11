@@ -30,14 +30,16 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 Yes you can specify which browser to use by using one of the following switches:
 
-- -Dbrowser=firefox_headless
 - -Dbrowser=firefox
-- -Dbrowser=chrome_headless
 - -Dbrowser=chrome
 - -Dbrowser=ie
 - -Dbrowser=edge
 - -Dbrowser=opera
-- -Dbrowser=htmlunit
+
+If you want to toggle the use of chrome or firefox in headless mode set the headless flag (by default the headless flag is set to true)
+
+- -Dheadless=true
+- -Dheadless=false
 
 You don't need to worry about downloading the IEDriverServer, EdgeDriver, ChromeDriver , OperaChromiumDriver, or GeckoDriver binaries, this project will do that for you automatically.
 

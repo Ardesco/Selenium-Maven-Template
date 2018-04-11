@@ -58,6 +58,7 @@
         <browser>firefox_headless</browser>
         <threads>1</threads>
         <remote>false</remote>
+        <headless>true</headless>
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
@@ -159,6 +160,7 @@
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
                                 <proxyHost>${proxyHost}</proxyHost>
                                 <proxyPort>${proxyPort}</proxyPort>
+                                <headless>${headless}</headless>
 
                                 <!--Set properties passed in by the driver binary downloader-->
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
