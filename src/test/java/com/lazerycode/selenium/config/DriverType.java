@@ -53,6 +53,11 @@ public enum DriverType implements DriverSetup {
 
             return new InternetExplorerDriver(options);
         }
+
+        @Override
+        public String toString() {
+            return "internet explorer";
+        }
     },
     EDGE {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
