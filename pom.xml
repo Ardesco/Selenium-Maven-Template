@@ -55,7 +55,7 @@
         <read.timeout>30000</read.timeout>
         <connection.timeout>40000</connection.timeout>
         <retry.attempts>4</retry.attempts>
-        <browser>firefox_headless</browser>
+        <browser>firefox</browser>
         <threads>1</threads>
         <remote>false</remote>
         <headless>true</headless>
