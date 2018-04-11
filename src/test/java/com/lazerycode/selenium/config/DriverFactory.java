@@ -62,10 +62,13 @@ public class DriverFactory {
         System.out.println(" ");
         System.out.println("Current Operating System: " + operatingSystem);
         System.out.println("Current Architecture: " + systemArchitecture);
-        System.out.println("Current Browser Selection: " + selectedDriverType);
+        if (!useRemoteWebDriver) {
+            System.out.println("Current Browser Selection: " + selectedDriverType);
+        }
         System.out.println(" ");
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+        String browser = System.getProperty("browser", driverType.toString()).toUpperCase();
 
         if (proxyEnabled) {
             Proxy proxy = new Proxy();
@@ -88,6 +91,34 @@ public class DriverFactory {
                 desiredCapabilities.setVersion(desiredBrowserVersion);
             }
 
+            String remoteBrowser = "firefox";
+            switch(browser) {
+                case "ANDROID":
+                    remoteBrowser = "android";
+                break;
+                case "CHROME":
+                    remoteBrowser = "chrome";
+                break;
+                case "FIREFOX":
+                    remoteBrowser = "firefox";
+                break;
+                case "IE":
+                case "INTERNET EXPLORER":
+                    remoteBrowser = "internet explorer";
+                break;
+                case "OPERA":
+                    remoteBrowser = "opera";
+                break;
+                case "SAFARI":
+                    remoteBrowser = "safari";
+                break;
+                default:
+                    System.out.println("Remote Browser Selection Unsupported: " + selectedDriverType);
+                    System.out.println("Remote Browser must be one of: android, chrome, firefox, htmlunit, internet explorer, iPhone, iPad, opera, safari");
+            }
+            System.out.println("Remote Browser Selection: " + remoteBrowser);
+            desiredCapabilities.setBrowserName(remoteBrowser);
+            
             driver = new RemoteWebDriver(seleniumGridURL, desiredCapabilities);
         } else {
             driver = driverType.getWebDriverObject(desiredCapabilities);
