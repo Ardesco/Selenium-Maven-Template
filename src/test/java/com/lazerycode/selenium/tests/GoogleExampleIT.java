@@ -1,16 +1,17 @@
 package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverBase;
-
 import com.lazerycode.selenium.page_objects.GoogleHomePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 public class GoogleExampleIT extends DriverBase {
+
+    private ExpectedCondition<Boolean> pageTitleStartsWith(final String searchString) {
+        return driver -> driver.getTitle().toLowerCase().startsWith(searchString.toLowerCase());
+    }
 
     @Test
     public void googleCheeseExample() throws Exception {
@@ -34,11 +35,8 @@ public class GoogleExampleIT extends DriverBase {
 
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("cheese");
-            }
-        });
+        WebDriverWait wait = new WebDriverWait(driver, 10, 100);
+        wait.until(pageTitleStartsWith("Cheese"));
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
@@ -66,11 +64,8 @@ public class GoogleExampleIT extends DriverBase {
 
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 10)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("milk");
-            }
-        });
+        WebDriverWait wait = new WebDriverWait(driver, 10, 100);
+        wait.until(pageTitleStartsWith("Milk"));
 
         // Should see: "cheese! - Google Search"
         System.out.println("Page title is: " + driver.getTitle());
