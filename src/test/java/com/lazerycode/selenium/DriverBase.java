@@ -16,28 +16,25 @@ import java.util.List;
 public class DriverBase {
 
     private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverFactory>());
-    private static ThreadLocal<DriverFactory> driverFactory;
+    private static ThreadLocal<DriverFactory> driverFactoryThread;
 
     @BeforeSuite(alwaysRun = true)
     public static void instantiateDriverObject() {
-        driverFactory = new ThreadLocal<DriverFactory>() {
-            @Override
-            protected DriverFactory initialValue() {
-                DriverFactory driverFactory = new DriverFactory();
-                webDriverThreadPool.add(driverFactory);
-                return driverFactory;
-            }
-        };
+        driverFactoryThread = ThreadLocal.withInitial(() -> {
+            DriverFactory driverFactory = new DriverFactory();
+            webDriverThreadPool.add(driverFactory);
+            return driverFactory;
+        });
     }
 
     public static RemoteWebDriver getDriver() throws Exception {
-        return driverFactory.get().getDriver();
+        return driverFactoryThread.get().getDriver();
     }
 
     @AfterMethod(alwaysRun = true)
     public static void clearCookies() {
         try {
-            driverFactory.get().getStoredDriver().manage().deleteAllCookies();
+            driverFactoryThread.get().getStoredDriver().manage().deleteAllCookies();
         } catch (Exception ignored) {
             System.out.println("Unable to clear cookies, driver object is not viable...");
         }
