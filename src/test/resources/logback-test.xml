@@ -1,0 +1,13 @@
+<!-- [START logging_logback_config] -->
+<configuration scan="false"  debug="false">
+    <property name="patternString" value="%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n%rEx"  />
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${patternString}</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
+<!-- [END logging_logback_config] -->
