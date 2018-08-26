@@ -26,6 +26,16 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 - It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
 
+### IDE run test support
+
+If you want to run the test in IDE such as the Intellij. please add the property in the `Run/Debug Configuration`
+
+- -Dide=1
+
+You can add the property to default TestNG configuration, then any of test run in the IDE will use it. see the figure as follow:
+
+![IDE enable](doc\ide-enable.png)
+
 ### Anything else?
 
 Yes you can specify which browser to use by using one of the following switches:

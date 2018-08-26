@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.utilities;
+package com.lazerycode.selenium.config.utilities;
 
 import org.apache.commons.lang3.SystemUtils;
 

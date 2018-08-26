@@ -1,19 +1,23 @@
 package com.lazerycode.selenium.config;
 
-import org.openqa.selenium.Platform;
-import org.openqa.selenium.Proxy;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-
 import static com.lazerycode.selenium.config.DriverType.FIREFOX;
 import static com.lazerycode.selenium.config.DriverType.valueOf;
 import static org.openqa.selenium.Proxy.ProxyType.MANUAL;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
+import com.lazerycode.selenium.config.utilities.IdeDriverUtils;
+import java.net.MalformedURLException;
+import java.net.URL;
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.Proxy;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class DriverFactory {
+
+    private static final Logger LOG = LoggerFactory.getLogger(DriverFactory.class);
 
     private RemoteWebDriver driver;
     private DriverType selectedDriverType;
@@ -66,6 +70,9 @@ public class DriverFactory {
         System.out.println("Selected Browser: " + selectedDriverType);
         System.out.println("Connecting to Selenium Grid: " + useRemoteWebDriver);
         System.out.println(" ");
+
+        LOG.info("Check whether IDE mode {}", System.getProperty("ide"));
+        IdeDriverUtils.ideInitialDrive();
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 

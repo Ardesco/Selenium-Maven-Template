@@ -1,4 +1,4 @@
-package com.lazerycode.selenium.utilities;
+package com.lazerycode.selenium.config.utilities;
 
 /**
  * <p>Date:    26/08/18
