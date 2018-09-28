@@ -10,7 +10,7 @@ services:
 
 # Windows: Need to set following property first
 #    export COMPOSE_CONVERT_WINDOWS_PATHS=1 (Bash)
-    - "/var/run/docker.sock:/var/run/docker.sock"
+    - "//var/run/docker.sock:/var/run/docker.sock"
 #    command: ["-conf", "/etc/selenoid/browsers.json", "-container-network", "docker_automation"]
 
   selenoid-ui:
