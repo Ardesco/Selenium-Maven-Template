@@ -33,10 +33,8 @@ public class Hooks {
             try {
                 byte[] screenshot = ((TakesScreenshot) DriverBase.getDriver()).getScreenshotAs(OutputType.BYTES);
                 scenario.embed(screenshot, "image/png");
-            } catch (WebDriverException wde) {
+            } catch (WebDriverException | ClassCastException wde) {
                 log.error(wde.getMessage());
-            } catch (ClassCastException cce) {
-                log.error(cce.getMessage());
             }
         }
         log.info(String.format("Ending Scenario: \"%s\"", scenario.getName()) + " result: " + (scenario.isFailed() ? "FAILED" : "PASSED"));

@@ -20,7 +20,10 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.WAIT_LONG_SECONDS.name, "60");
 
 
-                    setProperty(ApplicationProperty.BROWSER.name, "chrome");
+                    setProperty(ApplicationProperty.BROWSER.name, "firefox");
+                    setProperty(ApplicationProperty.HEADLESS.name, "false");
+                    setProperty(ApplicationProperty.ENABLE_VNC.name, "true");
+                    setProperty(ApplicationProperty.ENABLE_VIDEO.name, "true");
 
                     setProperty(ApplicationProperty.PROXY_ENABLED.name, "false");
                     setProperty(ApplicationProperty.PROXY_HOST.name, "proxy.com");
@@ -30,7 +33,7 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.APP_URL.name, "https://google.com");
 
                     //Selenium grid settings
-                    setProperty(ApplicationProperty.REMOTE_DRIVER.name, "false");
+                    setProperty(ApplicationProperty.REMOTE_DRIVER.name, "true");
                     setProperty(ApplicationProperty.SELENIUM_GRID_URL.name, "http://localhost:4444/wd/hub");
 
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.name, "");
@@ -40,8 +43,7 @@ public class ApplicationProperties {
                     //TODO - this should be changed for local execution
                     setProperty(ApplicationProperty.CHROME_BINARY_PATH.name, "");
                     setProperty(ApplicationProperty.FIREFOX_BINARY_PATH.name, "C:\\Users\\ipavlov\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
-                    setProperty(ApplicationProperty.CHROME_DRIVER_PATH.name, "src/test/resources/drivers/chromedriver-v2.37.0-win32/chromedriver.exe");
-                    setProperty(ApplicationProperty.GECKO_DRIVER_PATH.name, "src/test/resources/drivers/geckodriver-v0.20.0-win64/geckodriver.exe");
+
 
                 }
             });
@@ -95,6 +97,9 @@ public class ApplicationProperties {
     public enum ApplicationProperty {
 
         ENV("env"), APP_URL("appUrl"), BROWSER("browser"),
+        HEADLESS("headless"),
+        ENABLE_VIDEO("enableVideo"),
+        ENABLE_VNC("enableVNC"),
         PROXY_ENABLED("proxyEnabled"),
         PROXY_HOST("proxyHost"), PROXY_PORT("proxyPort"),
         WAIT_SHORT_SECONDS("waitShortSeconds"), WAIT_NORMAL_SECONDS("waitNormalSeconds"), WAIT_LONG_SECONDS("waitLongSeconds"),

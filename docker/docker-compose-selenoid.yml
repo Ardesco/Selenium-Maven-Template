@@ -1,0 +1,23 @@
+version: '3'
+services:
+  selenoid:
+    image: "aerokube/selenoid"
+    network_mode: bridge
+    ports:
+    - "4444:4444"
+    volumes:
+    - "./:/etc/selenoid/" # assumed current dir contains browsers.json
+
+# Windows: Need to set following property first
+#    export COMPOSE_CONVERT_WINDOWS_PATHS=1 (Bash)
+    - "/var/run/docker.sock:/var/run/docker.sock"
+#    command: ["-conf", "/etc/selenoid/browsers.json", "-container-network", "docker_automation"]
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    network_mode: bridge
+    links:
+    - selenoid
+    ports:
+    - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]

@@ -14,13 +14,13 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.11.0</selenium.version>
+        <selenium.version>3.14.0</selenium.version>
         <assertj-core.version>3.9.1</assertj-core.version>
         <junit.version>4.12</junit.version>
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.21</slf4j.version>
         <lombok.version>1.16.20</lombok.version>
-        <webdrivermanager.version>2.2.0</webdrivermanager.version>
+        <webdrivermanager.version>3.0.0</webdrivermanager.version>
         <!--Plugin Versions-->
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <cucumber.version>1.2.5</cucumber.version>
@@ -250,11 +250,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>cucumber-jvm-example</projectName>
+                            <projectName>${name}</projectName>
+                            <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
                             <cucumberOutput>${cucumberOutputDirectory}</cucumberOutput>
-                            <!--<skippedFails>true</skippedFails>-->
-                            <buildNumber>${project.version}</buildNumber>
+
                             <!--shows additional column in report - 'Device'-->
                             <parallelTesting>true</parallelTesting>
                         </configuration>
