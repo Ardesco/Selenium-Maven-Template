@@ -1,4 +1,3 @@
 language: java
 sudo: false
-script:
-  - ./mvnw clean verify -P parallelPlugin,nogrid -Dthreads=1 -Dbrowser=chrome
+script: mvn clean compile
