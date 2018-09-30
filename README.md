@@ -1,4 +1,4 @@
-cucumber-jvm-parallel-template
+cucumber-jvm-parallel-template  [![Build Status](https://travis-ci.com/iljapavlovs/cucumber-jvm-parallel-template.svg?branch=master)](https://travis-ci.com/iljapavlovs/cucumber-jvm-parallel-template)
 =======================
 
 CucumberJVM template project for running tests in parallel. 
