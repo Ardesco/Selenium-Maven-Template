@@ -238,29 +238,29 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>net.masterthought</groupId>
-                <artifactId>maven-cucumber-reporting</artifactId>
-                <version>${maven-cucumber-reporting.version}</version>
-                <executions>
-                    <execution>
-                        <id>execution</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                        <configuration>
-                            <projectName>${name}</projectName>
-                            <!-- output directory for the generated report -->
-                            <outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
-                            <cucumberOutput>${cucumberOutputDirectory}</cucumberOutput>
+            <!--<plugin>-->
+                <!--<groupId>net.masterthought</groupId>-->
+                <!--<artifactId>maven-cucumber-reporting</artifactId>-->
+                <!--<version>${maven-cucumber-reporting.version}</version>-->
+                <!--<executions>-->
+                    <!--<execution>-->
+                        <!--<id>execution</id>-->
+                        <!--<phase>verify</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>generate</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<projectName>${project.name}</projectName>-->
+                            <!--&lt;!&ndash; output directory for the generated report &ndash;&gt;-->
+                            <!--<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>-->
+                            <!--<cucumberOutput>${cucumberOutputDirectory}</cucumberOutput>-->
 
-                            <!--shows additional column in report - 'Device'-->
-                            <parallelTesting>true</parallelTesting>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+                            <!--&lt;!&ndash;shows additional column in report - 'Device'&ndash;&gt;-->
+                            <!--<parallelTesting>true</parallelTesting>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
+                <!--</executions>-->
+            <!--</plugin>-->
         </plugins>
     </build>
 
