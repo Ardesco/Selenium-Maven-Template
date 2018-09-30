@@ -4,7 +4,7 @@ language: java
 #- ./mvnw clean compile
 
 addons:
-  chrome: stable
+#  chrome: stable
   firefox: latest
 
 # needed in order to use docker
@@ -13,8 +13,8 @@ addons:
 before_install:
 - chmod +x mvnw
 - # start your web application and listen on `localhost`
-- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
-⋮
+#- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+#⋮
 
 #- docker pull selenoid/vnc:chrome_68.0
 #- docker-compose -f docker/docker-compose-selenoid.yml up
