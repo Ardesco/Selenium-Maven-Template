@@ -1,12 +1,16 @@
 language: java
 # sudo: false
 script:
-- ./mvnw clean verify -P parallelPlugin,grid -Dthreads=3 -Dbrowser=chrome
+- ./mvnw clean verify -P parallelPlugin,nogrid -Dthreads=3 -Dbrowser=chrome -Dheadless=true
 
+addons:
+  chrome: stable
+  firefox: latest
 
-services:
-- docker
+# needed in order to use docker
+#services:
+#- docker
 before_install:
 - chmod +x mvnw
-- docker pull selenoid/vnc:chrome_68.0
-- docker-compose -f docker/docker-compose-selenoid.yml up
+#- docker pull selenoid/vnc:chrome_68.0
+#- docker-compose -f docker/docker-compose-selenoid.yml up
