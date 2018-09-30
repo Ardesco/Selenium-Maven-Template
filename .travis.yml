@@ -17,3 +17,17 @@ before_install:
 #- docker-compose -f docker/docker-compose-selenoid.yml up
 
 install: true
+
+
+stages:
+- name: build
+
+- name: test
+
+
+jobs:
+  include:
+  - stage: build
+    script: ./mvnw clean compile
+  - stage: test
+    script: ./mvnw verify -P parallelPlugin,nogrid -Dthreads=3 -Dbrowser=chrome -Dheadless=true
