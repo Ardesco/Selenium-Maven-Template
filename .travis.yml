@@ -1,5 +1,12 @@
 language: java
 # sudo: false
-# script: mvn clean compile
+script:
+- ./mvnw clean verify -P parallelPlugin,grid -Dthreads=3 -Dbrowser=chrome
+
+
+services:
+- docker
 before_install:
 - chmod +x mvnw
+- docker pull selenoid/vnc:chrome_68.0
+- docker-compose -f docker/docker-compose-selenoid.yml up
