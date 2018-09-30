@@ -1,5 +1,6 @@
 package lv.iljapavlovs.cucumber.core;
 
+import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.BROWSER;
 import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.ENABLE_VIDEO;
 import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.ENABLE_VNC;
 import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.PROXY_ENABLED;
@@ -42,9 +43,9 @@ public class DriverFactory {
 
   public DriverFactory() {
     DriverType driverType = FIREFOX;
-    String browser = System.getProperty("browser", driverType.toString()).toUpperCase();
+    String browser = ApplicationProperties.getString(BROWSER);
     try {
-      driverType = valueOf(browser);
+      driverType = DriverType.valueOf(browser.toUpperCase());
     } catch (IllegalArgumentException ignored) {
       log.warn("Unknown driver specified, defaulting to '" + driverType + "'...");
     } catch (NullPointerException ignored) {

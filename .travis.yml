@@ -1,3 +1,5 @@
 language: java
 # sudo: false
 # script: mvn clean compile
+before_install:
+- chmod +x mvnw

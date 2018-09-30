@@ -20,10 +20,10 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.WAIT_LONG_SECONDS.name, "60");
 
 
-                    setProperty(ApplicationProperty.BROWSER.name, "firefox");
+                    setProperty(ApplicationProperty.BROWSER.name, "chrome");
                     setProperty(ApplicationProperty.HEADLESS.name, "false");
-                    setProperty(ApplicationProperty.ENABLE_VNC.name, "true");
-                    setProperty(ApplicationProperty.ENABLE_VIDEO.name, "true");
+                    setProperty(ApplicationProperty.ENABLE_VNC.name, "false");
+                    setProperty(ApplicationProperty.ENABLE_VIDEO.name, "false");
 
                     setProperty(ApplicationProperty.PROXY_ENABLED.name, "false");
                     setProperty(ApplicationProperty.PROXY_HOST.name, "proxy.com");
@@ -33,7 +33,7 @@ public class ApplicationProperties {
                     setProperty(ApplicationProperty.APP_URL.name, "https://google.com");
 
                     //Selenium grid settings
-                    setProperty(ApplicationProperty.REMOTE_DRIVER.name, "true");
+                    setProperty(ApplicationProperty.REMOTE_DRIVER.name, "false");
                     setProperty(ApplicationProperty.SELENIUM_GRID_URL.name, "http://localhost:4444/wd/hub");
 
                     setProperty(ApplicationProperty.DESIRED_BROWSER_VERSION.name, "");
