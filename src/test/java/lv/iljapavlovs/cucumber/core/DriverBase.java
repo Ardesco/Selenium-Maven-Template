@@ -1,11 +1,10 @@
 package lv.iljapavlovs.cucumber.core;
 
-import lombok.extern.slf4j.Slf4j;
-import org.openqa.selenium.WebDriver;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import lombok.extern.slf4j.Slf4j;
+import org.openqa.selenium.WebDriver;
 
 @Slf4j
 public class DriverBase {
@@ -22,7 +21,14 @@ public class DriverBase {
     }
 
     public static WebDriver getDriver(){
+        if (!isWebdriverInitialized()) {
+            instantiateDriverObject();
+        }
         return driverFactoryThread.get().getDriver();
+    }
+
+    public static boolean isWebdriverInitialized() {
+        return driverFactoryThread != null;
     }
 
     public static void clearCookies() {

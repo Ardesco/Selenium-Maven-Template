@@ -25,7 +25,7 @@
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <cucumber.version>1.2.5</cucumber.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <maven-cucumber-reporting.version>3.15.0</maven-cucumber-reporting.version>
+        <maven-cucumber-reporting.version>3.8.0</maven-cucumber-reporting.version>
         <cucumber-jvm-parallel-plugin.version>4.2.0</cucumber-jvm-parallel-plugin.version>
         <browser/>
         <threads/>
@@ -238,29 +238,29 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>net.masterthought</groupId>-->
-                <!--<artifactId>maven-cucumber-reporting</artifactId>-->
-                <!--<version>${maven-cucumber-reporting.version}</version>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<id>execution</id>-->
-                        <!--<phase>verify</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>generate</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<projectName>${project.name}</projectName>-->
-                            <!--&lt;!&ndash; output directory for the generated report &ndash;&gt;-->
-                            <!--<outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>-->
-                            <!--<cucumberOutput>${cucumberOutputDirectory}</cucumberOutput>-->
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <version>${maven-cucumber-reporting.version}</version>
+                <executions>
+                    <execution>
+                        <id>execution</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <projectName>${project.name}</projectName>
+                            <!-- output directory for the generated report -->
+                            <outputDirectory>${project.build.directory}/site/cucumber-reports</outputDirectory>
+                            <cucumberOutput>${cucumberOutputDirectory}</cucumberOutput>
 
-                            <!--&lt;!&ndash;shows additional column in report - 'Device'&ndash;&gt;-->
-                            <!--<parallelTesting>true</parallelTesting>-->
-                        <!--</configuration>-->
-                    <!--</execution>-->
-                <!--</executions>-->
-            <!--</plugin>-->
+                            <!--shows additional column in report - 'Device'-->
+                            <parallelTesting>true</parallelTesting>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 

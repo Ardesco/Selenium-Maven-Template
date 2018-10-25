@@ -23,10 +23,8 @@ import org.openqa.selenium.safari.SafariOptions;
 
 public enum DriverType implements DriverSetup {
 
-
     FIREFOX {
         public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
-//            System.setProperty("webdriver.firefox.bin", ApplicationProperties.getString(FIREFOX_BINARY_PATH));
             if(!IS_REMOTE_DRIVER){
                 WebDriverManager.firefoxdriver().setup();
             }
