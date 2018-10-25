@@ -1,12 +1,9 @@
 package lv.iljapavlovs.cucumber.pageobjects;
 
-import org.openqa.selenium.By;
+import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
 
 
 public class GoogleSearchResultPage extends Page {
@@ -14,8 +11,13 @@ public class GoogleSearchResultPage extends Page {
     @FindBy(how = How.CLASS_NAME, using = "g")
     private List<WebElement> searchResultElements;
 
-    public GoogleSearchResultPage() {
-        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.className("g")));
+    @Override
+    protected WebElement getControlElement() {
+        return searchResultElements.get(0);
+    }
+
+    public GoogleSearchResultPage(){
+        waitUntilLoaded();
     }
 
     public List<WebElement> getSearchResultElements(){

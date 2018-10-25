@@ -1,7 +1,11 @@
 package lv.iljapavlovs.cucumber.core;
 
 
+import static org.junit.Assert.fail;
+
 import lombok.extern.slf4j.Slf4j;
+import lv.iljapavlovs.cucumber.config.ApplicationProperties;
+import lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -14,11 +18,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static lv.iljapavlovs.cucumber.config.Constants.WAIT_SHORT_SECONDS;
-import static org.junit.Assert.fail;
-
 @Slf4j
 public class WebElementHelper {
+    public final static int WAIT_SHORT_SECONDS =  ApplicationProperties.getInteger(ApplicationProperty.WAIT_SHORT_SECONDS);
+
     public static boolean isElementDisplayed(WebElement webElement) {
         return isElementDisplayed(webElement, WAIT_SHORT_SECONDS);
     }

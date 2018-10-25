@@ -1,10 +1,10 @@
 package lv.iljapavlovs.cucumber.core;
 
-import static lv.iljapavlovs.cucumber.config.Constants.HEADLESS;
-import static lv.iljapavlovs.cucumber.config.Constants.IS_REMOTE_DRIVER;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.HashMap;
+import lv.iljapavlovs.cucumber.config.ApplicationProperties;
+import lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -113,4 +113,6 @@ public enum DriverType implements DriverSetup {
         return super.toString().toLowerCase();
     }
 
+    public final static boolean IS_REMOTE_DRIVER =  ApplicationProperties.getBoolean(ApplicationProperty.REMOTE_DRIVER);
+    public final static boolean HEADLESS =  ApplicationProperties.getBoolean(ApplicationProperty.HEADLESS);
 }
