@@ -27,8 +27,8 @@
         <driver id="googlechrome">
             <version id="2.37">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_win32.zip</filelocation>
-                    <hash>fe708aac4eeb919a4ce26cf4aa52a2dacc666a2f</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.45/chromedriver_win32.zip</filelocation>
+                    <hash>90685e94e7d3c6c442145dfd3da8886c159fb684</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -64,10 +64,10 @@
     </windows>
     <linux>
         <driver id="googlechrome">
-            <version id="2.37">
+            <version id="2.45">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_linux64.zip</filelocation>
-                    <hash>b8515d09bb2d533ca3b85174c85cac1e062d04c6</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.45/chromedriver_linux64.zip</filelocation>
+                    <hash>e60ca22a94cd40e4bad5917c2db5e31d9c4c1f7a</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -103,10 +103,10 @@
     </linux>
     <osx>
         <driver id="googlechrome">
-            <version id="2.37">
+            <version id="2.45">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/2.37/chromedriver_mac64.zip</filelocation>
-                    <hash>714e7abb1a7aeea9a8997b64a356a44fb48f5ef4</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/2.45/chromedriver_mac64.zip</filelocation>
+                    <hash>42cd0659e4d16927f06aac74fdafa34b7d760a76</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
