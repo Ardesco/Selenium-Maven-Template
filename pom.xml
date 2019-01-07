@@ -42,14 +42,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.12.0</selenium.version>
-        <assertj-core.version>3.10.0</assertj-core.version>
+        <selenium.version>3.141.59</selenium.version>
+        <assertj-core.version>3.11.1</assertj-core.version>
         <testng.version>6.14.3</testng.version>
-        <query.version>1.2.0</query.version>
+        <query.version>2.0.0-beta3</query.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
-        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.21.0</maven-failsafe-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
