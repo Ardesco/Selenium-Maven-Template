@@ -16,10 +16,10 @@
             </version>
         </driver>
         <driver id="edge">
-            <version id="5.16299">
+            <version id="6.17134">
                 <bitrate sixtyfourbit="true" thirtytwobit="true">
-                    <filelocation>https://download.microsoft.com/download/D/4/1/D417998A-58EE-4EFE-A7CC-39EF9E020768/MicrosoftWebDriver.exe</filelocation>
-                    <hash>60c4b6d859ee868ba5aa29c1e5bfa892358e3f96</hash>
+                    <filelocation>https://download.microsoft.com/download/F/8/A/F8AF50AB-3C3A-4BC4-8773-DC27B32988DD/MicrosoftWebDriver.exe</filelocation>
+                    <hash>e53eecfb3fc02aebea34a39d9097b9d4fab669c8</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
