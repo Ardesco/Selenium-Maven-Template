@@ -44,7 +44,7 @@ public class GoogleExampleIT extends DriverBase {
 
 
     @Test
-    public void demoForUrekha() throws Exception {
+    public void demoforComment() throws Exception {
         // Create a new WebDriver instance
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
