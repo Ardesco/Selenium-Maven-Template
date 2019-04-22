@@ -24,6 +24,8 @@ public class DriverFactory {
     private final boolean proxyEnabled = Boolean.getBoolean("proxyEnabled");
     private final String proxyHostname = System.getProperty("proxyHost");
     private final Integer proxyPort = Integer.getInteger("proxyPort");
+    private final String proxyUsername = System.getProperty("proxyUsername");
+    private final String proxyPassword = System.getProperty("proxyPassword");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
 
     public DriverFactory() {
@@ -74,6 +76,12 @@ public class DriverFactory {
             proxy.setProxyType(MANUAL);
             proxy.setHttpProxy(proxyDetails);
             proxy.setSslProxy(proxyDetails);
+            if (!proxyUsername.isEmpty()) {
+                proxy.setSocksUsername(proxyUsername);
+            }
+            if (!proxyPassword.isEmpty()) {
+                proxy.setSocksPassword(proxyPassword);
+            }
             desiredCapabilities.setCapability(PROXY, proxy);
         }
 

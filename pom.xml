@@ -65,6 +65,8 @@
         <proxyEnabled>false</proxyEnabled>
         <proxyHost/>
         <proxyPort/>
+        <proxyUsername/>
+        <proxyPassword/>
     </properties>
 
     <dependencies>
@@ -160,6 +162,8 @@
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
                                 <proxyHost>${proxyHost}</proxyHost>
                                 <proxyPort>${proxyPort}</proxyPort>
+                                <proxyUsername>${proxyUsername}</proxyUsername>
+                                <proxyPassword>${proxyPassword}</proxyPassword>
                                 <headless>${headless}</headless>
 
                                 <!--Set properties passed in by the driver binary downloader-->

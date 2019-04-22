@@ -60,6 +60,8 @@ You can also specify a proxy to use
 - -DproxyEnabled=true
 - -DproxyHost=localhost
 - -DproxyPort=8080
+- -DproxyUsername=fred
+- -DproxyPassword=Password123
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
 
