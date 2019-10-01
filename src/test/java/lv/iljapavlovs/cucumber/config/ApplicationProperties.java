@@ -1,11 +1,10 @@
 package lv.iljapavlovs.cucumber.config;
 
-import lombok.extern.slf4j.Slf4j;
+import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.ENV;
 
 import java.util.HashMap;
 import java.util.Properties;
-
-import static lv.iljapavlovs.cucumber.config.ApplicationProperties.ApplicationProperty.ENV;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class ApplicationProperties {

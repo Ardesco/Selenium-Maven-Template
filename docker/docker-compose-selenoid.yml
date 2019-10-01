@@ -11,8 +11,14 @@ services:
 # Windows: Need to set following property first
 #    export COMPOSE_CONVERT_WINDOWS_PATHS=1 (Bash)
     - "//var/run/docker.sock:/var/run/docker.sock"
-#    command: ["-conf", "/etc/selenoid/browsers.json", "-container-network", "docker_automation"]
+    - "$PWD:/opt/selenoid/video"
+    - "$PWD:/opt/selenoid/logs" #Mount a directory from the host machine (e.g. ~/.aerokube/selenoid/video) to store video files to /opt/selenoid/video - https://aerokube.com/selenoid/latest/#_video_recording
 
+  #    command: ["-conf", "/etc/selenoid/browsers.json", "-container-network", "docker_automation"]
+    command: ["-conf", "/etc/selenoid/browsers.json", "-video-output-dir", "/opt/selenoid/video", "-log-output-dir", "/opt/selenoid/logs"]
+
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=$PWD
   selenoid-ui:
     image: "aerokube/selenoid-ui"
     network_mode: bridge

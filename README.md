@@ -88,5 +88,12 @@ docker-compose -f docker/docker-compose-zalenium.yml up --force-recreate
 ```
 
 
+#### Running Tests against these Selenium Grid implementations
+```
+ ./mvnw clean verify -Denv=test -DenableVNC=true -DenableVideo=true
+```
+
+`-Denv=test` - uses `remoteDriver=true` in ApplicationProperties.java
+
 ## Driver Download for local execution
 This project uses [webdrivermanager](https://github.com/bonigarcia/webdrivermanager) tool in order to automate the Selenium browser drivers management in runtime. It will **automatically** download all needed driver to your local PC if needed with specified version.
