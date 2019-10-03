@@ -1,13 +1,12 @@
-package io.iljapavlovs.oldcucumber.hooks;
-
+package lv.iljapavlovs.cucumber.hooks;
 
 
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import io.iljapavlovs.oldcucumber.core.DriverBase;
 import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
+import lv.iljapavlovs.cucumber.core.DriverBase;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
@@ -20,11 +19,11 @@ public class Hooks {
     @Before
     public void setup(Scenario scenario) throws Exception {
         MDC.put("scenarioId", "scenarioId:" + UUID.randomUUID().toString());
+        DriverBase.instantiateDriverObject();
         String sessionId = ((RemoteWebDriver) DriverBase.getDriver()).getSessionId().toString();
         log.info("Starting Scenario: \"" + scenario.getName() + "\" with Session ID: " + sessionId);
         DriverBase.getDriver().manage().deleteAllCookies();
-//        sometimes fails if running in Selenium Grid
-//        DriverBase.getDriver().manage().window().maximize();
+        DriverBase.getDriver().manage().window().maximize();
     }
 
     @After

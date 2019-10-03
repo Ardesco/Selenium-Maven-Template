@@ -3,9 +3,9 @@ package io.iljapavlovs.oldcucumber.stepdefs;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.Assert.fail;
 
-import io.cucumber.core.api.java.en.Given;
-import io.cucumber.core.api.java.en.Then;
-import io.cucumber.core.api.java.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import io.iljapavlovs.oldcucumber.pageobjects.GooglePage;
 import io.iljapavlovs.oldcucumber.pageobjects.GoogleSearchResultPage;
 
