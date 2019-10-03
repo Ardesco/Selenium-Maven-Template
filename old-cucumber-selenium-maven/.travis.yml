@@ -1,0 +1,37 @@
+language: java
+# sudo: false
+#script:
+#- ./mvnw clean compile
+
+addons:
+#  chrome: stable
+  firefox: latest
+
+# needed in order to use docker
+#services:
+#- docker
+before_install:
+- chmod +x mvnw
+- # start your web application and listen on `localhost`
+#- google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+#⋮
+
+#- docker pull selenoid/vnc:chrome_68.0
+#- docker-compose -f docker/docker-compose-selenoid.yml up
+
+install: true
+
+
+stages:
+- name: build
+
+- name: test
+
+
+jobs:
+  include:
+  - stage: build
+    script: ./mvnw clean compile
+  - stage: test
+    script: ./mvnw verify -P parallelPlugin,nogrid -Dthreads=3 -Dbrowser=firefox -Dheadless=true
+

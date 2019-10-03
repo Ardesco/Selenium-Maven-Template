@@ -27,11 +27,11 @@ Selenoid has a video recorder, you can activate it by passing enableVideo capabi
 Videos are stored under ~/.aerokube/selenoid/video
 
 video name, frame rate, video screen size and video frame rate are also adjustable.
-
+```
 videoName : string
 videoScreenSize : string
 videoFrameRate : int
-
+```
 #### Can Selenoid pull browser images automatically?
 
 No, we did not implement this feature intentionally. We consider that all such cluster maintenance tasks can influence performance and stability when done automatically
