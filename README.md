@@ -19,7 +19,7 @@ All dependencies should now be downloaded and the example google cheese test wil
 - The maven failsafe plugin has been used to create a profile with the id "selenium-tests".  This is active by default, but if you want to perform a build without running your selenium tests you can disable it using:
 
         mvn clean verify -P-selenium-tests
-        
+
 - The maven-failsafe-plugin will pick up any files that end in IT by default.  You can customise this is you would prefer to use a custom identifier for your Selenium tests.
 
 ### Known problems...
@@ -45,10 +45,10 @@ Not got PhantomJS?  Don't worry that will be automatically downloaded for you as
 
 You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
-- -Dremote=true 
-- -DseleniumGridURL=http://{username}:{accessKey}@ondemand.saucelabs.com:80/wd/hub 
-- -Dplatform=xp 
-- -Dbrowser=firefox 
+- -Dremote=true
+- -DseleniumGridURL=http://{username}:{accessKey}@ondemand.saucelabs.com:80/wd/hub
+- -Dplatform=xp
+- -Dbrowser=firefox
 - -DbrowserVersion=44
 
 You can even specify multiple threads (you can do it on a grid as well!):
@@ -73,3 +73,16 @@ You have probably got outdated driver binaries, by default they are not overwrit
 
 - `mvn clean verify -Doverwrite.binaries=true`
 - Delete the `selenium_standalone_binaries` folder in your resources directory
+
+### Build docker image from Dockerfile
+
+Note: When using JDK 11 or 13, a javax.xml.bind.JAXBException is occuring and compile time because of certain Java EE binaries that have been removed from JDK9+.
+
+#### Image with JDK13
+```docker build -t selenium-maven-template:jdk13 --file Dockerfile_jdk13 .```
+
+#### Image with JDK11
+```docker build -t selenium-maven-template:jdk11 --file Dockerfile_jdk11 .```
+
+#### Image with JDK8
+```docker build -t selenium-maven-template:jdk8 --file Dockerfile_jdk8 .```
