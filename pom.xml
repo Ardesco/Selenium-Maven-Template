@@ -42,14 +42,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.3.1</selenium.version>
-        <hamcrest-all.version>1.3</hamcrest-all.version>
-        <phantomjsdriver.version>1.4.1</phantomjsdriver.version>
-        <testng.version>6.11</testng.version>
+        <selenium.version>3.141.59</selenium.version>
+        <assertj-core.version>3.12.2</assertj-core.version>
+        <testng.version>6.14.3</testng.version>
+        <query.version>2.0.0-BETA3</query.version>
         <!--Plugin Versions-->
-        <driver-binary-downloader-maven-plugin.version>1.0.12</driver-binary-downloader-maven-plugin.version>
-        <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.19.1</maven-failsafe-plugin.version>
+        <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
@@ -58,59 +58,46 @@
         <browser>firefox</browser>
         <threads>1</threads>
         <remote>false</remote>
+        <headless>true</headless>
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
         <proxyEnabled>false</proxyEnabled>
         <proxyHost/>
         <proxyPort/>
+        <proxyUsername/>
+        <proxyPassword/>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>${hamcrest-all.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.1</version>
-        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.detro.ghostdriver</groupId>
-                    <artifactId>phantomjsdriver</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.version}</version>
             <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.github.detro.ghostdriver</groupId>
-                    <artifactId>phantomjsdriver</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>${phantomjsdriver.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.lazerycode.selenium</groupId>
+            <artifactId>query</artifactId>
+            <version>${query.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -143,7 +130,6 @@
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
                             <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
                             <fileDownloadRetryAttempts>${retry.attempts}</fileDownloadRetryAttempts>
-                            <fileDownloadConnectionTimeout>${connection.timeout}</fileDownloadConnectionTimeout>
                             <fileDownloadReadTimeout>${read.timeout}</fileDownloadReadTimeout>
                             <operatingSystems>
                                 <windows>true</windows>
@@ -176,9 +162,11 @@
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
                                 <proxyHost>${proxyHost}</proxyHost>
                                 <proxyPort>${proxyPort}</proxyPort>
+                                <proxyUsername>${proxyUsername}</proxyUsername>
+                                <proxyPassword>${proxyPassword}</proxyPassword>
+                                <headless>${headless}</headless>
 
                                 <!--Set properties passed in by the driver binary downloader-->
-                                <phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>

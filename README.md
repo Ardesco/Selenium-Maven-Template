@@ -11,7 +11,7 @@ A maven template for Selenium 3 that has the latest dependencies so that you can
 3. `cd Selenium-Maven-Template` (Or whatever folder you cloned it into)
 4. `mvn clean verify`
 
-All dependencies should now be downloaded and the example google cheese test will have run successfully (Assuming you have Firefox installed in the default location)
+All dependencies should now be downloaded and the example google cheese test will have run successfully in headless mode (Assuming you have Firefox installed in the default location)
 
 ### What should I know?
 
@@ -24,7 +24,6 @@ All dependencies should now be downloaded and the example google cheese test wil
 
 ### Known problems...
 
-- It looks like OperaDriver doesn't work any more and Opera doesn't really care... (https://github.com/operasoftware/operachromiumdriver/issues/27)
 - It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
 
 ### Anything else?
@@ -36,12 +35,13 @@ Yes you can specify which browser to use by using one of the following switches:
 - -Dbrowser=ie
 - -Dbrowser=edge
 - -Dbrowser=opera
-- -Dbrowser=htmlunit
-- -Dbrowser=phantomjs
 
-You don't need to worry about downloading the IEDriverServer, MicrosoftWebDriver, chromedriver , operachromium, or wires binaries, this project will do that for you automatically.
+If you want to toggle the use of chrome or firefox in headless mode set the headless flag (by default the headless flag is set to true)
 
-Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
+- -Dheadless=true
+- -Dheadless=false
+
+You don't need to worry about downloading the IEDriverServer, EdgeDriver, ChromeDriver , OperaChromiumDriver, or GeckoDriver binaries, this project will do that for you automatically.
 
 You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
@@ -60,6 +60,8 @@ You can also specify a proxy to use
 - -DproxyEnabled=true
 - -DproxyHost=localhost
 - -DproxyPort=8080
+- -DproxyUsername=fred
+- -DproxyPassword=Password123
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
 
