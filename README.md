@@ -76,7 +76,7 @@ You have probably got outdated driver binaries, by default they are not overwrit
 
 ### Build docker image from Dockerfile
 
-Note: When using JDK 11 or 13, a javax.xml.bind.JAXBException is occuring and compile time because of certain Java EE binaries that have been removed from JDK9+.
+Note: When using JDK 11 or 13, a javax.xml.bind.JAXBException is occuring at compile time because of certain Java EE binaries that have been removed from JDK9+. This is a known issue. Please continue building with JDK8 till the issue is resolved for other JDKs.
 
 #### Image with JDK13
 ```docker build -t selenium-maven-template:jdk13 --file Dockerfile_jdk13 .```
