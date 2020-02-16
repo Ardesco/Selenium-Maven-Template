@@ -40,24 +40,41 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <selenium.version>2.45.0</selenium.version>
+        <java.version>1.8</java.version>
+        <!--Dependency Versions-->
+        <selenium.version>3.141.59</selenium.version>
+        <assertj-core.version>3.15.0</assertj-core.version>
+        <testng.version>7.1.0</testng.version>
+        <query.version>2.0.0-BETA3</query.version>
+        <!--Plugin Versions-->
+        <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+        <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
+        <read.timeout>30000</read.timeout>
+        <connection.timeout>40000</connection.timeout>
+        <retry.attempts>4</retry.attempts>
         <browser>firefox</browser>
         <threads>1</threads>
         <remote>false</remote>
+        <headless>true</headless>
         <seleniumGridURL/>
         <platform/>
         <browserVersion/>
         <proxyEnabled>false</proxyEnabled>
         <proxyHost/>
         <proxyPort/>
+        <proxyUsername/>
+        <proxyPassword/>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.hamcrest</groupId>
-            <artifactId>hamcrest-all</artifactId>
-            <version>1.3</version>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-remote-driver</artifactId>
+            <version>${selenium.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
@@ -66,20 +83,21 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.codeborne</groupId>
-            <artifactId>phantomjsdriver</artifactId>
-            <version>1.2.1</version>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>6.8.8</version>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.lazerycode.selenium</groupId>
+            <artifactId>query</artifactId>
+            <version>${query.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -96,20 +114,28 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>
                         <configuration>
-                            <source>1.7</source>
-                            <target>1.7</target>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
                         </configuration>
-                        <version>2.3.2</version>
+                        <version>${maven-compiler-plugin.version}</version>
                     </plugin>
                     <plugin>
                         <groupId>com.lazerycode.selenium</groupId>
                         <artifactId>driver-binary-downloader-maven-plugin</artifactId>
-                        <version>1.0.7</version>
+                        <version>${driver-binary-downloader-maven-plugin.version}</version>
                         <configuration>
-                            <rootStandaloneServerDirectory>${standalone.binary.root.folder}</rootStandaloneServerDirectory>
+                            <rootStandaloneServerDirectory>${project.basedir}/src/test/resources/selenium_standalone_binaries</rootStandaloneServerDirectory>
                             <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
                             <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
+                            <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
+                            <fileDownloadRetryAttempts>${retry.attempts}</fileDownloadRetryAttempts>
+                            <fileDownloadReadTimeout>${read.timeout}</fileDownloadReadTimeout>
+                            <operatingSystems>
+                                <windows>true</windows>
+                                <linux>true</linux>
+                                <mac>true</mac>
+                            </operatingSystems>
                         </configuration>
                         <executions>
                             <execution>
@@ -190,11 +216,11 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>2.7.2</version>
+                        <version>${maven-failsafe-plugin.version}</version>
                         <configuration>
                             <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
-                            <systemProperties>
+                            <systemPropertyVariables>
                                 <browser>${browser}</browser>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
                                 <remoteDriver>${remote}</remoteDriver>
@@ -204,21 +230,23 @@
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
                                 <proxyHost>${proxyHost}</proxyHost>
                                 <proxyPort>${proxyPort}</proxyPort>
+                                <proxyUsername>${proxyUsername}</proxyUsername>
+                                <proxyPassword>${proxyPassword}</proxyPassword>
+                                <headless>${headless}</headless>
 
                                 <!--Set properties passed in by the driver binary downloader-->
-                                <phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>
                                 <webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
                                 <webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
-                            </systemProperties>
-                            <includes>
-                                <include>**/*WebDriver.java</include>
-                            </includes>
+                                <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
+                                <webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
+                            </systemPropertyVariables>
                         </configuration>
                         <executions>
                             <execution>
                                 <goals>
                                     <goal>integration-test</goal>
+                                    <!--This goal makes the build fail if you have test failures-->
                                     <goal>verify</goal>
                                 </goals>
                             </execution>

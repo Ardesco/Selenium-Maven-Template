@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import static com.lazerycode.selenium.DriverFactory.getDriver;
+import static com.lazerycode.selenium.DriverBase.getDriver;
 
 public class ScreenshotListener extends TestListenerAdapter {
 
@@ -49,7 +49,7 @@ public class ScreenshotListener extends TestListenerAdapter {
     public void onTestFailure(ITestResult failingTest) {
         try {
             WebDriver driver = getDriver();
-            String screenshotDirectory = System.getProperty("screenshotDirectory");
+            String screenshotDirectory = System.getProperty("screenshotDirectory", "target/screenshots");
             String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
             File screenshot = new File(screenshotAbsolutePath);
             if (createFile(screenshot)) {

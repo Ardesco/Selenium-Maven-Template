@@ -1,20 +1,30 @@
 Selenium-Maven-Template
 =======================
 
-A maven template for Selenium that has the latest dependencies so that you can just check out and start writing tests in five easy steps.
+[![Join the chat at https://gitter.im/Ardesco/Selenium-Maven-Template](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Ardesco/Selenium-Maven-Template?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+A maven template for Selenium 3 that has the latest dependencies so that you can just check out and start writing tests in four easy steps.  If you like what you see have a look at my Selenium book [Mastering Selenium Webdriver](https://www.amazon.co.uk/Mastering-Selenium-WebDriver-Mark-Collin/dp/1784394351).
 
 
 1. Open a terminal window/command prompt
 2. Clone this project.
-3. CD into project directory
-4. mvn clean verify
+3. `cd Selenium-Maven-Template` (Or whatever folder you cloned it into)
+4. `mvn clean verify`
 
-All dependencies should now be downloaded and the example google cheese test will have run successfully (Assuming you have Firefox installed in the default location)
+All dependencies should now be downloaded and the example google cheese test will have run successfully in headless mode (Assuming you have Firefox installed in the default location)
 
 ### What should I know?
 
-- To run any unit tests that test your Selenium framework you just need to ensure that all unit test file names end, or start with "test" and they will be run by step 4.
-- The maven surefire plugin has been used to create a profile with the id "selenium-tests" that configures surefire to pick up any java files that ends with the text "WebDriver".  This means that as long as all of your selenium test file names end with WebDriver.java they will get picked up and run when you perform step 4.
+- To run any unit tests that test your Selenium framework you just need to ensure that all unit test file names end, or start with "test" and they will be run as part of the build.
+- The maven failsafe plugin has been used to create a profile with the id "selenium-tests".  This is active by default, but if you want to perform a build without running your selenium tests you can disable it using:
+
+        mvn clean verify -P-selenium-tests
+
+- The maven-failsafe-plugin will pick up any files that end in IT by default.  You can customise this is you would prefer to use a custom identifier for your Selenium tests.
+
+### Known problems...
+
+- It looks like SafariDriver is no longer playing nicely and we are waiting on Apple to fix it... Running safari driver locally in server mode and connecting to it like a grid seems to be the workaround.
 
 ### Anything else?
 
@@ -23,21 +33,23 @@ Yes you can specify which browser to use by using one of the following switches:
 - -Dbrowser=firefox
 - -Dbrowser=chrome
 - -Dbrowser=ie
+- -Dbrowser=edge
 - -Dbrowser=opera
-- -Dbrowser=htmlunit
-- -Dbrowser=phantomjs
 
-You don't need to worry about downloading the IEDriverServer, or chromedriver binaries, this project will do that for you automatically.
+If you want to toggle the use of chrome or firefox in headless mode set the headless flag (by default the headless flag is set to true)
 
-Not got PhantomJS?  Don't worry that will be automatically downloaded for you as well!
+- -Dheadless=true
+- -Dheadless=false
+
+You don't need to worry about downloading the IEDriverServer, EdgeDriver, ChromeDriver , OperaChromiumDriver, or GeckoDriver binaries, this project will do that for you automatically.
 
 You can specify a grid to connect to where you can choose your browser, browser version and platform:
 
-- -Dremote=true 
-- -DseleniumGridURL=http://{username}:{accessKey}@ondemand.saucelabs.com:80/wd/hub 
-- -Dplatform=xp 
-- -Dbrowser=firefox 
-- -DbrowserVersion=33
+- -Dremote=true
+- -DseleniumGridURL=http://{username}:{accessKey}@ondemand.saucelabs.com:80/wd/hub
+- -Dplatform=xp
+- -Dbrowser=firefox
+- -DbrowserVersion=44
 
 You can even specify multiple threads (you can do it on a grid as well!):
 
@@ -48,6 +60,8 @@ You can also specify a proxy to use
 - -DproxyEnabled=true
 - -DproxyHost=localhost
 - -DproxyPort=8080
+- -DproxyUsername=fred
+- -DproxyPassword=Password123
 
 If the tests fail screenshots will be saved in ${project.basedir}/target/screenshots
 
@@ -59,19 +73,5 @@ If you need to force a binary overwrite you can do:
 
 You have probably got outdated driver binaries, by default they are not overwritten if they already exist to speed things up.  You have two options:
 
-- mvn clean verify -Doverwrite.binaries=true
-- Delete the selenium_standalone_binaries folder in your resources directory
-
-### Docker Branch specific
-
-By default this build will start a Selenium Grid with 2 firefox nodes and 2 chrome nodes.
-
-You can run the tests in parallel on Firefox using:
-
-    mvn clean install -Dremote=true -Dthreads=2
-    
-or if you prefer chrome:
-    
-    mvn clean install -Dremote=true -Dthreads=2 -Dbrowser=chrome
-    
-Enjoy
+- `mvn clean verify -Doverwrite.binaries=true`
+- Delete the `selenium_standalone_binaries` folder in your resources directory
