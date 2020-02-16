@@ -43,13 +43,13 @@
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
         <selenium.version>3.141.59</selenium.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
-        <testng.version>6.14.3</testng.version>
+        <assertj-core.version>3.15.0</assertj-core.version>
+        <testng.version>7.1.0</testng.version>
         <query.version>2.0.0-BETA3</query.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
