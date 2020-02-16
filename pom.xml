@@ -43,13 +43,13 @@
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
         <selenium.version>3.141.59</selenium.version>
-        <assertj-core.version>3.12.2</assertj-core.version>
-        <testng.version>6.14.3</testng.version>
+        <assertj-core.version>3.15.0</assertj-core.version>
+        <testng.version>7.1.0</testng.version>
         <query.version>2.0.0-BETA3</query.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.17</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.22.1</maven-failsafe-plugin.version>
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
@@ -146,6 +146,74 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>net.wouterdanes.docker</groupId>
+                        <artifactId>docker-maven-plugin</artifactId>
+                        <version>3.0</version>
+                        <executions>
+                            <execution>
+                                <id>start</id>
+                                <configuration>
+                                    <containers>
+                                        <container>
+                                            <id>selenium-hub</id>
+                                            <image>selenium/hub:2.45.0</image>
+                                            <waitForStartup>Started SocketConnector@0.0.0.0:4444</waitForStartup>
+                                        </container>
+                                        <container>
+                                            <id>selenium-chrome-1</id>
+                                            <image>selenium/node-chrome:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-chrome-2</id>
+                                            <image>selenium/node-chrome:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-firefox-1</id>
+                                            <image>selenium/node-firefox:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                        <container>
+                                            <id>selenium-firefox-2</id>
+                                            <image>selenium/node-firefox:2.47.1</image>
+                                            <links>
+                                                <link>
+                                                    <containerId>selenium-hub</containerId>
+                                                    <containerAlias>hub</containerAlias>
+                                                </link>
+                                            </links>
+                                        </container>
+                                    </containers>
+                                </configuration>
+                                <goals>
+                                    <goal>start-containers</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>stop</id>
+                                <goals>
+                                    <goal>stop-containers</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven-failsafe-plugin.version}</version>
@@ -156,7 +224,7 @@
                                 <browser>${browser}</browser>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
                                 <remoteDriver>${remote}</remoteDriver>
-                                <gridURL>${seleniumGridURL}</gridURL>
+                                <gridURL>http://${docker.containers.selenium-hub.ports.4444/tcp.host}:${docker.containers.selenium-hub.ports.4444/tcp.port}/wd/hub</gridURL>
                                 <desiredPlatform>${platform}</desiredPlatform>
                                 <desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
