@@ -15,6 +15,20 @@
                 </bitrate>
             </version>
         </driver>
+        <driver id="edge">
+            <version id="82">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://msedgedriver.azureedge.net/82.0.425.0/edgedriver_win64.zip</filelocation>
+                    <hash>f88a6ae9a83af88c5a75001422d1722341a2c142</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate thirtytwobit="true">
+                    <filelocation>https://msedgedriver.azureedge.net/82.0.425.0/edgedriver_win32.zip</filelocation>
+                    <hash>c3d1464b27173143d99247e9d0d3dfb78e552282</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
         <driver id="googlechrome">
             <version id="80">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
@@ -54,6 +68,15 @@
         </driver>
     </windows>
     <linux>
+        <driver id="edge">
+            <version id="82">
+                <bitrate arm="true">
+                    <filelocation>https://msedgedriver.azureedge.net/82.0.425.0/edgedriver_arm64.zip</filelocation>
+                    <hash>b1b765e484068f8b1385cf66a9a0debb8b86a411</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
         <driver id="googlechrome">
             <version id="80">
                 <bitrate sixtyfourbit="true">
@@ -93,6 +116,15 @@
         </driver>
     </linux>
     <osx>
+        <driver id="edge">
+            <version id="82">
+                <bitrate sixtyfourbit="true">
+                    <filelocation>https://msedgedriver.azureedge.net/82.0.425.0/edgedriver_mac64.zip</filelocation>
+                    <hash>e7045843d8a31b845c7935022e64087ca280fc62</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+            </version>
+        </driver>
         <driver id="googlechrome">
             <version id="80">
                 <bitrate sixtyfourbit="true">
