@@ -1,7 +1,6 @@
 package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverBase;
-import com.lazerycode.selenium.page_objects.GoogleHomePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,6 +28,11 @@ public class GoogleExampleIT extends DriverBase {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/nav/div/ul[2]/li[10]/div/a"))).click();
 
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#ac-gn-bagview-content > nav > ul > li.ac-gn-bagview-nav-item.ac-gn-bagview-nav-item-signIn > a"))).click();
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#recon-0-0"))).sendKeys("test@test.com");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#recon-0-1"))).sendKeys("yourpassword1");
+        driver.findElement(By.cssSelector("#signInButtonId")).click();
         Thread.sleep(4000);
     }
 }
