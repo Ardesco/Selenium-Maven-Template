@@ -128,8 +128,8 @@
         <driver id="googlechrome">
             <version id="80">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_mac64.zip</filelocation>
-                    <hash>3b58b8039f363de3b13a8bea7d4646105fbbd177</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/84.0.4147.30/chromedriver_mac64.zip</filelocation>
+                    <hash>3688167f9f4f0e7a240cc215b332500fb33eec9f</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
