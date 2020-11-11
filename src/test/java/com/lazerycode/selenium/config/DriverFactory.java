@@ -1,5 +1,7 @@
 package com.lazerycode.selenium.config;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.Proxy;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -15,9 +17,7 @@ import static org.openqa.selenium.remote.CapabilityType.PROXY;
 
 public class DriverFactory {
 
-    private RemoteWebDriver driver;
-    private DriverType selectedDriverType;
-
+    private static final Logger LOG = (Logger) LogManager.getLogger(DriverFactory.class);
     private final String operatingSystem = System.getProperty("os.name").toUpperCase();
     private final String systemArchitecture = System.getProperty("os.arch");
     private final boolean useRemoteWebDriver = Boolean.getBoolean("remoteDriver");
@@ -28,15 +28,18 @@ public class DriverFactory {
     private final String proxyPassword = System.getProperty("proxyPassword");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
 
+    private RemoteWebDriver driver;
+    private DriverType selectedDriverType;
+
     public DriverFactory() {
         DriverType driverType = FIREFOX;
         String browser = System.getProperty("browser", driverType.toString()).toUpperCase();
         try {
             driverType = valueOf(browser);
         } catch (IllegalArgumentException ignored) {
-            System.err.println("Unknown driver specified, defaulting to '" + driverType + "'...");
+            LOG.warn("Unknown driver specified, defaulting to '" + driverType + "'...");
         } catch (NullPointerException ignored) {
-            System.err.println("No driver specified, defaulting to '" + driverType + "'...");
+            LOG.warn("No driver specified, defaulting to '" + driverType + "'...");
         }
         selectedDriverType = driverType;
     }
@@ -61,13 +64,10 @@ public class DriverFactory {
     }
 
     private void instantiateWebDriver(DriverType driverType) throws MalformedURLException {
-        //TODO add in a real logger instead of System.out
-        System.out.println(" ");
-        System.out.println("Local Operating System: " + operatingSystem);
-        System.out.println("Local Architecture: " + systemArchitecture);
-        System.out.println("Selected Browser: " + selectedDriverType);
-        System.out.println("Connecting to Selenium Grid: " + useRemoteWebDriver);
-        System.out.println(" ");
+        LOG.info("Local Operating System: " + operatingSystem);
+        LOG.info("Local Architecture: " + systemArchitecture);
+        LOG.info("Selected Browser: " + selectedDriverType);
+        LOG.info("Connecting to Selenium Grid: " + useRemoteWebDriver);
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 

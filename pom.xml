@@ -42,13 +42,15 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <!--Dependency Versions-->
-        <selenium.version>3.141.59</selenium.version>
-        <assertj-core.version>3.15.0</assertj-core.version>
-        <testng.version>7.1.0</testng.version>
+        <assertj-core.version>3.18.0</assertj-core.version>
+        <jansi.version>2.0.1</jansi.version>
+        <log4j-api.version>2.14.0</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
+        <selenium.version>3.141.59</selenium.version>
+        <testng.version>7.3.0</testng.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.18</driver-binary-downloader-maven-plugin.version>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
         <overwrite.binaries>false</overwrite.binaries>
@@ -70,6 +72,25 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j-api.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${log4j-api.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!--To enable log colours on windows machines-->
+        <dependency>
+            <groupId>org.fusesource.jansi</groupId>
+            <artifactId>jansi</artifactId>
+            <version>${jansi.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>

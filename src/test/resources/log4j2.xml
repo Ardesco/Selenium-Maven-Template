@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout disableAnsi="false"
+                           pattern="[%highlight{%d{ABSOLUTE} %p}{STYLE=Logback, bold}][%style{TID %T}{magenta}][%style{%C{1.}.%M}{cyan}] %m %red{%xEx{full}} %n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="DEBUG">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

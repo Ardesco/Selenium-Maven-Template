@@ -8,9 +8,9 @@ import static com.lazerycode.selenium.util.AssignDriver.initQueryObjects;
 
 public class GoogleHomePage {
 
-    private Query searchBar = new Query().defaultLocator(By.name("q"));
-    private Query googleSearch = new Query().defaultLocator(By.name("btnK"));
-    private Query imFeelingLucky = new Query().defaultLocator(By.name("btnI"));
+    private final Query searchBar = new Query().defaultLocator(By.name("q"));
+    private final Query googleSearch = new Query().defaultLocator(By.name("btnK"));
+    private final Query imFeelingLucky = new Query().defaultLocator(By.name("btnI"));
 
     public GoogleHomePage() throws Exception {
         initQueryObjects(this, DriverBase.getDriver());

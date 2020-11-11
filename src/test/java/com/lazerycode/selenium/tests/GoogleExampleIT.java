@@ -28,7 +28,7 @@ public class GoogleExampleIT extends DriverBase {
         GoogleHomePage googleHomePage = new GoogleHomePage();
 
         // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
+        LOG.info("Page title is: " + driver.getTitle());
 
         googleHomePage.enterSearchTerm("Cheese")
                 .submitSearch();
@@ -39,7 +39,7 @@ public class GoogleExampleIT extends DriverBase {
         wait.until(pageTitleStartsWith("Cheese"));
 
         // Should see: "cheese! - Google Search"
-        System.out.println("Page title is: " + driver.getTitle());
+        LOG.info("Page title is: " + driver.getTitle());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class GoogleExampleIT extends DriverBase {
         GoogleHomePage googleHomePage = new GoogleHomePage();
 
         // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
+        LOG.info("Page title is: " + driver.getTitle());
 
         googleHomePage.enterSearchTerm("Milk")
                 .submitSearch();
@@ -68,6 +68,6 @@ public class GoogleExampleIT extends DriverBase {
         wait.until(pageTitleStartsWith("Milk"));
 
         // Should see: "cheese! - Google Search"
-        System.out.println("Page title is: " + driver.getTitle());
+        LOG.info("Page title is: " + driver.getTitle());
     }
 }

@@ -1,5 +1,7 @@
 package com.lazerycode.selenium.listeners;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +17,8 @@ import static com.lazerycode.selenium.DriverBase.getDriver;
 
 public class ScreenshotListener extends TestListenerAdapter {
 
+    private static final Logger LOG = (Logger) LogManager.getLogger(ScreenshotListener.class);
+
     private boolean createFile(File screenshot) {
         boolean fileCreated = false;
 
@@ -26,7 +30,7 @@ public class ScreenshotListener extends TestListenerAdapter {
                 try {
                     fileCreated = screenshot.createNewFile();
                 } catch (IOException errorCreatingScreenshot) {
-                    errorCreatingScreenshot.printStackTrace();
+                    LOG.warn("Unable to create " + screenshot.getAbsolutePath(), errorCreatingScreenshot);
                 }
             }
         }
@@ -40,8 +44,7 @@ public class ScreenshotListener extends TestListenerAdapter {
             screenshotStream.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
             screenshotStream.close();
         } catch (IOException unableToWriteScreenshot) {
-            System.err.println("Unable to write " + screenshot.getAbsolutePath());
-            unableToWriteScreenshot.printStackTrace();
+            LOG.warn("Unable to write to " + screenshot.getAbsolutePath(), unableToWriteScreenshot);
         }
     }
 
@@ -58,13 +61,10 @@ public class ScreenshotListener extends TestListenerAdapter {
                 } catch (ClassCastException weNeedToAugmentOurDriverObject) {
                     writeScreenshotToFile(new Augmenter().augment(driver), screenshot);
                 }
-                System.out.println("Written screenshot to " + screenshotAbsolutePath);
-            } else {
-                System.err.println("Unable to create " + screenshotAbsolutePath);
+                LOG.info("Written screenshot to " + screenshotAbsolutePath);
             }
         } catch (Exception ex) {
-            System.err.println("Unable to capture screenshot...");
-            ex.printStackTrace();
+            LOG.warn("Unable to capture screenshot...", ex);
         }
     }
 }

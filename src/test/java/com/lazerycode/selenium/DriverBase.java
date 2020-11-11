@@ -2,6 +2,8 @@ package com.lazerycode.selenium;
 
 import com.lazerycode.selenium.config.DriverFactory;
 import com.lazerycode.selenium.listeners.ScreenshotListener;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -15,7 +17,8 @@ import java.util.List;
 @Listeners(ScreenshotListener.class)
 public class DriverBase {
 
-    private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<DriverFactory>());
+    protected static final Logger LOG = (Logger) LogManager.getLogger(DriverBase.class);
+    private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<>());
     private static ThreadLocal<DriverFactory> driverFactoryThread;
 
     @BeforeSuite(alwaysRun = true)
@@ -36,7 +39,7 @@ public class DriverBase {
         try {
             driverFactoryThread.get().getStoredDriver().manage().deleteAllCookies();
         } catch (Exception ignored) {
-            System.out.println("Unable to clear cookies, driver object is not viable...");
+            LOG.warn("Unable to clear cookies, driver object is not viable...");
         }
     }
 
