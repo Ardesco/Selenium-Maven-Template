@@ -18,7 +18,7 @@ All dependencies should now be downloaded and the example google cheese test wil
 - To run any unit tests that test your Selenium framework you just need to ensure that all unit test file names end, or start with "test" and they will be run as part of the build.
 - The maven failsafe plugin has been used to create a profile with the id "selenium-tests".  This is active by default, but if you want to perform a build without running your selenium tests you can disable it using:
 
-        mvn clean verify -P-selenium-tests
+        mvn clean verify -Pselenium-tests
         
 - The maven-failsafe-plugin will pick up any files that end in IT by default.  You can customise this is you would prefer to use a custom identifier for your Selenium tests.
 
