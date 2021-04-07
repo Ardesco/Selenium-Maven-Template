@@ -82,7 +82,34 @@ public enum DriverType implements DriverSetup {
 
             return new OperaDriver(options);
         }
+    },
+    BRAVE {
+        public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {
+            HashMap<String, Object> chromePreferences = new HashMap<>();
+            chromePreferences.put("profile.password_manager_enabled", false);
+
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary(getBraveBinaryLocation());
+            options.merge(capabilities);
+            options.setHeadless(HEADLESS);
+            options.addArguments("--no-default-browser-check");
+
+            return new ChromeDriver(options);
+        }
     };
+
+    String getBraveBinaryLocation() {
+        String defaultBraveLocation = "C:\\Program Files (x86)\\BraveSoftware\\Brave-Browser\\Application\\brave.exe";
+        String currentOperatingSystemName = System.getProperties().getProperty("os.name");
+        if (currentOperatingSystemName.toLowerCase().contains("mac")) {
+            defaultBraveLocation = "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser";
+        }
+        if (currentOperatingSystemName.toLowerCase().contains("linux")) {
+            defaultBraveLocation = "/usr/bin/brave-browser";
+        }
+
+        return System.getProperty("braveBinaryLocation", defaultBraveLocation);
+    }
 
     public final static boolean HEADLESS = Boolean.getBoolean("headless");
 

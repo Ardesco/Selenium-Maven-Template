@@ -18,7 +18,7 @@ import java.util.List;
 public class DriverBase {
 
     protected static final Logger LOG = (Logger) LogManager.getLogger(DriverBase.class);
-    private static List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<>());
+    private static final List<DriverFactory> webDriverThreadPool = Collections.synchronizedList(new ArrayList<>());
     private static ThreadLocal<DriverFactory> driverFactoryThread;
 
     @BeforeSuite(alwaysRun = true)

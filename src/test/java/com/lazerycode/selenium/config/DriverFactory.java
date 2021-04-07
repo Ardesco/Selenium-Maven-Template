@@ -29,7 +29,7 @@ public class DriverFactory {
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
 
     private RemoteWebDriver driver;
-    private DriverType selectedDriverType;
+    private final DriverType selectedDriverType;
 
     public DriverFactory() {
         DriverType driverType = FIREFOX;
