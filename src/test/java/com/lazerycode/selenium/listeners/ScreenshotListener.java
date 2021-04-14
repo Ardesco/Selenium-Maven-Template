@@ -2,12 +2,12 @@ package com.lazerycode.selenium.listeners;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.junit.jupiter.api.extension.ExtensionContext;
+import org.junit.jupiter.api.extension.TestExecutionExceptionHandler;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.Augmenter;
-import org.testng.ITestResult;
-import org.testng.TestListenerAdapter;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 import static com.lazerycode.selenium.DriverBase.getDriver;
 
-public class ScreenshotListener extends TestListenerAdapter {
+public class ScreenshotListener implements TestExecutionExceptionHandler {
 
     private static final Logger LOG = (Logger) LogManager.getLogger(ScreenshotListener.class);
 
@@ -49,11 +49,11 @@ public class ScreenshotListener extends TestListenerAdapter {
     }
 
     @Override
-    public void onTestFailure(ITestResult failingTest) {
+    public void handleTestExecutionException(ExtensionContext extensionContext, Throwable throwable) throws Throwable {
         try {
             WebDriver driver = getDriver();
             String screenshotDirectory = System.getProperty("screenshotDirectory", "target/screenshots");
-            String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + failingTest.getName() + ".png";
+            String screenshotAbsolutePath = screenshotDirectory + File.separator + System.currentTimeMillis() + "_" + extensionContext.getDisplayName() + ".png";
             File screenshot = new File(screenshotAbsolutePath);
             if (createFile(screenshot)) {
                 try {
@@ -66,5 +66,6 @@ public class ScreenshotListener extends TestListenerAdapter {
         } catch (Exception ex) {
             LOG.warn("Unable to capture screenshot...", ex);
         }
+        throw(throwable);
     }
 }

@@ -47,7 +47,7 @@
         <log4j-api.version>2.14.1</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
         <selenium.version>4.0.0-beta-2</selenium.version>
-        <testng.version>7.3.0</testng.version>
+        <junit.version>5.7.1</junit.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.18</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -58,6 +58,7 @@
         <connection.timeout>40000</connection.timeout>
         <retry.attempts>4</retry.attempts>
         <browser>firefox</browser>
+        <parallel>false</parallel>
         <threads>1</threads>
         <remote>false</remote>
         <headless>true</headless>
@@ -104,9 +105,15 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -171,7 +178,6 @@
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven-failsafe-plugin.version}</version>
                         <configuration>
-                            <parallel>methods</parallel>
                             <threadCount>${threads}</threadCount>
                             <systemPropertyVariables>
                                 <browser>${browser}</browser>
@@ -194,6 +200,16 @@
                                 <webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
                                 <webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
                             </systemPropertyVariables>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.execution.parallel.enabled = ${parallel}
+                                    junit.jupiter.execution.parallel.config.strategy=fixed
+                                    junit.jupiter.execution.parallel.config.fixed.parallelism=${threads}
+                                    junit.jupiter.execution.parallel.mode.default = same_thread
+                                    <!-- Will default to the junit.jupiter.execution.parallel.mode.default value if not set-->
+                                    junit.jupiter.execution.parallel.mode.classes.default = concurrent
+                                </configurationParameters>
+                            </properties>
                         </configuration>
                         <executions>
                             <execution>
