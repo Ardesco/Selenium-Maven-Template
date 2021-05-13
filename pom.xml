@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  ~ Copyright (c) 2010-2015 Lazery Attack - http://www.lazeryattack.com ~ http://www.lazerycode.com
+  ~ Copyright (c) 2010-2021 Lazery Attack - http://www.lazeryattack.com ~ http://www.lazerycode.com
   ~
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@
         <jansi.version>2.3.2</jansi.version>
         <log4j-api.version>2.14.1</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
-        <selenium.version>4.0.0-beta-2</selenium.version>
+        <selenium.version>4.0.0-beta-3</selenium.version>
         <junit.version>5.7.1</junit.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.18</driver-binary-downloader-maven-plugin.version>
@@ -90,12 +90,6 @@
             <groupId>org.fusesource.jansi</groupId>
             <artifactId>jansi</artifactId>
             <version>${jansi.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -178,7 +172,6 @@
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <version>${maven-failsafe-plugin.version}</version>
                         <configuration>
-                            <threadCount>${threads}</threadCount>
                             <systemPropertyVariables>
                                 <browser>${browser}</browser>
                                 <screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
@@ -205,7 +198,7 @@
                                     junit.jupiter.execution.parallel.enabled = ${parallel}
                                     junit.jupiter.execution.parallel.config.strategy=fixed
                                     junit.jupiter.execution.parallel.config.fixed.parallelism=${threads}
-                                    junit.jupiter.execution.parallel.mode.default = same_thread
+                                    junit.jupiter.execution.parallel.mode.default = concurrent
                                     <!-- Will default to the junit.jupiter.execution.parallel.mode.default value if not set-->
                                     junit.jupiter.execution.parallel.mode.classes.default = concurrent
                                 </configurationParameters>
