@@ -2,66 +2,66 @@
 <root>
     <windows>
         <driver id="internetexplorer">
-            <version id="3.150.1">
+            <version id="3.150.2">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://selenium-release.storage.googleapis.com/3.150/IEDriverServer_x64_3.150.1.zip</filelocation>
-                    <hash>617f88598910dc2e77b25c5b4b653a0176025917</hash>
+                    <filelocation>https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.150.0/IEDriverServer_x64_3.150.2.zip</filelocation>
+                    <hash>6f98cd095510cecc621d06b525f4db92a471a7e5</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://selenium-release.storage.googleapis.com/3.150/IEDriverServer_Win32_3.150.1.zip</filelocation>
-                    <hash>2247b50a1fd05b51fd441e2a42e037be16fd7d70</hash>
+                    <filelocation>https://github.com/SeleniumHQ/selenium/releases/download/selenium-3.150.0/IEDriverServer_Win32_3.150.2.zip</filelocation>
+                    <hash>15f3e0fa1ca276e56362e8bb90647fa84ec01a6d</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="edge">
-            <version id="91">
+            <version id="94">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://msedgedriver.azureedge.net/91.0.849.0/edgedriver_win64.zip</filelocation>
-                    <hash>c4b2c31dc3bec1e914f08cda27e2c24a85eb892a</hash>
+                    <filelocation>https://msedgedriver.azureedge.net/94.0.992.47/edgedriver_win64.zip</filelocation>
+                    <hash>3db5af343673ace2af0eec765f777ff876c67530</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://msedgedriver.azureedge.net/91.0.849.0/edgedriver_win32.zip</filelocation>
-                    <hash>7cd00ff0716e137d55619e56008059d3ecd675d6</hash>
+                    <filelocation>https://msedgedriver.azureedge.net/94.0.992.47/edgedriver_win32.zip</filelocation>
+                    <hash>8df231d045751afec95170ad32cf88d14fe1df4c</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="90">
+            <version id="95">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_win32.zip</filelocation>
-                    <hash>0741cdedd5c3b5acf35bb4baf29b19d59b3d6371</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_win32.zip</filelocation>
+                    <hash>27fe4c43e46e083caf786118c3db04fc38c6de67</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="operachromium">
-            <version id="89">
+            <version id="94">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.89.0.4389.82/operadriver_win64.zip</filelocation>
-                    <hash>a257045198153c4ced64feaeafdda6dc7b02ef03</hash>
+                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.94.0.4606.61/operadriver_win64.zip</filelocation>
+                    <hash>ef87ed0c91fb88a254e0da4348deed738d75c85d</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.89.0.4389.82/operadriver_win32.zip</filelocation>
-                    <hash>ff1fbd114ec4ecdeb11ce294f614c5cd655065b3</hash>
+                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.94.0.4606.61/operadriver_win32.zip</filelocation>
+                    <hash>8ea1c50501a7f1caa9ca04ae7760132693ef7e3e</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.29.0">
+            <version id="0.30.0">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-win64.zip</filelocation>
-                    <hash>1e3062ac8262750463f05310ea3a8053a20f42e6</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win64.zip</filelocation>
+                    <hash>f80528a534ebd0f888c06a3eac16c2eeae66707e</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-win32.zip</filelocation>
-                    <hash>7036e1a6f5d87490e1267418cb0e303c9570d6ae</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win32.zip</filelocation>
+                    <hash>95ce71544a87ffe721e5addc75b75063b8928ef0</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -69,42 +69,42 @@
     </windows>
     <linux>
         <driver id="edge">
-            <version id="91">
+            <version id="94">
                 <bitrate arm="true">
-                    <filelocation>https://msedgedriver.azureedge.net/91.0.849.0/edgedriver_arm64.zip</filelocation>
-                    <hash>2199480c20d2638c6478923b69aa6d439f3fb29d</hash>
+                    <filelocation>https://msedgedriver.azureedge.net/94.0.992.47/edgedriver_arm64.zip</filelocation>
+                    <hash>67a8e23c4c8e5e25a1eaa76e781a09521d7980fe</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="90">
+            <version id="95">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/90.0.4430.24/chromedriver_linux64.zip</filelocation>
-                    <hash>50d02031681c8f32f20b5fa3ce35c29efc8fdb98</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_linux64.zip</filelocation>
+                    <hash>52e4025dfd5351f3e17d227115f44871f3225445</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="operachromium">
-            <version id="89">
+            <version id="94">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.89.0.4389.82/operadriver_linux64.zip</filelocation>
-                    <hash>cbed52d82ab56734921b56cc75f5b62ea55ae988</hash>
+                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.94.0.4606.61/operadriver_linux64.zip</filelocation>
+                    <hash>355eadacd577127e933345323e524da462d86b62</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.29.0">
+            <version id="0.30.0">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux64.tar.gz</filelocation>
-                    <hash>21590d1be8cfdf3f2d152790ce89aad5a7e563f9</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux64.tar.gz</filelocation>
+                    <hash>aa80b27fb12473265cfc33de1ad7b545c9f70a86</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
                 <bitrate thirtytwobit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-linux32.tar.gz</filelocation>
-                    <hash>30c771284e1fee0ae2008410885a50f547b87253</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-linux32.tar.gz</filelocation>
+                    <hash>2e157cf548302ef178ac808886539c115a24ec98</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
@@ -119,37 +119,47 @@
     </linux>
     <osx>
         <driver id="edge">
-            <version id="91">
+            <version id="94">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://msedgedriver.azureedge.net/91.0.848.0/edgedriver_mac64.zip</filelocation>
-                    <hash>6f90b11eaa91295e5adc523984db47bdd08ed05f</hash>
+                    <filelocation>https://msedgedriver.azureedge.net/94.0.992.47/edgedriver_mac64.zip</filelocation>
+                    <hash>95e1219538924d76bbb7d2de486cb0e2a292b250</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="googlechrome">
-            <version id="89">
+            <version id="95">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_mac64.zip</filelocation>
-                    <hash>b0857b123b956317ed5a858bac400a6d9ad01f8c</hash>
+                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_mac64.zip</filelocation>
+                    <hash>5bed018822867015f4dd73414f71ad311cdc484e</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate arm="true">
+                    <filelocation>https://chromedriver.storage.googleapis.com/95.0.4638.17/chromedriver_mac64_m1.zip</filelocation>
+                    <hash>c4346a98e6817415f14e4cad548562f33c439531</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="operachromium">
-            <version id="89">
+            <version id="94">
                 <bitrate sixtyfourbit="true">
-                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.89.0.4389.82/operadriver_mac64.zip</filelocation>
-                    <hash>d3964b603632161fa3cfe3e516a03adc968ec8e6</hash>
+                    <filelocation>https://github.com/operasoftware/operachromiumdriver/releases/download/v.94.0.4606.61/operadriver_mac64.zip</filelocation>
+                    <hash>e40a7710bdff5b5c7a558e4337b4f78294e9ecce</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>
         </driver>
         <driver id="marionette">
-            <version id="0.29.0">
+            <version id="0.30.0">
                 <bitrate thirtytwobit="true" sixtyfourbit="true">
-                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.29.0/geckodriver-v0.29.0-macos.tar.gz</filelocation>
-                    <hash>f6e624f20e2edd8ef09f7220c5aaed4d59023008</hash>
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-macos.tar.gz</filelocation>
+                    <hash>9f56018edbd9e44f9e968d0921b6688ef596d128</hash>
+                    <hashtype>sha1</hashtype>
+                </bitrate>
+                <bitrate arm="true">
+                    <filelocation>https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-macos-aarch64.tar.gz</filelocation>
+                    <hash>abad769f0854311f18343ee7fae59206393b9dbd</hash>
                     <hashtype>sha1</hashtype>
                 </bitrate>
             </version>

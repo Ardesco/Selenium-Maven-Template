@@ -42,17 +42,17 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
         <!--Dependency Versions-->
-        <assertj-core.version>3.19.0</assertj-core.version>
-        <jansi.version>2.3.2</jansi.version>
+        <assertj-core.version>3.21.0</assertj-core.version>
+        <jansi.version>2.3.4</jansi.version>
         <log4j-api.version>2.14.1</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
-        <selenium.version>4.0.0-beta-2</selenium.version>
+        <selenium.version>4.0.0</selenium.version>
         <testng.version>7.3.0</testng.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.18</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <!--Configuration Properties-->
+        <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
         <overwrite.binaries>false</overwrite.binaries>
         <read.timeout>30000</read.timeout>
         <connection.timeout>40000</connection.timeout>
@@ -154,7 +154,7 @@
                             <downloadedZipFileDirectory>${project.basedir}/src/test/resources/selenium_standalone_zips</downloadedZipFileDirectory>
                             <customRepositoryMap>${project.basedir}/src/test/resources/RepositoryMap.xml</customRepositoryMap>
                             <overwriteFilesThatExist>${overwrite.binaries}</overwriteFilesThatExist>
-                            <onlyGetDriversForHostOperatingSystem>false</onlyGetDriversForHostOperatingSystem>
+                            <onlyGetDriversForHostOperatingSystem>true</onlyGetDriversForHostOperatingSystem>
                             <fileDownloadRetryAttempts>${retry.attempts}</fileDownloadRetryAttempts>
                             <fileDownloadReadTimeout>${read.timeout}</fileDownloadReadTimeout>
                             <operatingSystems>

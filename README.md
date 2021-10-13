@@ -84,7 +84,7 @@ You have probably got outdated driver binaries, by default they are not overwrit
 
 ### Brave fails when in headless mode
 
-Currently Brave seems to be a bit flaky when running in headless mode, I would suggest running with `-Dheadless=false`
+Currently, Brave seems to be a bit flaky when running in headless mode, I would suggest running with `-Dheadless=false`
 
 ### It's looking for the Brave binary in the wrong location
 
