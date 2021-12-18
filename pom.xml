@@ -44,7 +44,7 @@
         <!--Dependency Versions-->
         <assertj-core.version>3.21.0</assertj-core.version>
         <jansi.version>2.3.4</jansi.version>
-        <log4j-api.version>2.16.0</log4j-api.version>
+        <log4j-api.version>2.17.0</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
         <selenium.version>4.1.0</selenium.version>
         <testng.version>7.3.0</testng.version>
