@@ -47,7 +47,7 @@
         <log4j-api.version>2.17.1</log4j-api.version>
         <query.version>2.0.0-BETA3</query.version>
         <selenium.version>4.1.0</selenium.version>
-        <testng.version>7.3.0</testng.version>
+        <testng.version>7.7.0</testng.version>
         <!--Plugin Versions-->
         <driver-binary-downloader-maven-plugin.version>1.0.18</driver-binary-downloader-maven-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
